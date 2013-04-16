@@ -3,55 +3,55 @@ part of books_v1_api_client;
 class Annotation {
 
   /** Anchor text after excerpt. */
-  String afterSelectedText;
+  core.String afterSelectedText;
 
   /** Anchor text before excerpt. */
-  String beforeSelectedText;
+  core.String beforeSelectedText;
 
   /** Selection ranges sent from the client. */
   AnnotationClientVersionRanges clientVersionRanges;
 
   /** Timestamp for the created time of this annotation. */
-  String created;
+  core.String created;
 
   /** Selection ranges for the most recent content version. */
   AnnotationCurrentVersionRanges currentVersionRanges;
 
   /** User-created data for this annotation. */
-  String data;
+  core.String data;
 
   /** Indicates that this annotation is deleted. */
-  bool deleted;
+  core.bool deleted;
 
   /** The highlight style for this annotation. */
-  String highlightStyle;
+  core.String highlightStyle;
 
   /** Id of this annotation, in the form of a GUID. */
-  String id;
+  core.String id;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** The layer this annotation is for. */
-  String layerId;
+  core.String layerId;
 
   /** Pages that this annotation spans. */
-  List<String> pageIds;
+  core.List<core.String> pageIds;
 
   /** Excerpt from the volume. */
-  String selectedText;
+  core.String selectedText;
 
   /** URL to this resource. */
-  String selfLink;
+  core.String selfLink;
 
   /** Timestamp for the last time this annotation was modified. */
-  String updated;
+  core.String updated;
 
   /** The volume that this annotation belongs to. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new Annotation from JSON data */
-  Annotation.fromJson(Map json) {
+  Annotation.fromJson(core.Map json) {
     if (json.containsKey("afterSelectedText")) {
       afterSelectedText = json["afterSelectedText"];
     }
@@ -106,8 +106,8 @@ class Annotation {
   }
 
   /** Create JSON Object for Annotation */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (afterSelectedText != null) {
       output["afterSelectedText"] = afterSelectedText;
@@ -143,7 +143,7 @@ class Annotation {
       output["layerId"] = layerId;
     }
     if (pageIds != null) {
-      output["pageIds"] = new List();
+      output["pageIds"] = new core.List();
       pageIds.forEach((item) {
         output["pageIds"].add(item);
       });
@@ -165,7 +165,7 @@ class Annotation {
   }
 
   /** Return String representation of Annotation */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -176,7 +176,7 @@ class AnnotationCurrentVersionRanges {
   BooksAnnotationsRange cfiRange;
 
   /** Content version applicable to ranges below. */
-  String contentVersion;
+  core.String contentVersion;
 
   /** Range in GB image format for this annotation for version above. */
   BooksAnnotationsRange gbImageRange;
@@ -185,7 +185,7 @@ class AnnotationCurrentVersionRanges {
   BooksAnnotationsRange gbTextRange;
 
   /** Create new AnnotationCurrentVersionRanges from JSON data */
-  AnnotationCurrentVersionRanges.fromJson(Map json) {
+  AnnotationCurrentVersionRanges.fromJson(core.Map json) {
     if (json.containsKey("cfiRange")) {
       cfiRange = new BooksAnnotationsRange.fromJson(json["cfiRange"]);
     }
@@ -201,8 +201,8 @@ class AnnotationCurrentVersionRanges {
   }
 
   /** Create JSON Object for AnnotationCurrentVersionRanges */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (cfiRange != null) {
       output["cfiRange"] = cfiRange.toJson();
@@ -221,7 +221,7 @@ class AnnotationCurrentVersionRanges {
   }
 
   /** Return String representation of AnnotationCurrentVersionRanges */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -232,7 +232,7 @@ class AnnotationClientVersionRanges {
   BooksAnnotationsRange cfiRange;
 
   /** Content version the client sent in. */
-  String contentVersion;
+  core.String contentVersion;
 
   /** Range in GB image format for this annotation sent by client. */
   BooksAnnotationsRange gbImageRange;
@@ -241,7 +241,7 @@ class AnnotationClientVersionRanges {
   BooksAnnotationsRange gbTextRange;
 
   /** Create new AnnotationClientVersionRanges from JSON data */
-  AnnotationClientVersionRanges.fromJson(Map json) {
+  AnnotationClientVersionRanges.fromJson(core.Map json) {
     if (json.containsKey("cfiRange")) {
       cfiRange = new BooksAnnotationsRange.fromJson(json["cfiRange"]);
     }
@@ -257,8 +257,8 @@ class AnnotationClientVersionRanges {
   }
 
   /** Create JSON Object for AnnotationClientVersionRanges */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (cfiRange != null) {
       output["cfiRange"] = cfiRange.toJson();
@@ -277,38 +277,38 @@ class AnnotationClientVersionRanges {
   }
 
   /** Return String representation of AnnotationClientVersionRanges */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Annotationdata {
 
   /** The type of annotation this data is for. */
-  String annotationType;
+  core.String annotationType;
 
   /** Base64 encoded data for this annotation data. */
-  String encoded_data;
+  core.String encoded_data;
 
   /** Unique id for this annotation data. */
-  String id;
+  core.String id;
 
   /** Resource Type */
-  String kind;
+  core.String kind;
 
   /** The Layer id for this data. * */
-  String layerId;
+  core.String layerId;
 
   /** URL for this resource. * */
-  String selfLink;
+  core.String selfLink;
 
   /** Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format). */
-  String updated;
+  core.String updated;
 
   /** The volume id for this data. * */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new Annotationdata from JSON data */
-  Annotationdata.fromJson(Map json) {
+  Annotationdata.fromJson(core.Map json) {
     if (json.containsKey("annotationType")) {
       annotationType = json["annotationType"];
     }
@@ -336,8 +336,8 @@ class Annotationdata {
   }
 
   /** Create JSON Object for Annotationdata */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (annotationType != null) {
       output["annotationType"] = annotationType;
@@ -368,26 +368,26 @@ class Annotationdata {
   }
 
   /** Return String representation of Annotationdata */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Annotations {
 
   /** A list of annotations. */
-  List<Annotation> items;
+  core.List<Annotation> items;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
-  String nextPageToken;
+  core.String nextPageToken;
 
   /** Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated. */
-  int totalItems;
+  core.int totalItems;
 
   /** Create new Annotations from JSON data */
-  Annotations.fromJson(Map json) {
+  Annotations.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -406,11 +406,11 @@ class Annotations {
   }
 
   /** Create JSON Object for Annotations */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -429,26 +429,26 @@ class Annotations {
   }
 
   /** Return String representation of Annotations */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Annotationsdata {
 
   /** A list of Annotation Data. */
-  List<Annotationdata> items;
+  core.List<Annotationdata> items;
 
   /** Resource type */
-  String kind;
+  core.String kind;
 
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
-  String nextPageToken;
+  core.String nextPageToken;
 
   /** The total number of volume annotations found. */
-  int totalItems;
+  core.int totalItems;
 
   /** Create new Annotationsdata from JSON data */
-  Annotationsdata.fromJson(Map json) {
+  Annotationsdata.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -467,11 +467,11 @@ class Annotationsdata {
   }
 
   /** Create JSON Object for Annotationsdata */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -490,26 +490,26 @@ class Annotationsdata {
   }
 
   /** Return String representation of Annotationsdata */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksAnnotationsRange {
 
   /** The offset from the ending position. */
-  String endOffset;
+  core.String endOffset;
 
   /** The ending position for the range. */
-  String endPosition;
+  core.String endPosition;
 
   /** The offset from the starting position. */
-  String startOffset;
+  core.String startOffset;
 
   /** The starting position for the range. */
-  String startPosition;
+  core.String startPosition;
 
   /** Create new BooksAnnotationsRange from JSON data */
-  BooksAnnotationsRange.fromJson(Map json) {
+  BooksAnnotationsRange.fromJson(core.Map json) {
     if (json.containsKey("endOffset")) {
       endOffset = json["endOffset"];
     }
@@ -525,8 +525,8 @@ class BooksAnnotationsRange {
   }
 
   /** Create JSON Object for BooksAnnotationsRange */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (endOffset != null) {
       output["endOffset"] = endOffset;
@@ -545,7 +545,7 @@ class BooksAnnotationsRange {
   }
 
   /** Return String representation of BooksAnnotationsRange */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -554,7 +554,7 @@ class BooksLayerDictData {
   BooksLayerDictDataDict dict;
 
   /** Create new BooksLayerDictData from JSON data */
-  BooksLayerDictData.fromJson(Map json) {
+  BooksLayerDictData.fromJson(core.Map json) {
     if (json.containsKey("common")) {
       common = new BooksLayerDictDataCommon.fromJson(json["common"]);
     }
@@ -564,8 +564,8 @@ class BooksLayerDictData {
   }
 
   /** Create JSON Object for BooksLayerDictData */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (common != null) {
       output["common"] = common.toJson();
@@ -578,25 +578,25 @@ class BooksLayerDictData {
   }
 
   /** Return String representation of BooksLayerDictData */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataCommon {
 
   /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  String title;
+  core.String title;
 
   /** Create new BooksLayerDictDataCommon from JSON data */
-  BooksLayerDictDataCommon.fromJson(Map json) {
+  BooksLayerDictDataCommon.fromJson(core.Map json) {
     if (json.containsKey("title")) {
       title = json["title"];
     }
   }
 
   /** Create JSON Object for BooksLayerDictDataCommon */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (title != null) {
       output["title"] = title;
@@ -606,7 +606,7 @@ class BooksLayerDictDataCommon {
   }
 
   /** Return String representation of BooksLayerDictDataCommon */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -614,10 +614,10 @@ class BooksLayerDictDataDict {
 
   /** The source, url and attribution for this dictionary data. */
   BooksLayerDictDataDictSource source;
-  List<BooksLayerDictDataDictWords> words;
+  core.List<BooksLayerDictDataDictWords> words;
 
   /** Create new BooksLayerDictDataDict from JSON data */
-  BooksLayerDictDataDict.fromJson(Map json) {
+  BooksLayerDictDataDict.fromJson(core.Map json) {
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictSource.fromJson(json["source"]);
     }
@@ -630,14 +630,14 @@ class BooksLayerDictDataDict {
   }
 
   /** Create JSON Object for BooksLayerDictDataDict */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (source != null) {
       output["source"] = source.toJson();
     }
     if (words != null) {
-      output["words"] = new List();
+      output["words"] = new core.List();
       words.forEach((item) {
         output["words"].add(item.toJson());
       });
@@ -647,20 +647,20 @@ class BooksLayerDictDataDict {
   }
 
   /** Return String representation of BooksLayerDictDataDict */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWords {
-  List<BooksLayerDictDataDictWordsDerivatives> derivatives;
-  List<BooksLayerDictDataDictWordsExamples> examples;
-  List<BooksLayerDictDataDictWordsSenses> senses;
+  core.List<BooksLayerDictDataDictWordsDerivatives> derivatives;
+  core.List<BooksLayerDictDataDictWordsExamples> examples;
+  core.List<BooksLayerDictDataDictWordsSenses> senses;
 
   /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
   BooksLayerDictDataDictWordsSource source;
 
   /** Create new BooksLayerDictDataDictWords from JSON data */
-  BooksLayerDictDataDictWords.fromJson(Map json) {
+  BooksLayerDictDataDictWords.fromJson(core.Map json) {
     if (json.containsKey("derivatives")) {
       derivatives = [];
       json["derivatives"].forEach((item) {
@@ -685,23 +685,23 @@ class BooksLayerDictDataDictWords {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWords */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (derivatives != null) {
-      output["derivatives"] = new List();
+      output["derivatives"] = new core.List();
       derivatives.forEach((item) {
         output["derivatives"].add(item.toJson());
       });
     }
     if (examples != null) {
-      output["examples"] = new List();
+      output["examples"] = new core.List();
       examples.forEach((item) {
         output["examples"].add(item.toJson());
       });
     }
     if (senses != null) {
-      output["senses"] = new List();
+      output["senses"] = new core.List();
       senses.forEach((item) {
         output["senses"].add(item.toJson());
       });
@@ -714,22 +714,22 @@ class BooksLayerDictDataDictWords {
   }
 
   /** Return String representation of BooksLayerDictDataDictWords */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSenses {
-  List<BooksLayerDictDataDictWordsSensesConjugations> conjugations;
-  List<BooksLayerDictDataDictWordsSensesDefinitions> definitions;
-  String partOfSpeech;
-  String pronunciation;
-  String pronunciationUrl;
+  core.List<BooksLayerDictDataDictWordsSensesConjugations> conjugations;
+  core.List<BooksLayerDictDataDictWordsSensesDefinitions> definitions;
+  core.String partOfSpeech;
+  core.String pronunciation;
+  core.String pronunciationUrl;
   BooksLayerDictDataDictWordsSensesSource source;
-  String syllabification;
-  List<BooksLayerDictDataDictWordsSensesSynonyms> synonyms;
+  core.String syllabification;
+  core.List<BooksLayerDictDataDictWordsSensesSynonyms> synonyms;
 
   /** Create new BooksLayerDictDataDictWordsSenses from JSON data */
-  BooksLayerDictDataDictWordsSenses.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSenses.fromJson(core.Map json) {
     if (json.containsKey("conjugations")) {
       conjugations = [];
       json["conjugations"].forEach((item) {
@@ -766,17 +766,17 @@ class BooksLayerDictDataDictWordsSenses {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSenses */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (conjugations != null) {
-      output["conjugations"] = new List();
+      output["conjugations"] = new core.List();
       conjugations.forEach((item) {
         output["conjugations"].add(item.toJson());
       });
     }
     if (definitions != null) {
-      output["definitions"] = new List();
+      output["definitions"] = new core.List();
       definitions.forEach((item) {
         output["definitions"].add(item.toJson());
       });
@@ -797,7 +797,7 @@ class BooksLayerDictDataDictWordsSenses {
       output["syllabification"] = syllabification;
     }
     if (synonyms != null) {
-      output["synonyms"] = new List();
+      output["synonyms"] = new core.List();
       synonyms.forEach((item) {
         output["synonyms"].add(item.toJson());
       });
@@ -807,16 +807,16 @@ class BooksLayerDictDataDictWordsSenses {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSenses */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesDefinitions {
-  String definition;
-  List<BooksLayerDictDataDictWordsSensesDefinitionsExamples> examples;
+  core.String definition;
+  core.List<BooksLayerDictDataDictWordsSensesDefinitionsExamples> examples;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitions from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitions.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesDefinitions.fromJson(core.Map json) {
     if (json.containsKey("definition")) {
       definition = json["definition"];
     }
@@ -829,14 +829,14 @@ class BooksLayerDictDataDictWordsSensesDefinitions {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitions */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (definition != null) {
       output["definition"] = definition;
     }
     if (examples != null) {
-      output["examples"] = new List();
+      output["examples"] = new core.List();
       examples.forEach((item) {
         output["examples"].add(item.toJson());
       });
@@ -846,16 +846,16 @@ class BooksLayerDictDataDictWordsSensesDefinitions {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitions */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
   BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource source;
-  String text;
+  core.String text;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamples from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(core.Map json) {
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource.fromJson(json["source"]);
     }
@@ -865,8 +865,8 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitionsExamples */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (source != null) {
       output["source"] = source.toJson();
@@ -879,16 +879,16 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitionsExamples */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -898,8 +898,8 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -912,16 +912,16 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesSource from JSON data */
-  BooksLayerDictDataDictWordsSensesSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -931,8 +931,8 @@ class BooksLayerDictDataDictWordsSensesSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -945,16 +945,16 @@ class BooksLayerDictDataDictWordsSensesSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesConjugations {
-  String type;
-  String value;
+  core.String type;
+  core.String value;
 
   /** Create new BooksLayerDictDataDictWordsSensesConjugations from JSON data */
-  BooksLayerDictDataDictWordsSensesConjugations.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesConjugations.fromJson(core.Map json) {
     if (json.containsKey("type")) {
       type = json["type"];
     }
@@ -964,8 +964,8 @@ class BooksLayerDictDataDictWordsSensesConjugations {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesConjugations */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (type != null) {
       output["type"] = type;
@@ -978,16 +978,16 @@ class BooksLayerDictDataDictWordsSensesConjugations {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesConjugations */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesSynonyms {
   BooksLayerDictDataDictWordsSensesSynonymsSource source;
-  String text;
+  core.String text;
 
   /** Create new BooksLayerDictDataDictWordsSensesSynonyms from JSON data */
-  BooksLayerDictDataDictWordsSensesSynonyms.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesSynonyms.fromJson(core.Map json) {
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictWordsSensesSynonymsSource.fromJson(json["source"]);
     }
@@ -997,8 +997,8 @@ class BooksLayerDictDataDictWordsSensesSynonyms {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesSynonyms */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (source != null) {
       output["source"] = source.toJson();
@@ -1011,16 +1011,16 @@ class BooksLayerDictDataDictWordsSensesSynonyms {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesSynonyms */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsSensesSynonymsSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesSynonymsSource from JSON data */
-  BooksLayerDictDataDictWordsSensesSynonymsSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSensesSynonymsSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -1030,8 +1030,8 @@ class BooksLayerDictDataDictWordsSensesSynonymsSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSensesSynonymsSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -1044,17 +1044,17 @@ class BooksLayerDictDataDictWordsSensesSynonymsSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSensesSynonymsSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
 class BooksLayerDictDataDictWordsSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSource from JSON data */
-  BooksLayerDictDataDictWordsSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -1064,8 +1064,8 @@ class BooksLayerDictDataDictWordsSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -1078,16 +1078,16 @@ class BooksLayerDictDataDictWordsSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsExamples {
   BooksLayerDictDataDictWordsExamplesSource source;
-  String text;
+  core.String text;
 
   /** Create new BooksLayerDictDataDictWordsExamples from JSON data */
-  BooksLayerDictDataDictWordsExamples.fromJson(Map json) {
+  BooksLayerDictDataDictWordsExamples.fromJson(core.Map json) {
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictWordsExamplesSource.fromJson(json["source"]);
     }
@@ -1097,8 +1097,8 @@ class BooksLayerDictDataDictWordsExamples {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsExamples */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (source != null) {
       output["source"] = source.toJson();
@@ -1111,16 +1111,16 @@ class BooksLayerDictDataDictWordsExamples {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsExamples */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsExamplesSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsExamplesSource from JSON data */
-  BooksLayerDictDataDictWordsExamplesSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsExamplesSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -1130,8 +1130,8 @@ class BooksLayerDictDataDictWordsExamplesSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsExamplesSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -1144,16 +1144,16 @@ class BooksLayerDictDataDictWordsExamplesSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsExamplesSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsDerivatives {
   BooksLayerDictDataDictWordsDerivativesSource source;
-  String text;
+  core.String text;
 
   /** Create new BooksLayerDictDataDictWordsDerivatives from JSON data */
-  BooksLayerDictDataDictWordsDerivatives.fromJson(Map json) {
+  BooksLayerDictDataDictWordsDerivatives.fromJson(core.Map json) {
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictWordsDerivativesSource.fromJson(json["source"]);
     }
@@ -1163,8 +1163,8 @@ class BooksLayerDictDataDictWordsDerivatives {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsDerivatives */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (source != null) {
       output["source"] = source.toJson();
@@ -1177,16 +1177,16 @@ class BooksLayerDictDataDictWordsDerivatives {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsDerivatives */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerDictDataDictWordsDerivativesSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictWordsDerivativesSource from JSON data */
-  BooksLayerDictDataDictWordsDerivativesSource.fromJson(Map json) {
+  BooksLayerDictDataDictWordsDerivativesSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -1196,8 +1196,8 @@ class BooksLayerDictDataDictWordsDerivativesSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictWordsDerivativesSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -1210,17 +1210,17 @@ class BooksLayerDictDataDictWordsDerivativesSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictWordsDerivativesSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 /** The source, url and attribution for this dictionary data. */
 class BooksLayerDictDataDictSource {
-  String attribution;
-  String url;
+  core.String attribution;
+  core.String url;
 
   /** Create new BooksLayerDictDataDictSource from JSON data */
-  BooksLayerDictDataDictSource.fromJson(Map json) {
+  BooksLayerDictDataDictSource.fromJson(core.Map json) {
     if (json.containsKey("attribution")) {
       attribution = json["attribution"];
     }
@@ -1230,8 +1230,8 @@ class BooksLayerDictDataDictSource {
   }
 
   /** Create JSON Object for BooksLayerDictDataDictSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (attribution != null) {
       output["attribution"] = attribution;
@@ -1244,7 +1244,7 @@ class BooksLayerDictDataDictSource {
   }
 
   /** Return String representation of BooksLayerDictDataDictSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -1253,7 +1253,7 @@ class BooksLayerGeoData {
   BooksLayerGeoDataGeo geo;
 
   /** Create new BooksLayerGeoData from JSON data */
-  BooksLayerGeoData.fromJson(Map json) {
+  BooksLayerGeoData.fromJson(core.Map json) {
     if (json.containsKey("common")) {
       common = new BooksLayerGeoDataCommon.fromJson(json["common"]);
     }
@@ -1263,8 +1263,8 @@ class BooksLayerGeoData {
   }
 
   /** Create JSON Object for BooksLayerGeoData */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (common != null) {
       output["common"] = common.toJson();
@@ -1277,35 +1277,35 @@ class BooksLayerGeoData {
   }
 
   /** Return String representation of BooksLayerGeoData */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerGeoDataGeo {
 
   /** The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER */
-  String cachePolicy;
+  core.String cachePolicy;
 
   /** The country code of the location. */
-  String countryCode;
+  core.String countryCode;
 
   /** The latitude of the location. */
-  num latitude;
+  core.num latitude;
 
   /** The longitude of the location. */
-  num longitude;
+  core.num longitude;
 
   /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
-  String mapType;
+  core.String mapType;
 
   /** The viewport for showing this location. This is a latitude, longitude rectangle. */
   BooksLayerGeoDataGeoViewport viewport;
 
   /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
-  int zoom;
+  core.int zoom;
 
   /** Create new BooksLayerGeoDataGeo from JSON data */
-  BooksLayerGeoDataGeo.fromJson(Map json) {
+  BooksLayerGeoDataGeo.fromJson(core.Map json) {
     if (json.containsKey("cachePolicy")) {
       cachePolicy = json["cachePolicy"];
     }
@@ -1330,8 +1330,8 @@ class BooksLayerGeoDataGeo {
   }
 
   /** Create JSON Object for BooksLayerGeoDataGeo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (cachePolicy != null) {
       output["cachePolicy"] = cachePolicy;
@@ -1359,7 +1359,7 @@ class BooksLayerGeoDataGeo {
   }
 
   /** Return String representation of BooksLayerGeoDataGeo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -1369,7 +1369,7 @@ class BooksLayerGeoDataGeoViewport {
   BooksLayerGeoDataGeoViewportLo lo;
 
   /** Create new BooksLayerGeoDataGeoViewport from JSON data */
-  BooksLayerGeoDataGeoViewport.fromJson(Map json) {
+  BooksLayerGeoDataGeoViewport.fromJson(core.Map json) {
     if (json.containsKey("hi")) {
       hi = new BooksLayerGeoDataGeoViewportHi.fromJson(json["hi"]);
     }
@@ -1379,8 +1379,8 @@ class BooksLayerGeoDataGeoViewport {
   }
 
   /** Create JSON Object for BooksLayerGeoDataGeoViewport */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (hi != null) {
       output["hi"] = hi.toJson();
@@ -1393,16 +1393,16 @@ class BooksLayerGeoDataGeoViewport {
   }
 
   /** Return String representation of BooksLayerGeoDataGeoViewport */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerGeoDataGeoViewportLo {
-  num latitude;
-  num longitude;
+  core.num latitude;
+  core.num longitude;
 
   /** Create new BooksLayerGeoDataGeoViewportLo from JSON data */
-  BooksLayerGeoDataGeoViewportLo.fromJson(Map json) {
+  BooksLayerGeoDataGeoViewportLo.fromJson(core.Map json) {
     if (json.containsKey("latitude")) {
       latitude = json["latitude"];
     }
@@ -1412,8 +1412,8 @@ class BooksLayerGeoDataGeoViewportLo {
   }
 
   /** Create JSON Object for BooksLayerGeoDataGeoViewportLo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (latitude != null) {
       output["latitude"] = latitude;
@@ -1426,16 +1426,16 @@ class BooksLayerGeoDataGeoViewportLo {
   }
 
   /** Return String representation of BooksLayerGeoDataGeoViewportLo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerGeoDataGeoViewportHi {
-  num latitude;
-  num longitude;
+  core.num latitude;
+  core.num longitude;
 
   /** Create new BooksLayerGeoDataGeoViewportHi from JSON data */
-  BooksLayerGeoDataGeoViewportHi.fromJson(Map json) {
+  BooksLayerGeoDataGeoViewportHi.fromJson(core.Map json) {
     if (json.containsKey("latitude")) {
       latitude = json["latitude"];
     }
@@ -1445,8 +1445,8 @@ class BooksLayerGeoDataGeoViewportHi {
   }
 
   /** Create JSON Object for BooksLayerGeoDataGeoViewportHi */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (latitude != null) {
       output["latitude"] = latitude;
@@ -1459,29 +1459,29 @@ class BooksLayerGeoDataGeoViewportHi {
   }
 
   /** Return String representation of BooksLayerGeoDataGeoViewportHi */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class BooksLayerGeoDataCommon {
 
   /** The language of the information url and description. */
-  String lang;
+  core.String lang;
 
   /** The URL for the preview image information. */
-  String previewImageUrl;
+  core.String previewImageUrl;
 
   /** The description for this location. */
-  String snippet;
+  core.String snippet;
 
   /** The URL for information for this location. Ex: wikipedia link. */
-  String snippetUrl;
+  core.String snippetUrl;
 
   /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  String title;
+  core.String title;
 
   /** Create new BooksLayerGeoDataCommon from JSON data */
-  BooksLayerGeoDataCommon.fromJson(Map json) {
+  BooksLayerGeoDataCommon.fromJson(core.Map json) {
     if (json.containsKey("lang")) {
       lang = json["lang"];
     }
@@ -1500,8 +1500,8 @@ class BooksLayerGeoDataCommon {
   }
 
   /** Create JSON Object for BooksLayerGeoDataCommon */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (lang != null) {
       output["lang"] = lang;
@@ -1523,44 +1523,44 @@ class BooksLayerGeoDataCommon {
   }
 
   /** Return String representation of BooksLayerGeoDataCommon */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Bookshelf {
 
   /** Whether this bookshelf is PUBLIC or PRIVATE. */
-  String access;
+  core.String access;
 
   /** Created time for this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  String created;
+  core.String created;
 
   /** Description of this bookshelf. */
-  String description;
+  core.String description;
 
   /** Id of this bookshelf, only unique by user. */
-  int id;
+  core.int id;
 
   /** Resource type for bookshelf metadata. */
-  String kind;
+  core.String kind;
 
   /** URL to this resource. */
-  String selfLink;
+  core.String selfLink;
 
   /** Title of this bookshelf. */
-  String title;
+  core.String title;
 
   /** Last modified time of this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  String updated;
+  core.String updated;
 
   /** Number of volumes in this bookshelf. */
-  int volumeCount;
+  core.int volumeCount;
 
   /** Last time a volume was added or removed from this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  String volumesLastUpdated;
+  core.String volumesLastUpdated;
 
   /** Create new Bookshelf from JSON data */
-  Bookshelf.fromJson(Map json) {
+  Bookshelf.fromJson(core.Map json) {
     if (json.containsKey("access")) {
       access = json["access"];
     }
@@ -1594,8 +1594,8 @@ class Bookshelf {
   }
 
   /** Create JSON Object for Bookshelf */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (access != null) {
       output["access"] = access;
@@ -1632,20 +1632,20 @@ class Bookshelf {
   }
 
   /** Return String representation of Bookshelf */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Bookshelves {
 
   /** A list of bookshelves. */
-  List<Bookshelf> items;
+  core.List<Bookshelf> items;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** Create new Bookshelves from JSON data */
-  Bookshelves.fromJson(Map json) {
+  Bookshelves.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -1658,11 +1658,11 @@ class Bookshelves {
   }
 
   /** Create JSON Object for Bookshelves */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -1675,47 +1675,47 @@ class Bookshelves {
   }
 
   /** Return String representation of Bookshelves */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class ConcurrentAccessRestriction {
 
   /** Whether access is granted for this (user, device, volume). */
-  bool deviceAllowed;
+  core.bool deviceAllowed;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** The maximum number of concurrent access licenses for this volume. */
-  int maxConcurrentDevices;
+  core.int maxConcurrentDevices;
 
   /** Error/warning message. */
-  String message;
+  core.String message;
 
   /** Client nonce for verification. Download access and client-validation only. */
-  String nonce;
+  core.String nonce;
 
   /** Error/warning reason code. */
-  String reasonCode;
+  core.String reasonCode;
 
   /** Whether this volume has any concurrent access restrictions. */
-  bool restricted;
+  core.bool restricted;
 
   /** Response signature. */
-  String signature;
+  core.String signature;
 
   /** Client app identifier for verification. Download access and client-validation only. */
-  String source;
+  core.String source;
 
   /** Time in seconds for license auto-expiration. */
-  int timeWindowSeconds;
+  core.int timeWindowSeconds;
 
   /** Identifies the volume for which this entry applies. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new ConcurrentAccessRestriction from JSON data */
-  ConcurrentAccessRestriction.fromJson(Map json) {
+  ConcurrentAccessRestriction.fromJson(core.Map json) {
     if (json.containsKey("deviceAllowed")) {
       deviceAllowed = json["deviceAllowed"];
     }
@@ -1752,8 +1752,8 @@ class ConcurrentAccessRestriction {
   }
 
   /** Create JSON Object for ConcurrentAccessRestriction */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (deviceAllowed != null) {
       output["deviceAllowed"] = deviceAllowed;
@@ -1793,50 +1793,50 @@ class ConcurrentAccessRestriction {
   }
 
   /** Return String representation of ConcurrentAccessRestriction */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class DownloadAccessRestriction {
 
   /** If restricted, whether access is granted for this (user, device, volume). */
-  bool deviceAllowed;
+  core.bool deviceAllowed;
 
   /** If restricted, the number of content download licenses already acquired (including the requesting client, if licensed). */
-  int downloadsAcquired;
+  core.int downloadsAcquired;
 
   /** If deviceAllowed, whether access was just acquired with this request. */
-  bool justAcquired;
+  core.bool justAcquired;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** If restricted, the maximum number of content download licenses for this volume. */
-  int maxDownloadDevices;
+  core.int maxDownloadDevices;
 
   /** Error/warning message. */
-  String message;
+  core.String message;
 
   /** Client nonce for verification. Download access and client-validation only. */
-  String nonce;
+  core.String nonce;
 
   /** Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS */
-  String reasonCode;
+  core.String reasonCode;
 
   /** Whether this volume has any download access restrictions. */
-  bool restricted;
+  core.bool restricted;
 
   /** Response signature. */
-  String signature;
+  core.String signature;
 
   /** Client app identifier for verification. Download access and client-validation only. */
-  String source;
+  core.String source;
 
   /** Identifies the volume for which this entry applies. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new DownloadAccessRestriction from JSON data */
-  DownloadAccessRestriction.fromJson(Map json) {
+  DownloadAccessRestriction.fromJson(core.Map json) {
     if (json.containsKey("deviceAllowed")) {
       deviceAllowed = json["deviceAllowed"];
     }
@@ -1876,8 +1876,8 @@ class DownloadAccessRestriction {
   }
 
   /** Create JSON Object for DownloadAccessRestriction */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (deviceAllowed != null) {
       output["deviceAllowed"] = deviceAllowed;
@@ -1920,20 +1920,20 @@ class DownloadAccessRestriction {
   }
 
   /** Return String representation of DownloadAccessRestriction */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class DownloadAccesses {
 
   /** A list of download access responses. */
-  List<DownloadAccessRestriction> downloadAccessList;
+  core.List<DownloadAccessRestriction> downloadAccessList;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** Create new DownloadAccesses from JSON data */
-  DownloadAccesses.fromJson(Map json) {
+  DownloadAccesses.fromJson(core.Map json) {
     if (json.containsKey("downloadAccessList")) {
       downloadAccessList = [];
       json["downloadAccessList"].forEach((item) {
@@ -1946,11 +1946,11 @@ class DownloadAccesses {
   }
 
   /** Create JSON Object for DownloadAccesses */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (downloadAccessList != null) {
-      output["downloadAccessList"] = new List();
+      output["downloadAccessList"] = new core.List();
       downloadAccessList.forEach((item) {
         output["downloadAccessList"].add(item.toJson());
       });
@@ -1963,23 +1963,23 @@ class DownloadAccesses {
   }
 
   /** Return String representation of DownloadAccesses */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Layersummaries {
 
   /** A list of layer summary items. */
-  List<Layersummary> items;
+  core.List<Layersummary> items;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** The total number of layer summaries found. */
-  int totalItems;
+  core.int totalItems;
 
   /** Create new Layersummaries from JSON data */
-  Layersummaries.fromJson(Map json) {
+  Layersummaries.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -1995,11 +1995,11 @@ class Layersummaries {
   }
 
   /** Create JSON Object for Layersummaries */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -2015,53 +2015,53 @@ class Layersummaries {
   }
 
   /** Return String representation of Layersummaries */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Layersummary {
 
   /** The number of annotations for this layer. */
-  int annotationCount;
+  core.int annotationCount;
 
   /** The list of annotation types contained for this layer. */
-  List<String> annotationTypes;
+  core.List<core.String> annotationTypes;
 
   /** Link to get data for this annotation. */
-  String annotationsDataLink;
+  core.String annotationsDataLink;
 
   /** The link to get the annotations for this layer. */
-  String annotationsLink;
+  core.String annotationsLink;
 
   /** The content version this resource is for. */
-  String contentVersion;
+  core.String contentVersion;
 
   /** The number of data items for this layer. */
-  int dataCount;
+  core.int dataCount;
 
   /** Unique id of this layer summary. */
-  String id;
+  core.String id;
 
   /** Resource Type */
-  String kind;
+  core.String kind;
 
   /** The layer id for this summary. */
-  String layerId;
+  core.String layerId;
 
   /** URL to this resource. */
-  String selfLink;
+  core.String selfLink;
 
   /** Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC date-time format). */
-  String updated;
+  core.String updated;
 
   /** The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately. */
-  String volumeAnnotationsVersion;
+  core.String volumeAnnotationsVersion;
 
   /** The volume id this resource is for. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new Layersummary from JSON data */
-  Layersummary.fromJson(Map json) {
+  Layersummary.fromJson(core.Map json) {
     if (json.containsKey("annotationCount")) {
       annotationCount = json["annotationCount"];
     }
@@ -2107,14 +2107,14 @@ class Layersummary {
   }
 
   /** Create JSON Object for Layersummary */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (annotationCount != null) {
       output["annotationCount"] = annotationCount;
     }
     if (annotationTypes != null) {
-      output["annotationTypes"] = new List();
+      output["annotationTypes"] = new core.List();
       annotationTypes.forEach((item) {
         output["annotationTypes"].add(item);
       });
@@ -2157,35 +2157,35 @@ class Layersummary {
   }
 
   /** Return String representation of Layersummary */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class ReadingPosition {
 
   /** Position in an EPUB as a CFI. */
-  String epubCfiPosition;
+  core.String epubCfiPosition;
 
   /** Position in a volume for image-based content. */
-  String gbImagePosition;
+  core.String gbImagePosition;
 
   /** Position in a volume for text-based content. */
-  String gbTextPosition;
+  core.String gbTextPosition;
 
   /** Resource type for a reading position. */
-  String kind;
+  core.String kind;
 
   /** Position in a PDF file. */
-  String pdfPosition;
+  core.String pdfPosition;
 
   /** Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution). */
-  String updated;
+  core.String updated;
 
   /** Volume id associated with this reading position. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new ReadingPosition from JSON data */
-  ReadingPosition.fromJson(Map json) {
+  ReadingPosition.fromJson(core.Map json) {
     if (json.containsKey("epubCfiPosition")) {
       epubCfiPosition = json["epubCfiPosition"];
     }
@@ -2210,8 +2210,8 @@ class ReadingPosition {
   }
 
   /** Create JSON Object for ReadingPosition */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (epubCfiPosition != null) {
       output["epubCfiPosition"] = epubCfiPosition;
@@ -2239,7 +2239,7 @@ class ReadingPosition {
   }
 
   /** Return String representation of ReadingPosition */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2252,10 +2252,10 @@ class RequestAccess {
   DownloadAccessRestriction downloadAccess;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** Create new RequestAccess from JSON data */
-  RequestAccess.fromJson(Map json) {
+  RequestAccess.fromJson(core.Map json) {
     if (json.containsKey("concurrentAccess")) {
       concurrentAccess = new ConcurrentAccessRestriction.fromJson(json["concurrentAccess"]);
     }
@@ -2268,8 +2268,8 @@ class RequestAccess {
   }
 
   /** Create JSON Object for RequestAccess */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (concurrentAccess != null) {
       output["concurrentAccess"] = concurrentAccess.toJson();
@@ -2285,7 +2285,7 @@ class RequestAccess {
   }
 
   /** Return String representation of RequestAccess */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2295,34 +2295,34 @@ class Review {
   ReviewAuthor author;
 
   /** Review text. */
-  String content;
+  core.String content;
 
   /** Date of this review. */
-  String date;
+  core.String date;
 
   /** URL for the full review text, for reviews gathered from the web. */
-  String fullTextUrl;
+  core.String fullTextUrl;
 
   /** Resource type for a review. */
-  String kind;
+  core.String kind;
 
   /** Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED. */
-  String rating;
+  core.String rating;
 
   /** Information regarding the source of this review, when the review is not from a Google Books user. */
   ReviewSource source;
 
   /** Title for this review. */
-  String title;
+  core.String title;
 
   /** Source type for this review. Possible values are EDITORIAL, WEB_USER or GOOGLE_USER. */
-  String type;
+  core.String type;
 
   /** Volume that this review is for. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new Review from JSON data */
-  Review.fromJson(Map json) {
+  Review.fromJson(core.Map json) {
     if (json.containsKey("author")) {
       author = new ReviewAuthor.fromJson(json["author"]);
     }
@@ -2356,8 +2356,8 @@ class Review {
   }
 
   /** Create JSON Object for Review */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (author != null) {
       output["author"] = author.toJson();
@@ -2394,7 +2394,7 @@ class Review {
   }
 
   /** Return String representation of Review */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2402,16 +2402,16 @@ class Review {
 class ReviewSource {
 
   /** Name of the source. */
-  String description;
+  core.String description;
 
   /** Extra text about the source of the review. */
-  String extraDescription;
+  core.String extraDescription;
 
   /** URL of the source of the review. */
-  String url;
+  core.String url;
 
   /** Create new ReviewSource from JSON data */
-  ReviewSource.fromJson(Map json) {
+  ReviewSource.fromJson(core.Map json) {
     if (json.containsKey("description")) {
       description = json["description"];
     }
@@ -2424,8 +2424,8 @@ class ReviewSource {
   }
 
   /** Create JSON Object for ReviewSource */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (description != null) {
       output["description"] = description;
@@ -2441,7 +2441,7 @@ class ReviewSource {
   }
 
   /** Return String representation of ReviewSource */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2449,18 +2449,18 @@ class ReviewSource {
 class ReviewAuthor {
 
   /** Name of this person. */
-  String displayName;
+  core.String displayName;
 
   /** Create new ReviewAuthor from JSON data */
-  ReviewAuthor.fromJson(Map json) {
+  ReviewAuthor.fromJson(core.Map json) {
     if (json.containsKey("displayName")) {
       displayName = json["displayName"];
     }
   }
 
   /** Create JSON Object for ReviewAuthor */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (displayName != null) {
       output["displayName"] = displayName;
@@ -2470,7 +2470,7 @@ class ReviewAuthor {
   }
 
   /** Return String representation of ReviewAuthor */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2480,13 +2480,13 @@ class Volume {
   VolumeAccessInfo accessInfo;
 
   /** Opaque identifier for a specific version of a volume resource. (In LITE projection) */
-  String etag;
+  core.String etag;
 
   /** Unique identifier for a volume. (In LITE projection.) */
-  String id;
+  core.String id;
 
   /** Resource type for a volume. (In LITE projection.) */
-  String kind;
+  core.String kind;
 
   /** What layers exist in this volume and high level information about them. */
   VolumeLayerInfo layerInfo;
@@ -2501,7 +2501,7 @@ class Volume {
   VolumeSearchInfo searchInfo;
 
   /** URL to this resource. (In LITE projection.) */
-  String selfLink;
+  core.String selfLink;
 
   /** User specific information related to this volume. (e.g. page this user last read or whether they purchased this book) */
   VolumeUserInfo userInfo;
@@ -2510,7 +2510,7 @@ class Volume {
   VolumeVolumeInfo volumeInfo;
 
   /** Create new Volume from JSON data */
-  Volume.fromJson(Map json) {
+  Volume.fromJson(core.Map json) {
     if (json.containsKey("accessInfo")) {
       accessInfo = new VolumeAccessInfo.fromJson(json["accessInfo"]);
     }
@@ -2547,8 +2547,8 @@ class Volume {
   }
 
   /** Create JSON Object for Volume */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (accessInfo != null) {
       output["accessInfo"] = accessInfo.toJson();
@@ -2588,7 +2588,7 @@ class Volume {
   }
 
   /** Return String representation of Volume */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2596,16 +2596,16 @@ class Volume {
 class VolumeAccessInfo {
 
   /** Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.) */
-  String accessViewStatus;
+  core.String accessViewStatus;
 
   /** The two-letter ISO_3166-1 country code for which this access information is valid. (In LITE projection.) */
-  String country;
+  core.String country;
 
   /** Information about a volume's download license access restrictions. */
   DownloadAccessRestriction downloadAccess;
 
   /** Whether this volume can be embedded in a viewport using the Embedded Viewer API. */
-  bool embeddable;
+  core.bool embeddable;
 
   /** Information about epub content. (In LITE projection.) */
   VolumeAccessInfoEpub epub;
@@ -2614,22 +2614,22 @@ class VolumeAccessInfo {
   VolumeAccessInfoPdf pdf;
 
   /** Whether or not this book is public domain in the country listed above. */
-  bool publicDomain;
+  core.bool publicDomain;
 
   /** Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED. */
-  String textToSpeechPermission;
+  core.String textToSpeechPermission;
 
   /** For ordered but not yet processed orders, we give a URL that can be used to go to the appropriate Google Wallet page. */
-  String viewOrderUrl;
+  core.String viewOrderUrl;
 
   /** The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value depends on the country listed above. A value of PARTIAL means that the publisher has allowed some portion of the volume to be viewed publicly, without purchase. This can apply to eBooks as well as non-eBooks. Public domain books will always have a value of ALL_PAGES. */
-  String viewability;
+  core.String viewability;
 
   /** URL to read this volume on the Google Books site. Link will not allow users to read non-viewable volumes. */
-  String webReaderLink;
+  core.String webReaderLink;
 
   /** Create new VolumeAccessInfo from JSON data */
-  VolumeAccessInfo.fromJson(Map json) {
+  VolumeAccessInfo.fromJson(core.Map json) {
     if (json.containsKey("accessViewStatus")) {
       accessViewStatus = json["accessViewStatus"];
     }
@@ -2666,8 +2666,8 @@ class VolumeAccessInfo {
   }
 
   /** Create JSON Object for VolumeAccessInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (accessViewStatus != null) {
       output["accessViewStatus"] = accessViewStatus;
@@ -2707,7 +2707,7 @@ class VolumeAccessInfo {
   }
 
   /** Return String representation of VolumeAccessInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2715,16 +2715,16 @@ class VolumeAccessInfo {
 class VolumeAccessInfoPdf {
 
   /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
-  String acsTokenLink;
+  core.String acsTokenLink;
 
   /** URL to download pdf. (In LITE projection.) */
-  String downloadLink;
+  core.String downloadLink;
 
   /** Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.) */
-  bool isAvailable;
+  core.bool isAvailable;
 
   /** Create new VolumeAccessInfoPdf from JSON data */
-  VolumeAccessInfoPdf.fromJson(Map json) {
+  VolumeAccessInfoPdf.fromJson(core.Map json) {
     if (json.containsKey("acsTokenLink")) {
       acsTokenLink = json["acsTokenLink"];
     }
@@ -2737,8 +2737,8 @@ class VolumeAccessInfoPdf {
   }
 
   /** Create JSON Object for VolumeAccessInfoPdf */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (acsTokenLink != null) {
       output["acsTokenLink"] = acsTokenLink;
@@ -2754,7 +2754,7 @@ class VolumeAccessInfoPdf {
   }
 
   /** Return String representation of VolumeAccessInfoPdf */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2762,16 +2762,16 @@ class VolumeAccessInfoPdf {
 class VolumeAccessInfoEpub {
 
   /** URL to retrieve ACS token for epub download. (In LITE projection.) */
-  String acsTokenLink;
+  core.String acsTokenLink;
 
   /** URL to download epub. (In LITE projection.) */
-  String downloadLink;
+  core.String downloadLink;
 
   /** Is a flowing text epub available either as public domain or for purchase. (In LITE projection.) */
-  bool isAvailable;
+  core.bool isAvailable;
 
   /** Create new VolumeAccessInfoEpub from JSON data */
-  VolumeAccessInfoEpub.fromJson(Map json) {
+  VolumeAccessInfoEpub.fromJson(core.Map json) {
     if (json.containsKey("acsTokenLink")) {
       acsTokenLink = json["acsTokenLink"];
     }
@@ -2784,8 +2784,8 @@ class VolumeAccessInfoEpub {
   }
 
   /** Create JSON Object for VolumeAccessInfoEpub */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (acsTokenLink != null) {
       output["acsTokenLink"] = acsTokenLink;
@@ -2801,7 +2801,7 @@ class VolumeAccessInfoEpub {
   }
 
   /** Return String representation of VolumeAccessInfoEpub */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2809,10 +2809,10 @@ class VolumeAccessInfoEpub {
 class VolumeLayerInfo {
 
   /** A layer should appear here if and only if the layer exists for this book. */
-  List<VolumeLayerInfoLayers> layers;
+  core.List<VolumeLayerInfoLayers> layers;
 
   /** Create new VolumeLayerInfo from JSON data */
-  VolumeLayerInfo.fromJson(Map json) {
+  VolumeLayerInfo.fromJson(core.Map json) {
     if (json.containsKey("layers")) {
       layers = [];
       json["layers"].forEach((item) {
@@ -2822,11 +2822,11 @@ class VolumeLayerInfo {
   }
 
   /** Create JSON Object for VolumeLayerInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (layers != null) {
-      output["layers"] = new List();
+      output["layers"] = new core.List();
       layers.forEach((item) {
         output["layers"].add(item.toJson());
       });
@@ -2836,20 +2836,20 @@ class VolumeLayerInfo {
   }
 
   /** Return String representation of VolumeLayerInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class VolumeLayerInfoLayers {
 
   /** The layer id of this layer (e.g. "geo"). */
-  String layerId;
+  core.String layerId;
 
   /** The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately. */
-  String volumeAnnotationsVersion;
+  core.String volumeAnnotationsVersion;
 
   /** Create new VolumeLayerInfoLayers from JSON data */
-  VolumeLayerInfoLayers.fromJson(Map json) {
+  VolumeLayerInfoLayers.fromJson(core.Map json) {
     if (json.containsKey("layerId")) {
       layerId = json["layerId"];
     }
@@ -2859,8 +2859,8 @@ class VolumeLayerInfoLayers {
   }
 
   /** Create JSON Object for VolumeLayerInfoLayers */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (layerId != null) {
       output["layerId"] = layerId;
@@ -2873,7 +2873,7 @@ class VolumeLayerInfoLayers {
   }
 
   /** Return String representation of VolumeLayerInfoLayers */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2881,13 +2881,13 @@ class VolumeLayerInfoLayers {
 class VolumeUserInfo {
 
   /** Whether or not this volume is currently in "my books." */
-  bool isInMyBooks;
+  core.bool isInMyBooks;
 
   /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
-  bool isPreordered;
+  core.bool isPreordered;
 
   /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
-  bool isPurchased;
+  core.bool isPurchased;
 
   /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
   ReadingPosition readingPosition;
@@ -2896,10 +2896,10 @@ class VolumeUserInfo {
   Review review;
 
   /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
-  String updated;
+  core.String updated;
 
   /** Create new VolumeUserInfo from JSON data */
-  VolumeUserInfo.fromJson(Map json) {
+  VolumeUserInfo.fromJson(core.Map json) {
     if (json.containsKey("isInMyBooks")) {
       isInMyBooks = json["isInMyBooks"];
     }
@@ -2921,8 +2921,8 @@ class VolumeUserInfo {
   }
 
   /** Create JSON Object for VolumeUserInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (isInMyBooks != null) {
       output["isInMyBooks"] = isInMyBooks;
@@ -2947,7 +2947,7 @@ class VolumeUserInfo {
   }
 
   /** Return String representation of VolumeUserInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2955,18 +2955,18 @@ class VolumeUserInfo {
 class VolumeRecommendedInfo {
 
   /** A text explaining why this volume is recommended. */
-  String explanation;
+  core.String explanation;
 
   /** Create new VolumeRecommendedInfo from JSON data */
-  VolumeRecommendedInfo.fromJson(Map json) {
+  VolumeRecommendedInfo.fromJson(core.Map json) {
     if (json.containsKey("explanation")) {
       explanation = json["explanation"];
     }
   }
 
   /** Create JSON Object for VolumeRecommendedInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (explanation != null) {
       output["explanation"] = explanation;
@@ -2976,7 +2976,7 @@ class VolumeRecommendedInfo {
   }
 
   /** Return String representation of VolumeRecommendedInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -2984,22 +2984,22 @@ class VolumeRecommendedInfo {
 class VolumeVolumeInfo {
 
   /** The names of the authors and/or editors for this volume. (In LITE projection) */
-  List<String> authors;
+  core.List<core.String> authors;
 
   /** The mean review rating for this volume. (min = 1.0, max = 5.0) */
-  num averageRating;
+  core.num averageRating;
 
   /** Canonical URL for a volume. (In LITE projection.) */
-  String canonicalVolumeLink;
+  core.String canonicalVolumeLink;
 
   /** A list of subject categories, such as "Fiction", "Suspense", etc. */
-  List<String> categories;
+  core.List<core.String> categories;
 
   /** An identifier for the version of the volume content (text & images). (In LITE projection) */
-  String contentVersion;
+  core.String contentVersion;
 
   /** A synopsis of the volume. The text of the description is formatted in HTML and includes simple formatting elements, such as b, i, and br tags. (In LITE projection.) */
-  String description;
+  core.String description;
 
   /** Physical dimensions of this volume. */
   VolumeVolumeInfoDimensions dimensions;
@@ -3008,43 +3008,43 @@ class VolumeVolumeInfo {
   VolumeVolumeInfoImageLinks imageLinks;
 
   /** Industry standard identifiers for this volume. */
-  List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
+  core.List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
 
   /** URL to view information about this volume on the Google Books site. (In LITE projection) */
-  String infoLink;
+  core.String infoLink;
 
   /** Best language for this volume (based on content). It is the two-letter ISO 639-1 code such as 'fr', 'en', etc. */
-  String language;
+  core.String language;
 
   /** The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight. */
-  String mainCategory;
+  core.String mainCategory;
 
   /** Total number of pages. */
-  int pageCount;
+  core.int pageCount;
 
   /** URL to preview this volume on the Google Books site. */
-  String previewLink;
+  core.String previewLink;
 
   /** Type of publication of this volume. Possible values are BOOK or MAGAZINE. */
-  String printType;
+  core.String printType;
 
   /** Date of publication. (In LITE projection.) */
-  String publishedDate;
+  core.String publishedDate;
 
   /** Publisher of this volume. (In LITE projection.) */
-  String publisher;
+  core.String publisher;
 
   /** The number of review ratings for this volume. */
-  int ratingsCount;
+  core.int ratingsCount;
 
   /** Volume subtitle. (In LITE projection.) */
-  String subtitle;
+  core.String subtitle;
 
   /** Volume title. (In LITE projection.) */
-  String title;
+  core.String title;
 
   /** Create new VolumeVolumeInfo from JSON data */
-  VolumeVolumeInfo.fromJson(Map json) {
+  VolumeVolumeInfo.fromJson(core.Map json) {
     if (json.containsKey("authors")) {
       authors = [];
       json["authors"].forEach((item) {
@@ -3117,11 +3117,11 @@ class VolumeVolumeInfo {
   }
 
   /** Create JSON Object for VolumeVolumeInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (authors != null) {
-      output["authors"] = new List();
+      output["authors"] = new core.List();
       authors.forEach((item) {
         output["authors"].add(item);
       });
@@ -3133,7 +3133,7 @@ class VolumeVolumeInfo {
       output["canonicalVolumeLink"] = canonicalVolumeLink;
     }
     if (categories != null) {
-      output["categories"] = new List();
+      output["categories"] = new core.List();
       categories.forEach((item) {
         output["categories"].add(item);
       });
@@ -3151,7 +3151,7 @@ class VolumeVolumeInfo {
       output["imageLinks"] = imageLinks.toJson();
     }
     if (industryIdentifiers != null) {
-      output["industryIdentifiers"] = new List();
+      output["industryIdentifiers"] = new core.List();
       industryIdentifiers.forEach((item) {
         output["industryIdentifiers"].add(item.toJson());
       });
@@ -3194,7 +3194,7 @@ class VolumeVolumeInfo {
   }
 
   /** Return String representation of VolumeVolumeInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3202,25 +3202,25 @@ class VolumeVolumeInfo {
 class VolumeVolumeInfoImageLinks {
 
   /** Image link for extra large size (width of ~1280 pixels). (In LITE projection) */
-  String extraLarge;
+  core.String extraLarge;
 
   /** Image link for large size (width of ~800 pixels). (In LITE projection) */
-  String large;
+  core.String large;
 
   /** Image link for medium size (width of ~575 pixels). (In LITE projection) */
-  String medium;
+  core.String medium;
 
   /** Image link for small size (width of ~300 pixels). (In LITE projection) */
-  String small;
+  core.String small;
 
   /** Image link for small thumbnail size (width of ~80 pixels). (In LITE projection) */
-  String smallThumbnail;
+  core.String smallThumbnail;
 
   /** Image link for thumbnail size (width of ~128 pixels). (In LITE projection) */
-  String thumbnail;
+  core.String thumbnail;
 
   /** Create new VolumeVolumeInfoImageLinks from JSON data */
-  VolumeVolumeInfoImageLinks.fromJson(Map json) {
+  VolumeVolumeInfoImageLinks.fromJson(core.Map json) {
     if (json.containsKey("extraLarge")) {
       extraLarge = json["extraLarge"];
     }
@@ -3242,8 +3242,8 @@ class VolumeVolumeInfoImageLinks {
   }
 
   /** Create JSON Object for VolumeVolumeInfoImageLinks */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (extraLarge != null) {
       output["extraLarge"] = extraLarge;
@@ -3268,7 +3268,7 @@ class VolumeVolumeInfoImageLinks {
   }
 
   /** Return String representation of VolumeVolumeInfoImageLinks */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3276,16 +3276,16 @@ class VolumeVolumeInfoImageLinks {
 class VolumeVolumeInfoDimensions {
 
   /** Height or length of this volume (in cm). */
-  String height;
+  core.String height;
 
   /** Thickness of this volume (in cm). */
-  String thickness;
+  core.String thickness;
 
   /** Width of this volume (in cm). */
-  String width;
+  core.String width;
 
   /** Create new VolumeVolumeInfoDimensions from JSON data */
-  VolumeVolumeInfoDimensions.fromJson(Map json) {
+  VolumeVolumeInfoDimensions.fromJson(core.Map json) {
     if (json.containsKey("height")) {
       height = json["height"];
     }
@@ -3298,8 +3298,8 @@ class VolumeVolumeInfoDimensions {
   }
 
   /** Create JSON Object for VolumeVolumeInfoDimensions */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (height != null) {
       output["height"] = height;
@@ -3315,20 +3315,20 @@ class VolumeVolumeInfoDimensions {
   }
 
   /** Return String representation of VolumeVolumeInfoDimensions */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class VolumeVolumeInfoIndustryIdentifiers {
 
   /** Industry specific volume identifier. */
-  String identifier;
+  core.String identifier;
 
   /** Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER. */
-  String type;
+  core.String type;
 
   /** Create new VolumeVolumeInfoIndustryIdentifiers from JSON data */
-  VolumeVolumeInfoIndustryIdentifiers.fromJson(Map json) {
+  VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map json) {
     if (json.containsKey("identifier")) {
       identifier = json["identifier"];
     }
@@ -3338,8 +3338,8 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 
   /** Create JSON Object for VolumeVolumeInfoIndustryIdentifiers */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (identifier != null) {
       output["identifier"] = identifier;
@@ -3352,7 +3352,7 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 
   /** Return String representation of VolumeVolumeInfoIndustryIdentifiers */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3360,28 +3360,28 @@ class VolumeVolumeInfoIndustryIdentifiers {
 class VolumeSaleInfo {
 
   /** URL to purchase this volume on the Google Books site. (In LITE projection) */
-  String buyLink;
+  core.String buyLink;
 
   /** The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.) */
-  String country;
+  core.String country;
 
   /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
-  bool isEbook;
+  core.bool isEbook;
 
   /** Suggested retail price. (In LITE projection.) */
   VolumeSaleInfoListPrice listPrice;
 
   /** The date on which this book is available for sale. */
-  String onSaleDate;
+  core.String onSaleDate;
 
   /** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
   VolumeSaleInfoRetailPrice retailPrice;
 
   /** Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FREE, NOT_FOR_SALE, or FOR_PREORDER. */
-  String saleability;
+  core.String saleability;
 
   /** Create new VolumeSaleInfo from JSON data */
-  VolumeSaleInfo.fromJson(Map json) {
+  VolumeSaleInfo.fromJson(core.Map json) {
     if (json.containsKey("buyLink")) {
       buyLink = json["buyLink"];
     }
@@ -3406,8 +3406,8 @@ class VolumeSaleInfo {
   }
 
   /** Create JSON Object for VolumeSaleInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (buyLink != null) {
       output["buyLink"] = buyLink;
@@ -3435,7 +3435,7 @@ class VolumeSaleInfo {
   }
 
   /** Return String representation of VolumeSaleInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3443,13 +3443,13 @@ class VolumeSaleInfo {
 class VolumeSaleInfoListPrice {
 
   /** Amount in the currency listed below. (In LITE projection.) */
-  num amount;
+  core.num amount;
 
   /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  String currencyCode;
+  core.String currencyCode;
 
   /** Create new VolumeSaleInfoListPrice from JSON data */
-  VolumeSaleInfoListPrice.fromJson(Map json) {
+  VolumeSaleInfoListPrice.fromJson(core.Map json) {
     if (json.containsKey("amount")) {
       amount = json["amount"];
     }
@@ -3459,8 +3459,8 @@ class VolumeSaleInfoListPrice {
   }
 
   /** Create JSON Object for VolumeSaleInfoListPrice */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (amount != null) {
       output["amount"] = amount;
@@ -3473,7 +3473,7 @@ class VolumeSaleInfoListPrice {
   }
 
   /** Return String representation of VolumeSaleInfoListPrice */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3481,13 +3481,13 @@ class VolumeSaleInfoListPrice {
 class VolumeSaleInfoRetailPrice {
 
   /** Amount in the currency listed below. (In LITE projection.) */
-  num amount;
+  core.num amount;
 
   /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  String currencyCode;
+  core.String currencyCode;
 
   /** Create new VolumeSaleInfoRetailPrice from JSON data */
-  VolumeSaleInfoRetailPrice.fromJson(Map json) {
+  VolumeSaleInfoRetailPrice.fromJson(core.Map json) {
     if (json.containsKey("amount")) {
       amount = json["amount"];
     }
@@ -3497,8 +3497,8 @@ class VolumeSaleInfoRetailPrice {
   }
 
   /** Create JSON Object for VolumeSaleInfoRetailPrice */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (amount != null) {
       output["amount"] = amount;
@@ -3511,7 +3511,7 @@ class VolumeSaleInfoRetailPrice {
   }
 
   /** Return String representation of VolumeSaleInfoRetailPrice */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3519,18 +3519,18 @@ class VolumeSaleInfoRetailPrice {
 class VolumeSearchInfo {
 
   /** A text snippet containing the search query. */
-  String textSnippet;
+  core.String textSnippet;
 
   /** Create new VolumeSearchInfo from JSON data */
-  VolumeSearchInfo.fromJson(Map json) {
+  VolumeSearchInfo.fromJson(core.Map json) {
     if (json.containsKey("textSnippet")) {
       textSnippet = json["textSnippet"];
     }
   }
 
   /** Create JSON Object for VolumeSearchInfo */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (textSnippet != null) {
       output["textSnippet"] = textSnippet;
@@ -3540,56 +3540,56 @@ class VolumeSearchInfo {
   }
 
   /** Return String representation of VolumeSearchInfo */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Volumeannotation {
 
   /** The annotation data id for this volume annotation. */
-  String annotationDataId;
+  core.String annotationDataId;
 
   /** Link to get data for this annotation. */
-  String annotationDataLink;
+  core.String annotationDataLink;
 
   /** The type of annotation this is. */
-  String annotationType;
+  core.String annotationType;
 
   /** The content ranges to identify the selected text. */
   VolumeannotationContentRanges contentRanges;
 
   /** Data for this annotation. */
-  String data;
+  core.String data;
 
   /** Indicates that this annotation is deleted. */
-  bool deleted;
+  core.bool deleted;
 
   /** Unique id of this volume annotation. */
-  String id;
+  core.String id;
 
   /** Resource Type */
-  String kind;
+  core.String kind;
 
   /** The Layer this annotation is for. */
-  String layerId;
+  core.String layerId;
 
   /** Pages the annotation spans. */
-  List<String> pageIds;
+  core.List<core.String> pageIds;
 
   /** Excerpt from the volume. */
-  String selectedText;
+  core.String selectedText;
 
   /** URL to this resource. */
-  String selfLink;
+  core.String selfLink;
 
   /** Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-time format). */
-  String updated;
+  core.String updated;
 
   /** The Volume this annotation is for. */
-  String volumeId;
+  core.String volumeId;
 
   /** Create new Volumeannotation from JSON data */
-  Volumeannotation.fromJson(Map json) {
+  Volumeannotation.fromJson(core.Map json) {
     if (json.containsKey("annotationDataId")) {
       annotationDataId = json["annotationDataId"];
     }
@@ -3638,8 +3638,8 @@ class Volumeannotation {
   }
 
   /** Create JSON Object for Volumeannotation */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (annotationDataId != null) {
       output["annotationDataId"] = annotationDataId;
@@ -3669,7 +3669,7 @@ class Volumeannotation {
       output["layerId"] = layerId;
     }
     if (pageIds != null) {
-      output["pageIds"] = new List();
+      output["pageIds"] = new core.List();
       pageIds.forEach((item) {
         output["pageIds"].add(item);
       });
@@ -3691,7 +3691,7 @@ class Volumeannotation {
   }
 
   /** Return String representation of Volumeannotation */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -3702,7 +3702,7 @@ class VolumeannotationContentRanges {
   BooksAnnotationsRange cfiRange;
 
   /** Content version applicable to ranges below. */
-  String contentVersion;
+  core.String contentVersion;
 
   /** Range in GB image format for this annotation for version above. */
   BooksAnnotationsRange gbImageRange;
@@ -3711,7 +3711,7 @@ class VolumeannotationContentRanges {
   BooksAnnotationsRange gbTextRange;
 
   /** Create new VolumeannotationContentRanges from JSON data */
-  VolumeannotationContentRanges.fromJson(Map json) {
+  VolumeannotationContentRanges.fromJson(core.Map json) {
     if (json.containsKey("cfiRange")) {
       cfiRange = new BooksAnnotationsRange.fromJson(json["cfiRange"]);
     }
@@ -3727,8 +3727,8 @@ class VolumeannotationContentRanges {
   }
 
   /** Create JSON Object for VolumeannotationContentRanges */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (cfiRange != null) {
       output["cfiRange"] = cfiRange.toJson();
@@ -3747,29 +3747,29 @@ class VolumeannotationContentRanges {
   }
 
   /** Return String representation of VolumeannotationContentRanges */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Volumeannotations {
 
   /** A list of volume annotations. */
-  List<Volumeannotation> items;
+  core.List<Volumeannotation> items;
 
   /** Resource type */
-  String kind;
+  core.String kind;
 
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
-  String nextPageToken;
+  core.String nextPageToken;
 
   /** The total number of volume annotations found. */
-  int totalItems;
+  core.int totalItems;
 
   /** The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book). */
-  String version;
+  core.String version;
 
   /** Create new Volumeannotations from JSON data */
-  Volumeannotations.fromJson(Map json) {
+  Volumeannotations.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -3791,11 +3791,11 @@ class Volumeannotations {
   }
 
   /** Create JSON Object for Volumeannotations */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -3817,23 +3817,23 @@ class Volumeannotations {
   }
 
   /** Return String representation of Volumeannotations */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class Volumes {
 
   /** A list of volumes. */
-  List<Volume> items;
+  core.List<Volume> items;
 
   /** Resource type. */
-  String kind;
+  core.String kind;
 
   /** Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated. */
-  int totalItems;
+  core.int totalItems;
 
   /** Create new Volumes from JSON data */
-  Volumes.fromJson(Map json) {
+  Volumes.fromJson(core.Map json) {
     if (json.containsKey("items")) {
       items = [];
       json["items"].forEach((item) {
@@ -3849,11 +3849,11 @@ class Volumes {
   }
 
   /** Create JSON Object for Volumes */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new List();
+      output["items"] = new core.List();
       items.forEach((item) {
         output["items"].add(item.toJson());
       });
@@ -3869,7 +3869,7 @@ class Volumes {
   }
 
   /** Return String representation of Volumes */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 

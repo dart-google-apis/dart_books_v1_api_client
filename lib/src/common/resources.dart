@@ -20,13 +20,13 @@ class BookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Bookshelf> get(String userId, String shelf, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Bookshelf> get(core.String userId, core.String shelf, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves/{shelf}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -62,13 +62,13 @@ class BookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Bookshelves> list(String userId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Bookshelves> list(core.String userId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (source != null) queryParams["source"] = source;
     if (userId == null) paramErrors.add("userId is required");
     if (userId != null) urlParams["userId"] = userId;
@@ -118,13 +118,13 @@ class BookshelvesVolumesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> list(String userId, String shelf, {int maxResults, bool showPreorders, String source, int startIndex, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> list(core.String userId, core.String shelf, {core.int maxResults, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves/{shelf}/volumes";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
@@ -180,13 +180,13 @@ class LayersResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Layersummary> get(String volumeId, String summaryId, {String contentVersion, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Layersummary> get(core.String volumeId, core.String summaryId, {core.String contentVersion, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layersummary/{summaryId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (source != null) queryParams["source"] = source;
     if (summaryId == null) paramErrors.add("summaryId is required");
@@ -231,13 +231,13 @@ class LayersResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Layersummaries> list(String volumeId, {String contentVersion, int maxResults, String pageToken, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Layersummaries> list(core.String volumeId, {core.String contentVersion, core.int maxResults, core.String pageToken, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layersummary";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (pageToken != null) queryParams["pageToken"] = pageToken;
@@ -295,13 +295,13 @@ class LayersAnnotationDataResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotationdata> get(String volumeId, String layerId, String annotationDataId, String contentVersion, {int h, String locale, int scale, String source, int w, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.int h, core.String locale, core.int scale, core.String source, core.int w, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationDataId == null) paramErrors.add("annotationDataId is required");
     if (annotationDataId != null) urlParams["annotationDataId"] = annotationDataId;
     if (contentVersion == null) paramErrors.add("contentVersion is required");
@@ -370,13 +370,13 @@ class LayersAnnotationDataResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotationsdata> list(String volumeId, String layerId, String contentVersion, {String annotationDataId, int h, String locale, int maxResults, String pageToken, int scale, String source, String updatedMax, String updatedMin, int w, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/data";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationDataId != null) queryParams["annotationDataId"] = annotationDataId;
     if (contentVersion == null) paramErrors.add("contentVersion is required");
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
@@ -435,13 +435,13 @@ class LayersVolumeAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumeannotation> get(String volumeId, String layerId, String annotationId, {String locale, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumeannotation> get(core.String volumeId, core.String layerId, core.String annotationId, {core.String locale, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationId == null) paramErrors.add("annotationId is required");
     if (annotationId != null) urlParams["annotationId"] = annotationId;
     if (layerId == null) paramErrors.add("layerId is required");
@@ -508,13 +508,13 @@ class LayersVolumeAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumeannotations> list(String volumeId, String layerId, String contentVersion, {String endOffset, String endPosition, String locale, int maxResults, String pageToken, bool showDeleted, String source, String startOffset, String startPosition, String updatedMax, String updatedMin, String volumeAnnotationsVersion, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumeannotations> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String endOffset, core.String endPosition, core.String locale, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String startOffset, core.String startPosition, core.String updatedMax, core.String updatedMin, core.String volumeAnnotationsVersion, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (contentVersion == null) paramErrors.add("contentVersion is required");
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (endOffset != null) queryParams["endOffset"] = endOffset;
@@ -573,13 +573,13 @@ class MyconfigResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<DownloadAccesses> releaseDownloadAccess(String volumeIds, String cpksver, {String locale, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<DownloadAccesses> releaseDownloadAccess(core.String volumeIds, core.String cpksver, {core.String locale, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "myconfig/releaseDownloadAccess";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (cpksver == null) paramErrors.add("cpksver is required");
     if (cpksver != null) queryParams["cpksver"] = cpksver;
     if (locale != null) queryParams["locale"] = locale;
@@ -622,13 +622,13 @@ class MyconfigResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<RequestAccess> requestAccess(String source, String volumeId, String nonce, String cpksver, {String locale, Map optParams}) {
-    var completer = new Completer();
+  async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String locale, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "myconfig/requestAccess";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (cpksver == null) paramErrors.add("cpksver is required");
     if (cpksver != null) queryParams["cpksver"] = cpksver;
     if (locale != null) queryParams["locale"] = locale;
@@ -676,13 +676,13 @@ class MyconfigResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> syncVolumeLicenses(String source, String nonce, String cpksver, {String locale, bool showPreorders, String volumeIds, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.String locale, core.bool showPreorders, core.String volumeIds, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "myconfig/syncVolumeLicenses";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (cpksver == null) paramErrors.add("cpksver is required");
     if (cpksver != null) queryParams["cpksver"] = cpksver;
     if (locale != null) queryParams["locale"] = locale;
@@ -744,13 +744,13 @@ class MylibraryAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> delete(String annotationId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> delete(core.String annotationId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationId == null) paramErrors.add("annotationId is required");
     if (annotationId != null) urlParams["annotationId"] = annotationId;
     if (source != null) queryParams["source"] = source;
@@ -784,13 +784,13 @@ class MylibraryAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotation> get(String annotationId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotation> get(core.String annotationId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationId == null) paramErrors.add("annotationId is required");
     if (annotationId != null) urlParams["annotationId"] = annotationId;
     if (source != null) queryParams["source"] = source;
@@ -824,13 +824,13 @@ class MylibraryAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotation> insert(Annotation request, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotation> insert(Annotation request, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/annotations";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (source != null) queryParams["source"] = source;
     if (optParams != null) {
       optParams.forEach((key, value) {
@@ -880,13 +880,13 @@ class MylibraryAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotations> list({String contentVersion, String layerId, int maxResults, String pageIds, String pageToken, bool showDeleted, String source, String updatedMax, String updatedMin, String volumeId, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.int maxResults, core.String pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/annotations";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (layerId != null) queryParams["layerId"] = layerId;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
@@ -929,13 +929,13 @@ class MylibraryAnnotationsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Annotation> update(Annotation request, String annotationId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Annotation> update(Annotation request, core.String annotationId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (annotationId == null) paramErrors.add("annotationId is required");
     if (annotationId != null) urlParams["annotationId"] = annotationId;
     if (source != null) queryParams["source"] = source;
@@ -981,13 +981,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> addVolume(String shelf, String volumeId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> addVolume(core.String shelf, core.String volumeId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/addVolume";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -1023,13 +1023,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> clearVolumes(String shelf, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> clearVolumes(core.String shelf, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/clearVolumes";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -1063,13 +1063,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Bookshelf> get(String shelf, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Bookshelf> get(core.String shelf, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -1101,13 +1101,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Bookshelves> list({String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Bookshelves> list({core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (source != null) queryParams["source"] = source;
     if (optParams != null) {
       optParams.forEach((key, value) {
@@ -1143,13 +1143,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> moveVolume(String shelf, String volumeId, int volumePosition, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> moveVolume(core.String shelf, core.String volumeId, core.int volumePosition, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/moveVolume";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -1189,13 +1189,13 @@ class MylibraryBookshelvesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> removeVolume(String shelf, String volumeId, {String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> removeVolume(core.String shelf, core.String volumeId, {core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/removeVolume";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (shelf == null) paramErrors.add("shelf is required");
     if (shelf != null) urlParams["shelf"] = shelf;
     if (source != null) queryParams["source"] = source;
@@ -1254,13 +1254,13 @@ class MylibraryBookshelvesVolumesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> list(String shelf, {String country, int maxResults, String projection, String q, bool showPreorders, String source, int startIndex, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> list(core.String shelf, {core.String country, core.int maxResults, core.String projection, core.String q, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/volumes";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (country != null) queryParams["country"] = country;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (projection != null && !["full", "lite"].contains(projection)) {
@@ -1311,13 +1311,13 @@ class MylibraryReadingpositionsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<ReadingPosition> get(String volumeId, {String contentVersion, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<ReadingPosition> get(core.String volumeId, {core.String contentVersion, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/readingpositions/{volumeId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (source != null) queryParams["source"] = source;
     if (volumeId == null) paramErrors.add("volumeId is required");
@@ -1369,13 +1369,13 @@ class MylibraryReadingpositionsResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Map> setPosition(String volumeId, String timestamp, String position, {String action, String contentVersion, String deviceCookie, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<core.Map> setPosition(core.String volumeId, core.String timestamp, core.String position, {core.String action, core.String contentVersion, core.String deviceCookie, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "mylibrary/readingpositions/{volumeId}/setPosition";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (action != null && !["bookmark", "chapter", "next-page", "prev-page", "scroll", "search"].contains(action)) {
       paramErrors.add("Allowed values for action: bookmark, chapter, next-page, prev-page, scroll, search");
     }
@@ -1441,13 +1441,13 @@ class VolumesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volume> get(String volumeId, {String country, String partner, String projection, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (country != null) queryParams["country"] = country;
     if (partner != null) queryParams["partner"] = partner;
     if (projection != null && !["full", "lite"].contains(projection)) {
@@ -1533,13 +1533,13 @@ class VolumesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> list(String q, {String download, String filter, String langRestrict, String libraryRestrict, int maxResults, String orderBy, String partner, String printType, String projection, bool showPreorders, String source, int startIndex, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (download != null && !["epub"].contains(download)) {
       paramErrors.add("Allowed values for download: epub");
     }
@@ -1615,13 +1615,13 @@ class VolumesAssociatedResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> list(String volumeId, {String association, String locale, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> list(core.String volumeId, {core.String association, core.String locale, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/{volumeId}/associated";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (association != null && !["end-of-sample", "end-of-volume"].contains(association)) {
       paramErrors.add("Allowed values for association: end-of-sample, end-of-volume");
     }
@@ -1666,13 +1666,13 @@ class VolumesRecommendedResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<Volumes> list({String locale, String source, Map optParams}) {
-    var completer = new Completer();
+  async.Future<Volumes> list({core.String locale, core.String source, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "volumes/recommended";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (locale != null) queryParams["locale"] = locale;
     if (source != null) queryParams["source"] = source;
     if (optParams != null) {
