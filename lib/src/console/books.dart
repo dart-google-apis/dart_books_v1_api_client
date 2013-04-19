@@ -6,6 +6,8 @@ class Books extends ConsoleClient {
 
   BookshelvesResource _bookshelves;
   BookshelvesResource get bookshelves => _bookshelves;
+  CloudloadingResource _cloudloading;
+  CloudloadingResource get cloudloading => _cloudloading;
   LayersResource _layers;
   LayersResource get layers => _layers;
   MyconfigResource _myconfig;
@@ -71,6 +73,7 @@ class Books extends ConsoleClient {
     basePath = "/books/v1/";
     rootUrl = "https://www.googleapis.com:443/";
     _bookshelves = new BookshelvesResource(this);
+    _cloudloading = new CloudloadingResource(this);
     _layers = new LayersResource(this);
     _myconfig = new MyconfigResource(this);
     _mylibrary = new MylibraryResource(this);

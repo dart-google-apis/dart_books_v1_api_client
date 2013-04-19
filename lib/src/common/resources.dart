@@ -155,6 +155,94 @@ class BookshelvesVolumesResource extends Resource {
   }
 }
 
+class CloudloadingResource extends Resource {
+
+  CloudloadingResource(Client client) : super(client) {
+  }
+
+  /**
+   * 
+   *
+   * [drive_document_id] - A drive document id. The upload_client_token must not be set.
+   *
+   * [mime_type] - The document MIME type. It can be set only if the drive_document_id is set.
+   *
+   * [name] - The document name. It can be set only if the drive_document_id is set.
+   *
+   * [upload_client_token]
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<BooksCloudloadingResource> addBook({core.String drive_document_id, core.String mime_type, core.String name, core.String upload_client_token, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "cloudloading/addBook";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (drive_document_id != null) queryParams["drive_document_id"] = drive_document_id;
+    if (mime_type != null) queryParams["mime_type"] = mime_type;
+    if (name != null) queryParams["name"] = name;
+    if (upload_client_token != null) queryParams["upload_client_token"] = upload_client_token;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new BooksCloudloadingResource.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+  /**
+   * Remove the book and its contents
+   *
+   * [volumeId] - The id of the book to be removed.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> deleteBook(core.String volumeId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "cloudloading/deleteBook";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (volumeId == null) paramErrors.add("volumeId is required");
+    if (volumeId != null) queryParams["volumeId"] = volumeId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(data))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
 class LayersResource extends Resource {
 
   LayersAnnotationDataResource _annotationData;
@@ -1417,10 +1505,13 @@ class VolumesResource extends Resource {
   VolumesAssociatedResource get associated => _associated;
   VolumesRecommendedResource _recommended;
   VolumesRecommendedResource get recommended => _recommended;
+  VolumesUseruploadedResource _useruploaded;
+  VolumesUseruploadedResource get useruploaded => _useruploaded;
 
   VolumesResource(Client client) : super(client) {
   _associated = new VolumesAssociatedResource(client);
   _recommended = new VolumesRecommendedResource(client);
+  _useruploaded = new VolumesUseruploadedResource(client);
   }
 
   /**
@@ -1675,6 +1766,70 @@ class VolumesRecommendedResource extends Resource {
     var paramErrors = new core.List();
     if (locale != null) queryParams["locale"] = locale;
     if (source != null) queryParams["source"] = source;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Volumes.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+class VolumesUseruploadedResource extends Resource {
+
+  VolumesUseruploadedResource(Client client) : super(client) {
+  }
+
+  /**
+   * Return a list of books uploaded by the current user.
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *   Minimum: 0
+   *   Maximum: 40
+   *
+   * [processingState] - The processing state of the user uploaded volumes to be returned.
+   *   Allowed values:
+   *     COMPLETED_FAILED - The volume processing hase failed.
+   *     COMPLETED_SUCCESS - The volume processing was completed.
+   *     RUNNING - The volume processing is not completed.
+   *
+   * [source] - String to identify the originator of this request.
+   *
+   * [startIndex] - Index of the first result to return (starts at 0)
+   *   Minimum: 0
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Volumes> list({core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "volumes/useruploaded";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (locale != null) queryParams["locale"] = locale;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (processingState != null && !["COMPLETED_FAILED", "COMPLETED_SUCCESS", "RUNNING"].contains(processingState)) {
+      paramErrors.add("Allowed values for processingState: COMPLETED_FAILED, COMPLETED_SUCCESS, RUNNING");
+    }
+    if (processingState != null) queryParams["processingState"] = processingState;
+    if (source != null) queryParams["source"] = source;
+    if (startIndex != null) queryParams["startIndex"] = startIndex;
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {

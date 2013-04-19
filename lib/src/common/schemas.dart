@@ -2,10 +2,10 @@ part of books_v1_api_client;
 
 class Annotation {
 
-  /** Anchor text after excerpt. */
+  /** Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
   core.String afterSelectedText;
 
-  /** Anchor text before excerpt. */
+  /** Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
   core.String beforeSelectedText;
 
   /** Selection ranges sent from the client. */
@@ -184,6 +184,9 @@ class AnnotationCurrentVersionRanges {
   /** Range in GB text format for this annotation for version above. */
   BooksAnnotationsRange gbTextRange;
 
+  /** Range in image CFI format for this annotation for version above. */
+  BooksAnnotationsRange imageCfiRange;
+
   /** Create new AnnotationCurrentVersionRanges from JSON data */
   AnnotationCurrentVersionRanges.fromJson(core.Map json) {
     if (json.containsKey("cfiRange")) {
@@ -197,6 +200,9 @@ class AnnotationCurrentVersionRanges {
     }
     if (json.containsKey("gbTextRange")) {
       gbTextRange = new BooksAnnotationsRange.fromJson(json["gbTextRange"]);
+    }
+    if (json.containsKey("imageCfiRange")) {
+      imageCfiRange = new BooksAnnotationsRange.fromJson(json["imageCfiRange"]);
     }
   }
 
@@ -215,6 +221,9 @@ class AnnotationCurrentVersionRanges {
     }
     if (gbTextRange != null) {
       output["gbTextRange"] = gbTextRange.toJson();
+    }
+    if (imageCfiRange != null) {
+      output["imageCfiRange"] = imageCfiRange.toJson();
     }
 
     return output;
@@ -240,6 +249,9 @@ class AnnotationClientVersionRanges {
   /** Range in GB text format for this annotation sent by client. */
   BooksAnnotationsRange gbTextRange;
 
+  /** Range in image CFI format for this annotation sent by client. */
+  BooksAnnotationsRange imageCfiRange;
+
   /** Create new AnnotationClientVersionRanges from JSON data */
   AnnotationClientVersionRanges.fromJson(core.Map json) {
     if (json.containsKey("cfiRange")) {
@@ -253,6 +265,9 @@ class AnnotationClientVersionRanges {
     }
     if (json.containsKey("gbTextRange")) {
       gbTextRange = new BooksAnnotationsRange.fromJson(json["gbTextRange"]);
+    }
+    if (json.containsKey("imageCfiRange")) {
+      imageCfiRange = new BooksAnnotationsRange.fromJson(json["imageCfiRange"]);
     }
   }
 
@@ -271,6 +286,9 @@ class AnnotationClientVersionRanges {
     }
     if (gbTextRange != null) {
       output["gbTextRange"] = gbTextRange.toJson();
+    }
+    if (imageCfiRange != null) {
+      output["imageCfiRange"] = imageCfiRange.toJson();
     }
 
     return output;
@@ -545,6 +563,53 @@ class BooksAnnotationsRange {
   }
 
   /** Return String representation of BooksAnnotationsRange */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksCloudloadingResource {
+  core.String author;
+  core.String processingState;
+  core.String title;
+  core.String volumeId;
+
+  /** Create new BooksCloudloadingResource from JSON data */
+  BooksCloudloadingResource.fromJson(core.Map json) {
+    if (json.containsKey("author")) {
+      author = json["author"];
+    }
+    if (json.containsKey("processingState")) {
+      processingState = json["processingState"];
+    }
+    if (json.containsKey("title")) {
+      title = json["title"];
+    }
+    if (json.containsKey("volumeId")) {
+      volumeId = json["volumeId"];
+    }
+  }
+
+  /** Create JSON Object for BooksCloudloadingResource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (author != null) {
+      output["author"] = author;
+    }
+    if (processingState != null) {
+      output["processingState"] = processingState;
+    }
+    if (title != null) {
+      output["title"] = title;
+    }
+    if (volumeId != null) {
+      output["volumeId"] = volumeId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksCloudloadingResource */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -2889,6 +2954,9 @@ class VolumeUserInfo {
   /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
   core.bool isPurchased;
 
+  /** Whether or not this volume was user uploaded. */
+  core.bool isUploaded;
+
   /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
   ReadingPosition readingPosition;
 
@@ -2897,6 +2965,7 @@ class VolumeUserInfo {
 
   /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
   core.String updated;
+  VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
 
   /** Create new VolumeUserInfo from JSON data */
   VolumeUserInfo.fromJson(core.Map json) {
@@ -2909,6 +2978,9 @@ class VolumeUserInfo {
     if (json.containsKey("isPurchased")) {
       isPurchased = json["isPurchased"];
     }
+    if (json.containsKey("isUploaded")) {
+      isUploaded = json["isUploaded"];
+    }
     if (json.containsKey("readingPosition")) {
       readingPosition = new ReadingPosition.fromJson(json["readingPosition"]);
     }
@@ -2917,6 +2989,9 @@ class VolumeUserInfo {
     }
     if (json.containsKey("updated")) {
       updated = json["updated"];
+    }
+    if (json.containsKey("userUploadedVolumeInfo")) {
+      userUploadedVolumeInfo = new VolumeUserInfoUserUploadedVolumeInfo.fromJson(json["userUploadedVolumeInfo"]);
     }
   }
 
@@ -2933,6 +3008,9 @@ class VolumeUserInfo {
     if (isPurchased != null) {
       output["isPurchased"] = isPurchased;
     }
+    if (isUploaded != null) {
+      output["isUploaded"] = isUploaded;
+    }
     if (readingPosition != null) {
       output["readingPosition"] = readingPosition.toJson();
     }
@@ -2942,11 +3020,40 @@ class VolumeUserInfo {
     if (updated != null) {
       output["updated"] = updated;
     }
+    if (userUploadedVolumeInfo != null) {
+      output["userUploadedVolumeInfo"] = userUploadedVolumeInfo.toJson();
+    }
 
     return output;
   }
 
   /** Return String representation of VolumeUserInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class VolumeUserInfoUserUploadedVolumeInfo {
+  core.String processingState;
+
+  /** Create new VolumeUserInfoUserUploadedVolumeInfo from JSON data */
+  VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map json) {
+    if (json.containsKey("processingState")) {
+      processingState = json["processingState"];
+    }
+  }
+
+  /** Create JSON Object for VolumeUserInfoUserUploadedVolumeInfo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (processingState != null) {
+      output["processingState"] = processingState;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeUserInfoUserUploadedVolumeInfo */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
