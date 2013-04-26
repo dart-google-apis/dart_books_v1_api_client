@@ -4,18 +4,18 @@ part of books_v1_api_browser;
 /** Lets you search for books and manage your Google Books library. */
 class Books extends BrowserClient {
 
-  BookshelvesResource _bookshelves;
-  BookshelvesResource get bookshelves => _bookshelves;
-  CloudloadingResource _cloudloading;
-  CloudloadingResource get cloudloading => _cloudloading;
-  LayersResource _layers;
-  LayersResource get layers => _layers;
-  MyconfigResource _myconfig;
-  MyconfigResource get myconfig => _myconfig;
-  MylibraryResource _mylibrary;
-  MylibraryResource get mylibrary => _mylibrary;
-  VolumesResource _volumes;
-  VolumesResource get volumes => _volumes;
+  BookshelvesResource_ _bookshelves;
+  BookshelvesResource_ get bookshelves => _bookshelves;
+  CloudloadingResource_ _cloudloading;
+  CloudloadingResource_ get cloudloading => _cloudloading;
+  LayersResource_ _layers;
+  LayersResource_ get layers => _layers;
+  MyconfigResource_ _myconfig;
+  MyconfigResource_ get myconfig => _myconfig;
+  MylibraryResource_ _mylibrary;
+  MylibraryResource_ get mylibrary => _mylibrary;
+  VolumesResource_ _volumes;
+  VolumesResource_ get volumes => _volumes;
 
   /** OAuth Scope2: Manage your books */
   static const core.String BOOKS_SCOPE = "https://www.googleapis.com/auth/books";
@@ -72,11 +72,11 @@ class Books extends BrowserClient {
   Books([oauth.OAuth2 auth]) : super(auth) {
     basePath = "/books/v1/";
     rootUrl = "https://www.googleapis.com:443/";
-    _bookshelves = new BookshelvesResource(this);
-    _cloudloading = new CloudloadingResource(this);
-    _layers = new LayersResource(this);
-    _myconfig = new MyconfigResource(this);
-    _mylibrary = new MylibraryResource(this);
-    _volumes = new VolumesResource(this);
+    _bookshelves = new BookshelvesResource_(this);
+    _cloudloading = new CloudloadingResource_(this);
+    _layers = new LayersResource_(this);
+    _myconfig = new MyconfigResource_(this);
+    _mylibrary = new MylibraryResource_(this);
+    _volumes = new VolumesResource_(this);
   }
 }

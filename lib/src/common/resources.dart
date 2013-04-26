@@ -1,12 +1,12 @@
 part of books_v1_api_client;
 
-class BookshelvesResource extends Resource {
+class BookshelvesResource_ extends Resource {
 
-  BookshelvesVolumesResource _volumes;
-  BookshelvesVolumesResource get volumes => _volumes;
+  BookshelvesVolumesResource_ _volumes;
+  BookshelvesVolumesResource_ get volumes => _volumes;
 
-  BookshelvesResource(Client client) : super(client) {
-  _volumes = new BookshelvesVolumesResource(client);
+  BookshelvesResource_(Client client) : super(client) {
+  _volumes = new BookshelvesVolumesResource_(client);
   }
 
   /**
@@ -41,7 +41,7 @@ class BookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -81,7 +81,7 @@ class BookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -94,9 +94,9 @@ class BookshelvesResource extends Resource {
   }
 }
 
-class BookshelvesVolumesResource extends Resource {
+class BookshelvesVolumesResource_ extends Resource {
 
-  BookshelvesVolumesResource(Client client) : super(client) {
+  BookshelvesVolumesResource_(Client client) : super(client) {
   }
 
   /**
@@ -142,7 +142,7 @@ class BookshelvesVolumesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -155,9 +155,9 @@ class BookshelvesVolumesResource extends Resource {
   }
 }
 
-class CloudloadingResource extends Resource {
+class CloudloadingResource_ extends Resource {
 
-  CloudloadingResource(Client client) : super(client) {
+  CloudloadingResource_(Client client) : super(client) {
   }
 
   /**
@@ -193,7 +193,7 @@ class CloudloadingResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -230,7 +230,7 @@ class CloudloadingResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -243,16 +243,16 @@ class CloudloadingResource extends Resource {
   }
 }
 
-class LayersResource extends Resource {
+class LayersResource_ extends Resource {
 
-  LayersAnnotationDataResource _annotationData;
-  LayersAnnotationDataResource get annotationData => _annotationData;
-  LayersVolumeAnnotationsResource _volumeAnnotations;
-  LayersVolumeAnnotationsResource get volumeAnnotations => _volumeAnnotations;
+  LayersAnnotationDataResource_ _annotationData;
+  LayersAnnotationDataResource_ get annotationData => _annotationData;
+  LayersVolumeAnnotationsResource_ _volumeAnnotations;
+  LayersVolumeAnnotationsResource_ get volumeAnnotations => _volumeAnnotations;
 
-  LayersResource(Client client) : super(client) {
-  _annotationData = new LayersAnnotationDataResource(client);
-  _volumeAnnotations = new LayersVolumeAnnotationsResource(client);
+  LayersResource_(Client client) : super(client) {
+  _annotationData = new LayersAnnotationDataResource_(client);
+  _volumeAnnotations = new LayersVolumeAnnotationsResource_(client);
   }
 
   /**
@@ -290,7 +290,7 @@ class LayersResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -341,7 +341,7 @@ class LayersResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -354,9 +354,9 @@ class LayersResource extends Resource {
   }
 }
 
-class LayersAnnotationDataResource extends Resource {
+class LayersAnnotationDataResource_ extends Resource {
 
-  LayersAnnotationDataResource(Client client) : super(client) {
+  LayersAnnotationDataResource_(Client client) : super(client) {
   }
 
   /**
@@ -412,7 +412,7 @@ class LayersAnnotationDataResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -490,7 +490,7 @@ class LayersAnnotationDataResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -503,9 +503,9 @@ class LayersAnnotationDataResource extends Resource {
   }
 }
 
-class LayersVolumeAnnotationsResource extends Resource {
+class LayersVolumeAnnotationsResource_ extends Resource {
 
-  LayersVolumeAnnotationsResource(Client client) : super(client) {
+  LayersVolumeAnnotationsResource_(Client client) : super(client) {
   }
 
   /**
@@ -547,7 +547,7 @@ class LayersVolumeAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -630,7 +630,7 @@ class LayersVolumeAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -643,9 +643,9 @@ class LayersVolumeAnnotationsResource extends Resource {
   }
 }
 
-class MyconfigResource extends Resource {
+class MyconfigResource_ extends Resource {
 
-  MyconfigResource(Client client) : super(client) {
+  MyconfigResource_(Client client) : super(client) {
   }
 
   /**
@@ -683,7 +683,7 @@ class MyconfigResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -735,7 +735,7 @@ class MyconfigResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -789,7 +789,7 @@ class MyconfigResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -802,25 +802,25 @@ class MyconfigResource extends Resource {
   }
 }
 
-class MylibraryResource extends Resource {
+class MylibraryResource_ extends Resource {
 
-  MylibraryAnnotationsResource _annotations;
-  MylibraryAnnotationsResource get annotations => _annotations;
-  MylibraryBookshelvesResource _bookshelves;
-  MylibraryBookshelvesResource get bookshelves => _bookshelves;
-  MylibraryReadingpositionsResource _readingpositions;
-  MylibraryReadingpositionsResource get readingpositions => _readingpositions;
+  MylibraryAnnotationsResource_ _annotations;
+  MylibraryAnnotationsResource_ get annotations => _annotations;
+  MylibraryBookshelvesResource_ _bookshelves;
+  MylibraryBookshelvesResource_ get bookshelves => _bookshelves;
+  MylibraryReadingpositionsResource_ _readingpositions;
+  MylibraryReadingpositionsResource_ get readingpositions => _readingpositions;
 
-  MylibraryResource(Client client) : super(client) {
-  _annotations = new MylibraryAnnotationsResource(client);
-  _bookshelves = new MylibraryBookshelvesResource(client);
-  _readingpositions = new MylibraryReadingpositionsResource(client);
+  MylibraryResource_(Client client) : super(client) {
+  _annotations = new MylibraryAnnotationsResource_(client);
+  _bookshelves = new MylibraryBookshelvesResource_(client);
+  _readingpositions = new MylibraryReadingpositionsResource_(client);
   }
 }
 
-class MylibraryAnnotationsResource extends Resource {
+class MylibraryAnnotationsResource_ extends Resource {
 
-  MylibraryAnnotationsResource(Client client) : super(client) {
+  MylibraryAnnotationsResource_(Client client) : super(client) {
   }
 
   /**
@@ -851,7 +851,7 @@ class MylibraryAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -891,7 +891,7 @@ class MylibraryAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -929,7 +929,7 @@ class MylibraryAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -994,7 +994,7 @@ class MylibraryAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1036,7 +1036,7 @@ class MylibraryAnnotationsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1049,13 +1049,13 @@ class MylibraryAnnotationsResource extends Resource {
   }
 }
 
-class MylibraryBookshelvesResource extends Resource {
+class MylibraryBookshelvesResource_ extends Resource {
 
-  MylibraryBookshelvesVolumesResource _volumes;
-  MylibraryBookshelvesVolumesResource get volumes => _volumes;
+  MylibraryBookshelvesVolumesResource_ _volumes;
+  MylibraryBookshelvesVolumesResource_ get volumes => _volumes;
 
-  MylibraryBookshelvesResource(Client client) : super(client) {
-  _volumes = new MylibraryBookshelvesVolumesResource(client);
+  MylibraryBookshelvesResource_(Client client) : super(client) {
+  _volumes = new MylibraryBookshelvesVolumesResource_(client);
   }
 
   /**
@@ -1090,7 +1090,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1130,7 +1130,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1170,7 +1170,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1206,7 +1206,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1254,7 +1254,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1298,7 +1298,7 @@ class MylibraryBookshelvesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1311,9 +1311,9 @@ class MylibraryBookshelvesResource extends Resource {
   }
 }
 
-class MylibraryBookshelvesVolumesResource extends Resource {
+class MylibraryBookshelvesVolumesResource_ extends Resource {
 
-  MylibraryBookshelvesVolumesResource(Client client) : super(client) {
+  MylibraryBookshelvesVolumesResource_(Client client) : super(client) {
   }
 
   /**
@@ -1370,7 +1370,7 @@ class MylibraryBookshelvesVolumesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1383,9 +1383,9 @@ class MylibraryBookshelvesVolumesResource extends Resource {
   }
 }
 
-class MylibraryReadingpositionsResource extends Resource {
+class MylibraryReadingpositionsResource_ extends Resource {
 
-  MylibraryReadingpositionsResource(Client client) : super(client) {
+  MylibraryReadingpositionsResource_(Client client) : super(client) {
   }
 
   /**
@@ -1419,7 +1419,7 @@ class MylibraryReadingpositionsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1486,7 +1486,7 @@ class MylibraryReadingpositionsResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1499,19 +1499,22 @@ class MylibraryReadingpositionsResource extends Resource {
   }
 }
 
-class VolumesResource extends Resource {
+class VolumesResource_ extends Resource {
 
-  VolumesAssociatedResource _associated;
-  VolumesAssociatedResource get associated => _associated;
-  VolumesRecommendedResource _recommended;
-  VolumesRecommendedResource get recommended => _recommended;
-  VolumesUseruploadedResource _useruploaded;
-  VolumesUseruploadedResource get useruploaded => _useruploaded;
+  VolumesAssociatedResource_ _associated;
+  VolumesAssociatedResource_ get associated => _associated;
+  VolumesMybooksResource_ _mybooks;
+  VolumesMybooksResource_ get mybooks => _mybooks;
+  VolumesRecommendedResource_ _recommended;
+  VolumesRecommendedResource_ get recommended => _recommended;
+  VolumesUseruploadedResource_ _useruploaded;
+  VolumesUseruploadedResource_ get useruploaded => _useruploaded;
 
-  VolumesResource(Client client) : super(client) {
-  _associated = new VolumesAssociatedResource(client);
-  _recommended = new VolumesRecommendedResource(client);
-  _useruploaded = new VolumesUseruploadedResource(client);
+  VolumesResource_(Client client) : super(client) {
+  _associated = new VolumesAssociatedResource_(client);
+  _mybooks = new VolumesMybooksResource_(client);
+  _recommended = new VolumesRecommendedResource_(client);
+  _useruploaded = new VolumesUseruploadedResource_(client);
   }
 
   /**
@@ -1557,7 +1560,7 @@ class VolumesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1672,7 +1675,7 @@ class VolumesResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1685,9 +1688,9 @@ class VolumesResource extends Resource {
   }
 }
 
-class VolumesAssociatedResource extends Resource {
+class VolumesAssociatedResource_ extends Resource {
 
-  VolumesAssociatedResource(Client client) : super(client) {
+  VolumesAssociatedResource_(Client client) : super(client) {
   }
 
   /**
@@ -1730,7 +1733,7 @@ class VolumesAssociatedResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1743,9 +1746,75 @@ class VolumesAssociatedResource extends Resource {
   }
 }
 
-class VolumesRecommendedResource extends Resource {
+class VolumesMybooksResource_ extends Resource {
 
-  VolumesRecommendedResource(Client client) : super(client) {
+  VolumesMybooksResource_(Client client) : super(client) {
+  }
+
+  /**
+   * Return a list of books in My Library.
+   *
+   * [acquireMethod] - How the book was aquired
+   *   Allowed values:
+   *     PREORDERED - Preordered books (not yet available)
+   *     PUBLIC_DOMAIN - Public domain books
+   *     PURCHASED - Purchased books
+   *     SAMPLE - Sample books
+   *     UPLOADED - User uploaded books
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for generating recommendations.
+   *
+   * [maxResults] - Maximum number of results to return.
+   *   Minimum: 0
+   *   Maximum: 100
+   *
+   * [source] - String to identify the originator of this request.
+   *
+   * [startIndex] - Index of the first result to return (starts at 0)
+   *   Minimum: 0
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Volumes> list({core.String acquireMethod, core.String locale, core.int maxResults, core.String source, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "volumes/mybooks";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (acquireMethod != null && !["PREORDERED", "PUBLIC_DOMAIN", "PURCHASED", "SAMPLE", "UPLOADED"].contains(acquireMethod)) {
+      paramErrors.add("Allowed values for acquireMethod: PREORDERED, PUBLIC_DOMAIN, PURCHASED, SAMPLE, UPLOADED");
+    }
+    if (acquireMethod != null) queryParams["acquireMethod"] = acquireMethod;
+    if (locale != null) queryParams["locale"] = locale;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (source != null) queryParams["source"] = source;
+    if (startIndex != null) queryParams["startIndex"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Volumes.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+class VolumesRecommendedResource_ extends Resource {
+
+  VolumesRecommendedResource_(Client client) : super(client) {
   }
 
   /**
@@ -1775,7 +1844,7 @@ class VolumesRecommendedResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
@@ -1788,9 +1857,9 @@ class VolumesRecommendedResource extends Resource {
   }
 }
 
-class VolumesUseruploadedResource extends Resource {
+class VolumesUseruploadedResource_ extends Resource {
 
-  VolumesUseruploadedResource(Client client) : super(client) {
+  VolumesUseruploadedResource_(Client client) : super(client) {
   }
 
   /**
@@ -1839,7 +1908,7 @@ class VolumesUseruploadedResource extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
       return completer.future;
     }
 
