@@ -241,6 +241,41 @@ class CloudloadingResource_ extends Resource {
       .catchError((e) { completer.completeError(e); return true; });
     return completer.future;
   }
+
+  /**
+   * 
+   *
+   * [request] - BooksCloudloadingResource to send in this request
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<BooksCloudloadingResource> updateBook(BooksCloudloadingResource request, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "cloudloading/updateBook";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new BooksCloudloadingResource.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
 }
 
 class LayersResource_ extends Resource {
@@ -1768,6 +1803,12 @@ class VolumesMybooksResource_ extends Resource {
    *   Minimum: 0
    *   Maximum: 100
    *
+   * [processingState] - The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod.
+   *   Allowed values:
+   *     COMPLETED_FAILED - The volume processing hase failed.
+   *     COMPLETED_SUCCESS - The volume processing was completed.
+   *     RUNNING - The volume processing is not completed.
+   *
    * [source] - String to identify the originator of this request.
    *
    * [startIndex] - Index of the first result to return (starts at 0)
@@ -1775,7 +1816,7 @@ class VolumesMybooksResource_ extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Volumes> list({core.String acquireMethod, core.String locale, core.int maxResults, core.String source, core.int startIndex, core.Map optParams}) {
+  async.Future<Volumes> list({core.String acquireMethod, core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.Map optParams}) {
     var completer = new async.Completer();
     var url = "volumes/mybooks";
     var urlParams = new core.Map();
@@ -1788,6 +1829,10 @@ class VolumesMybooksResource_ extends Resource {
     if (acquireMethod != null) queryParams["acquireMethod"] = acquireMethod;
     if (locale != null) queryParams["locale"] = locale;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (processingState != null && !["COMPLETED_FAILED", "COMPLETED_SUCCESS", "RUNNING"].contains(processingState)) {
+      paramErrors.add("Allowed values for processingState: COMPLETED_FAILED, COMPLETED_SUCCESS, RUNNING");
+    }
+    if (processingState != null) queryParams["processingState"] = processingState;
     if (source != null) queryParams["source"] = source;
     if (startIndex != null) queryParams["startIndex"] = startIndex;
     if (optParams != null) {
@@ -1882,9 +1927,11 @@ class VolumesUseruploadedResource_ extends Resource {
    * [startIndex] - Index of the first result to return (starts at 0)
    *   Minimum: 0
    *
+   * [volumeId] - The ids of the volumes to be returned. If not specified all that match the processingState are returned.
+   *
    * [optParams] - Additional query parameters
    */
-  async.Future<Volumes> list({core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.Map optParams}) {
+  async.Future<Volumes> list({core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.String volumeId, core.Map optParams}) {
     var completer = new async.Completer();
     var url = "volumes/useruploaded";
     var urlParams = new core.Map();
@@ -1899,6 +1946,7 @@ class VolumesUseruploadedResource_ extends Resource {
     if (processingState != null) queryParams["processingState"] = processingState;
     if (source != null) queryParams["source"] = source;
     if (startIndex != null) queryParams["startIndex"] = startIndex;
+    if (volumeId != null) queryParams["volumeId"] = volumeId;
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {

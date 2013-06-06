@@ -71,7 +71,7 @@ class Books extends ConsoleClient {
 
   Books([oauth2.OAuth2Console auth]) : super(auth) {
     basePath = "/books/v1/";
-    rootUrl = "https://www.googleapis.com:443/";
+    rootUrl = "https://www.googleapis.com/";
     _bookshelves = new BookshelvesResource_(this);
     _cloudloading = new CloudloadingResource_(this);
     _layers = new LayersResource_(this);
