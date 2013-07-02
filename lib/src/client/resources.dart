@@ -21,7 +21,6 @@ class BookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Bookshelf> get(core.String userId, core.String shelf, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves/{shelf}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -41,16 +40,13 @@ class BookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Bookshelf.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Bookshelf.fromJson(data));
   }
 
   /**
@@ -63,7 +59,6 @@ class BookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Bookshelves> list(core.String userId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -81,16 +76,13 @@ class BookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Bookshelves.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Bookshelves.fromJson(data));
   }
 }
 
@@ -119,7 +111,6 @@ class BookshelvesVolumesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list(core.String userId, core.String shelf, {core.int maxResults, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "users/{userId}/bookshelves/{shelf}/volumes";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -142,16 +133,13 @@ class BookshelvesVolumesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -174,7 +162,6 @@ class CloudloadingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<BooksCloudloadingResource> addBook({core.String drive_document_id, core.String mime_type, core.String name, core.String upload_client_token, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "cloudloading/addBook";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -193,16 +180,13 @@ class CloudloadingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new BooksCloudloadingResource.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new BooksCloudloadingResource.fromJson(data));
   }
 
   /**
@@ -213,7 +197,6 @@ class CloudloadingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> deleteBook(core.String volumeId, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "cloudloading/deleteBook";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -230,16 +213,12 @@ class CloudloadingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -250,7 +229,6 @@ class CloudloadingResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<BooksCloudloadingResource> updateBook(BooksCloudloadingResource request, {core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "cloudloading/updateBook";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -265,16 +243,13 @@ class CloudloadingResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new BooksCloudloadingResource.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new BooksCloudloadingResource.fromJson(data));
   }
 }
 
@@ -304,7 +279,6 @@ class LayersResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Layersummary> get(core.String volumeId, core.String summaryId, {core.String contentVersion, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layersummary/{summaryId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -325,16 +299,13 @@ class LayersResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Layersummary.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Layersummary.fromJson(data));
   }
 
   /**
@@ -355,7 +326,6 @@ class LayersResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Layersummaries> list(core.String volumeId, {core.String contentVersion, core.int maxResults, core.String pageToken, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layersummary";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -376,16 +346,13 @@ class LayersResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Layersummaries.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Layersummaries.fromJson(data));
   }
 }
 
@@ -419,7 +386,6 @@ class LayersAnnotationDataResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.int h, core.String locale, core.int scale, core.String source, core.int w, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -447,16 +413,13 @@ class LayersAnnotationDataResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotationdata.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotationdata.fromJson(data));
   }
 
   /**
@@ -494,7 +457,6 @@ class LayersAnnotationDataResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/data";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -525,16 +487,13 @@ class LayersAnnotationDataResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotationsdata.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotationsdata.fromJson(data));
   }
 }
 
@@ -559,7 +518,6 @@ class LayersVolumeAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumeannotation> get(core.String volumeId, core.String layerId, core.String annotationId, {core.String locale, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -582,16 +540,13 @@ class LayersVolumeAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumeannotation.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumeannotation.fromJson(data));
   }
 
   /**
@@ -632,7 +587,6 @@ class LayersVolumeAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumeannotations> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String endOffset, core.String endPosition, core.String locale, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String startOffset, core.String startPosition, core.String updatedMax, core.String updatedMin, core.String volumeAnnotationsVersion, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/layers/{layerId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -665,16 +619,13 @@ class LayersVolumeAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumeannotations.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumeannotations.fromJson(data));
   }
 }
 
@@ -697,7 +648,6 @@ class MyconfigResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<DownloadAccesses> releaseDownloadAccess(core.String volumeIds, core.String cpksver, {core.String locale, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "myconfig/releaseDownloadAccess";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -718,16 +668,13 @@ class MyconfigResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new DownloadAccesses.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new DownloadAccesses.fromJson(data));
   }
 
   /**
@@ -746,7 +693,6 @@ class MyconfigResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String locale, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "myconfig/requestAccess";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -770,16 +716,13 @@ class MyconfigResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new RequestAccess.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new RequestAccess.fromJson(data));
   }
 
   /**
@@ -800,7 +743,6 @@ class MyconfigResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.String locale, core.bool showPreorders, core.String volumeIds, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "myconfig/syncVolumeLicenses";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -824,16 +766,13 @@ class MyconfigResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -868,7 +807,6 @@ class MylibraryAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> delete(core.String annotationId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -886,16 +824,12 @@ class MylibraryAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -908,7 +842,6 @@ class MylibraryAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotation> get(core.String annotationId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -926,16 +859,13 @@ class MylibraryAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotation.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotation.fromJson(data));
   }
 
   /**
@@ -948,7 +878,6 @@ class MylibraryAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotation> insert(Annotation request, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/annotations";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -964,16 +893,13 @@ class MylibraryAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotation.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotation.fromJson(data));
   }
 
   /**
@@ -1004,7 +930,6 @@ class MylibraryAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.int maxResults, core.String pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/annotations";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1029,16 +954,13 @@ class MylibraryAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotations.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotations.fromJson(data));
   }
 
   /**
@@ -1053,7 +975,6 @@ class MylibraryAnnotationsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Annotation> update(Annotation request, core.String annotationId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/annotations/{annotationId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1071,16 +992,13 @@ class MylibraryAnnotationsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Annotation.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Annotation.fromJson(data));
   }
 }
 
@@ -1105,7 +1023,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> addVolume(core.String shelf, core.String volumeId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/addVolume";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1125,16 +1042,12 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -1147,7 +1060,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> clearVolumes(core.String shelf, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/clearVolumes";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1165,16 +1077,12 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -1187,7 +1095,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Bookshelf> get(core.String shelf, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1205,16 +1112,13 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Bookshelf.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Bookshelf.fromJson(data));
   }
 
   /**
@@ -1225,7 +1129,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Bookshelves> list({core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1241,16 +1144,13 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Bookshelves.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Bookshelves.fromJson(data));
   }
 
   /**
@@ -1267,7 +1167,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> moveVolume(core.String shelf, core.String volumeId, core.int volumePosition, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/moveVolume";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1289,16 +1188,12 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 
   /**
@@ -1313,7 +1208,6 @@ class MylibraryBookshelvesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> removeVolume(core.String shelf, core.String volumeId, {core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/removeVolume";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1333,16 +1227,12 @@ class MylibraryBookshelvesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 }
 
@@ -1378,7 +1268,6 @@ class MylibraryBookshelvesVolumesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list(core.String shelf, {core.String country, core.int maxResults, core.String projection, core.String q, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/bookshelves/{shelf}/volumes";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1405,16 +1294,13 @@ class MylibraryBookshelvesVolumesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -1435,7 +1321,6 @@ class MylibraryReadingpositionsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<ReadingPosition> get(core.String volumeId, {core.String contentVersion, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/readingpositions/{volumeId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1454,16 +1339,13 @@ class MylibraryReadingpositionsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new ReadingPosition.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new ReadingPosition.fromJson(data));
   }
 
   /**
@@ -1493,7 +1375,6 @@ class MylibraryReadingpositionsResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<core.Map> setPosition(core.String volumeId, core.String timestamp, core.String position, {core.String action, core.String contentVersion, core.String deviceCookie, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "mylibrary/readingpositions/{volumeId}/setPosition";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1521,16 +1402,12 @@ class MylibraryReadingpositionsResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(data))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response;
   }
 }
 
@@ -1571,7 +1448,6 @@ class VolumesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volume> get(core.String volumeId, {core.String country, core.String partner, core.String projection, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1595,16 +1471,13 @@ class VolumesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volume.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volume.fromJson(data));
   }
 
   /**
@@ -1663,7 +1536,6 @@ class VolumesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1710,16 +1582,13 @@ class VolumesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -1745,7 +1614,6 @@ class VolumesAssociatedResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list(core.String volumeId, {core.String association, core.String locale, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/{volumeId}/associated";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1768,16 +1636,13 @@ class VolumesAssociatedResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -1817,7 +1682,6 @@ class VolumesMybooksResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list({core.String acquireMethod, core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/mybooks";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1844,16 +1708,13 @@ class VolumesMybooksResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -1872,7 +1733,6 @@ class VolumesRecommendedResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list({core.String locale, core.String source, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/recommended";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1889,16 +1749,13 @@ class VolumesRecommendedResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
@@ -1932,7 +1789,6 @@ class VolumesUseruploadedResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<Volumes> list({core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.String volumeId, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "volumes/useruploaded";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -1956,16 +1812,13 @@ class VolumesUseruploadedResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new Volumes.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new Volumes.fromJson(data));
   }
 }
 
