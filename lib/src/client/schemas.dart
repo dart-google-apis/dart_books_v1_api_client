@@ -1,4 +1,4 @@
-part of books_v1_api_client;
+part of books_v1_api;
 
 class Annotation {
 
@@ -34,6 +34,8 @@ class Annotation {
 
   /** The layer this annotation is for. */
   core.String layerId;
+
+  AnnotationLayerSummary layerSummary;
 
   /** Pages that this annotation spans. */
   core.List<core.String> pageIds;
@@ -85,11 +87,11 @@ class Annotation {
     if (json.containsKey("layerId")) {
       layerId = json["layerId"];
     }
+    if (json.containsKey("layerSummary")) {
+      layerSummary = new AnnotationLayerSummary.fromJson(json["layerSummary"]);
+    }
     if (json.containsKey("pageIds")) {
-      pageIds = [];
-      json["pageIds"].forEach((item) {
-        pageIds.add(item);
-      });
+      pageIds = json["pageIds"].toList();
     }
     if (json.containsKey("selectedText")) {
       selectedText = json["selectedText"];
@@ -142,11 +144,11 @@ class Annotation {
     if (layerId != null) {
       output["layerId"] = layerId;
     }
+    if (layerSummary != null) {
+      output["layerSummary"] = layerSummary.toJson();
+    }
     if (pageIds != null) {
-      output["pageIds"] = new core.List();
-      pageIds.forEach((item) {
-        output["pageIds"].add(item);
-      });
+      output["pageIds"] = pageIds.toList();
     }
     if (selectedText != null) {
       output["selectedText"] = selectedText;
@@ -165,71 +167,6 @@ class Annotation {
   }
 
   /** Return String representation of Annotation */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Selection ranges for the most recent content version. */
-class AnnotationCurrentVersionRanges {
-
-  /** Range in CFI format for this annotation for version above. */
-  BooksAnnotationsRange cfiRange;
-
-  /** Content version applicable to ranges below. */
-  core.String contentVersion;
-
-  /** Range in GB image format for this annotation for version above. */
-  BooksAnnotationsRange gbImageRange;
-
-  /** Range in GB text format for this annotation for version above. */
-  BooksAnnotationsRange gbTextRange;
-
-  /** Range in image CFI format for this annotation for version above. */
-  BooksAnnotationsRange imageCfiRange;
-
-  /** Create new AnnotationCurrentVersionRanges from JSON data */
-  AnnotationCurrentVersionRanges.fromJson(core.Map json) {
-    if (json.containsKey("cfiRange")) {
-      cfiRange = new BooksAnnotationsRange.fromJson(json["cfiRange"]);
-    }
-    if (json.containsKey("contentVersion")) {
-      contentVersion = json["contentVersion"];
-    }
-    if (json.containsKey("gbImageRange")) {
-      gbImageRange = new BooksAnnotationsRange.fromJson(json["gbImageRange"]);
-    }
-    if (json.containsKey("gbTextRange")) {
-      gbTextRange = new BooksAnnotationsRange.fromJson(json["gbTextRange"]);
-    }
-    if (json.containsKey("imageCfiRange")) {
-      imageCfiRange = new BooksAnnotationsRange.fromJson(json["imageCfiRange"]);
-    }
-  }
-
-  /** Create JSON Object for AnnotationCurrentVersionRanges */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (cfiRange != null) {
-      output["cfiRange"] = cfiRange.toJson();
-    }
-    if (contentVersion != null) {
-      output["contentVersion"] = contentVersion;
-    }
-    if (gbImageRange != null) {
-      output["gbImageRange"] = gbImageRange.toJson();
-    }
-    if (gbTextRange != null) {
-      output["gbTextRange"] = gbTextRange.toJson();
-    }
-    if (imageCfiRange != null) {
-      output["imageCfiRange"] = imageCfiRange.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of AnnotationCurrentVersionRanges */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -299,10 +236,123 @@ class AnnotationClientVersionRanges {
 
 }
 
+/** Selection ranges for the most recent content version. */
+class AnnotationCurrentVersionRanges {
+
+  /** Range in CFI format for this annotation for version above. */
+  BooksAnnotationsRange cfiRange;
+
+  /** Content version applicable to ranges below. */
+  core.String contentVersion;
+
+  /** Range in GB image format for this annotation for version above. */
+  BooksAnnotationsRange gbImageRange;
+
+  /** Range in GB text format for this annotation for version above. */
+  BooksAnnotationsRange gbTextRange;
+
+  /** Range in image CFI format for this annotation for version above. */
+  BooksAnnotationsRange imageCfiRange;
+
+  /** Create new AnnotationCurrentVersionRanges from JSON data */
+  AnnotationCurrentVersionRanges.fromJson(core.Map json) {
+    if (json.containsKey("cfiRange")) {
+      cfiRange = new BooksAnnotationsRange.fromJson(json["cfiRange"]);
+    }
+    if (json.containsKey("contentVersion")) {
+      contentVersion = json["contentVersion"];
+    }
+    if (json.containsKey("gbImageRange")) {
+      gbImageRange = new BooksAnnotationsRange.fromJson(json["gbImageRange"]);
+    }
+    if (json.containsKey("gbTextRange")) {
+      gbTextRange = new BooksAnnotationsRange.fromJson(json["gbTextRange"]);
+    }
+    if (json.containsKey("imageCfiRange")) {
+      imageCfiRange = new BooksAnnotationsRange.fromJson(json["imageCfiRange"]);
+    }
+  }
+
+  /** Create JSON Object for AnnotationCurrentVersionRanges */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (cfiRange != null) {
+      output["cfiRange"] = cfiRange.toJson();
+    }
+    if (contentVersion != null) {
+      output["contentVersion"] = contentVersion;
+    }
+    if (gbImageRange != null) {
+      output["gbImageRange"] = gbImageRange.toJson();
+    }
+    if (gbTextRange != null) {
+      output["gbTextRange"] = gbTextRange.toJson();
+    }
+    if (imageCfiRange != null) {
+      output["imageCfiRange"] = imageCfiRange.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of AnnotationCurrentVersionRanges */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class AnnotationLayerSummary {
+
+  /** Maximum allowed characters on this layer, especially for the "copy" layer. */
+  core.int allowedCharacterCount;
+
+  /** Type of limitation on this layer. "limited" or "unlimited" for the "copy" layer. */
+  core.String limitType;
+
+  /** Remaining allowed characters on this layer, especially for the "copy" layer. */
+  core.int remainingCharacterCount;
+
+  /** Create new AnnotationLayerSummary from JSON data */
+  AnnotationLayerSummary.fromJson(core.Map json) {
+    if (json.containsKey("allowedCharacterCount")) {
+      allowedCharacterCount = json["allowedCharacterCount"];
+    }
+    if (json.containsKey("limitType")) {
+      limitType = json["limitType"];
+    }
+    if (json.containsKey("remainingCharacterCount")) {
+      remainingCharacterCount = json["remainingCharacterCount"];
+    }
+  }
+
+  /** Create JSON Object for AnnotationLayerSummary */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (allowedCharacterCount != null) {
+      output["allowedCharacterCount"] = allowedCharacterCount;
+    }
+    if (limitType != null) {
+      output["limitType"] = limitType;
+    }
+    if (remainingCharacterCount != null) {
+      output["remainingCharacterCount"] = remainingCharacterCount;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of AnnotationLayerSummary */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 class Annotationdata {
 
   /** The type of annotation this data is for. */
   core.String annotationType;
+
+  core.Object data;
 
   /** Base64 encoded data for this annotation data. */
   core.String encoded_data;
@@ -329,6 +379,9 @@ class Annotationdata {
   Annotationdata.fromJson(core.Map json) {
     if (json.containsKey("annotationType")) {
       annotationType = json["annotationType"];
+    }
+    if (json.containsKey("data")) {
+      data = json["data"];
     }
     if (json.containsKey("encoded_data")) {
       encoded_data = json["encoded_data"];
@@ -359,6 +412,9 @@ class Annotationdata {
 
     if (annotationType != null) {
       output["annotationType"] = annotationType;
+    }
+    if (data != null) {
+      output["data"] = data;
     }
     if (encoded_data != null) {
       output["encoded_data"] = encoded_data;
@@ -407,10 +463,7 @@ class Annotations {
   /** Create new Annotations from JSON data */
   Annotations.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Annotation.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Annotation.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -428,10 +481,7 @@ class Annotations {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -447,6 +497,100 @@ class Annotations {
   }
 
   /** Return String representation of Annotations */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class AnnotationsSummary {
+
+  core.String kind;
+
+  core.List<AnnotationsSummaryLayers> layers;
+
+  /** Create new AnnotationsSummary from JSON data */
+  AnnotationsSummary.fromJson(core.Map json) {
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("layers")) {
+      layers = json["layers"].map((layersItem) => new AnnotationsSummaryLayers.fromJson(layersItem)).toList();
+    }
+  }
+
+  /** Create JSON Object for AnnotationsSummary */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (layers != null) {
+      output["layers"] = layers.map((layersItem) => layersItem.toJson()).toList();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of AnnotationsSummary */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class AnnotationsSummaryLayers {
+
+  core.int allowedCharacterCount;
+
+  core.String layerId;
+
+  core.String limitType;
+
+  core.int remainingCharacterCount;
+
+  core.String updated;
+
+  /** Create new AnnotationsSummaryLayers from JSON data */
+  AnnotationsSummaryLayers.fromJson(core.Map json) {
+    if (json.containsKey("allowedCharacterCount")) {
+      allowedCharacterCount = json["allowedCharacterCount"];
+    }
+    if (json.containsKey("layerId")) {
+      layerId = json["layerId"];
+    }
+    if (json.containsKey("limitType")) {
+      limitType = json["limitType"];
+    }
+    if (json.containsKey("remainingCharacterCount")) {
+      remainingCharacterCount = json["remainingCharacterCount"];
+    }
+    if (json.containsKey("updated")) {
+      updated = json["updated"];
+    }
+  }
+
+  /** Create JSON Object for AnnotationsSummaryLayers */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (allowedCharacterCount != null) {
+      output["allowedCharacterCount"] = allowedCharacterCount;
+    }
+    if (layerId != null) {
+      output["layerId"] = layerId;
+    }
+    if (limitType != null) {
+      output["limitType"] = limitType;
+    }
+    if (remainingCharacterCount != null) {
+      output["remainingCharacterCount"] = remainingCharacterCount;
+    }
+    if (updated != null) {
+      output["updated"] = updated;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of AnnotationsSummaryLayers */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -468,10 +612,7 @@ class Annotationsdata {
   /** Create new Annotationsdata from JSON data */
   Annotationsdata.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Annotationdata.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Annotationdata.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -489,10 +630,7 @@ class Annotationsdata {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -568,9 +706,13 @@ class BooksAnnotationsRange {
 }
 
 class BooksCloudloadingResource {
+
   core.String author;
+
   core.String processingState;
+
   core.String title;
+
   core.String volumeId;
 
   /** Create new BooksCloudloadingResource from JSON data */
@@ -615,7 +757,9 @@ class BooksCloudloadingResource {
 }
 
 class BooksLayerDictData {
+
   BooksLayerDictDataCommon common;
+
   BooksLayerDictDataDict dict;
 
   /** Create new BooksLayerDictData from JSON data */
@@ -679,6 +823,7 @@ class BooksLayerDictDataDict {
 
   /** The source, url and attribution for this dictionary data. */
   BooksLayerDictDataDictSource source;
+
   core.List<BooksLayerDictDataDictWords> words;
 
   /** Create new BooksLayerDictDataDict from JSON data */
@@ -687,10 +832,7 @@ class BooksLayerDictDataDict {
       source = new BooksLayerDictDataDictSource.fromJson(json["source"]);
     }
     if (json.containsKey("words")) {
-      words = [];
-      json["words"].forEach((item) {
-        words.add(new BooksLayerDictDataDictWords.fromJson(item));
-      });
+      words = json["words"].map((wordsItem) => new BooksLayerDictDataDictWords.fromJson(wordsItem)).toList();
     }
   }
 
@@ -702,10 +844,7 @@ class BooksLayerDictDataDict {
       output["source"] = source.toJson();
     }
     if (words != null) {
-      output["words"] = new core.List();
-      words.forEach((item) {
-        output["words"].add(item.toJson());
-      });
+      output["words"] = words.map((wordsItem) => wordsItem.toJson()).toList();
     }
 
     return output;
@@ -716,9 +855,48 @@ class BooksLayerDictDataDict {
 
 }
 
+/** The source, url and attribution for this dictionary data. */
+class BooksLayerDictDataDictSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new BooksLayerDictDataDictSource from JSON data */
+  BooksLayerDictDataDictSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictSource */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 class BooksLayerDictDataDictWords {
+
   core.List<BooksLayerDictDataDictWordsDerivatives> derivatives;
+
   core.List<BooksLayerDictDataDictWordsExamples> examples;
+
   core.List<BooksLayerDictDataDictWordsSenses> senses;
 
   /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
@@ -727,22 +905,13 @@ class BooksLayerDictDataDictWords {
   /** Create new BooksLayerDictDataDictWords from JSON data */
   BooksLayerDictDataDictWords.fromJson(core.Map json) {
     if (json.containsKey("derivatives")) {
-      derivatives = [];
-      json["derivatives"].forEach((item) {
-        derivatives.add(new BooksLayerDictDataDictWordsDerivatives.fromJson(item));
-      });
+      derivatives = json["derivatives"].map((derivativesItem) => new BooksLayerDictDataDictWordsDerivatives.fromJson(derivativesItem)).toList();
     }
     if (json.containsKey("examples")) {
-      examples = [];
-      json["examples"].forEach((item) {
-        examples.add(new BooksLayerDictDataDictWordsExamples.fromJson(item));
-      });
+      examples = json["examples"].map((examplesItem) => new BooksLayerDictDataDictWordsExamples.fromJson(examplesItem)).toList();
     }
     if (json.containsKey("senses")) {
-      senses = [];
-      json["senses"].forEach((item) {
-        senses.add(new BooksLayerDictDataDictWordsSenses.fromJson(item));
-      });
+      senses = json["senses"].map((sensesItem) => new BooksLayerDictDataDictWordsSenses.fromJson(sensesItem)).toList();
     }
     if (json.containsKey("source")) {
       source = new BooksLayerDictDataDictWordsSource.fromJson(json["source"]);
@@ -754,22 +923,13 @@ class BooksLayerDictDataDictWords {
     var output = new core.Map();
 
     if (derivatives != null) {
-      output["derivatives"] = new core.List();
-      derivatives.forEach((item) {
-        output["derivatives"].add(item.toJson());
-      });
+      output["derivatives"] = derivatives.map((derivativesItem) => derivativesItem.toJson()).toList();
     }
     if (examples != null) {
-      output["examples"] = new core.List();
-      examples.forEach((item) {
-        output["examples"].add(item.toJson());
-      });
+      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
     }
     if (senses != null) {
-      output["senses"] = new core.List();
-      senses.forEach((item) {
-        output["senses"].add(item.toJson());
-      });
+      output["senses"] = senses.map((sensesItem) => sensesItem.toJson()).toList();
     }
     if (source != null) {
       output["source"] = source.toJson();
@@ -783,29 +943,171 @@ class BooksLayerDictDataDictWords {
 
 }
 
+class BooksLayerDictDataDictWordsDerivatives {
+
+  BooksLayerDictDataDictWordsDerivativesSource source;
+
+  core.String text;
+
+  /** Create new BooksLayerDictDataDictWordsDerivatives from JSON data */
+  BooksLayerDictDataDictWordsDerivatives.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new BooksLayerDictDataDictWordsDerivativesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictWordsDerivatives */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictWordsDerivatives */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerDictDataDictWordsDerivativesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new BooksLayerDictDataDictWordsDerivativesSource from JSON data */
+  BooksLayerDictDataDictWordsDerivativesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictWordsDerivativesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictWordsDerivativesSource */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerDictDataDictWordsExamples {
+
+  BooksLayerDictDataDictWordsExamplesSource source;
+
+  core.String text;
+
+  /** Create new BooksLayerDictDataDictWordsExamples from JSON data */
+  BooksLayerDictDataDictWordsExamples.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new BooksLayerDictDataDictWordsExamplesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictWordsExamples */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictWordsExamples */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerDictDataDictWordsExamplesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new BooksLayerDictDataDictWordsExamplesSource from JSON data */
+  BooksLayerDictDataDictWordsExamplesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictWordsExamplesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictWordsExamplesSource */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 class BooksLayerDictDataDictWordsSenses {
+
   core.List<BooksLayerDictDataDictWordsSensesConjugations> conjugations;
+
   core.List<BooksLayerDictDataDictWordsSensesDefinitions> definitions;
+
   core.String partOfSpeech;
+
   core.String pronunciation;
+
   core.String pronunciationUrl;
+
   BooksLayerDictDataDictWordsSensesSource source;
+
   core.String syllabification;
+
   core.List<BooksLayerDictDataDictWordsSensesSynonyms> synonyms;
 
   /** Create new BooksLayerDictDataDictWordsSenses from JSON data */
   BooksLayerDictDataDictWordsSenses.fromJson(core.Map json) {
     if (json.containsKey("conjugations")) {
-      conjugations = [];
-      json["conjugations"].forEach((item) {
-        conjugations.add(new BooksLayerDictDataDictWordsSensesConjugations.fromJson(item));
-      });
+      conjugations = json["conjugations"].map((conjugationsItem) => new BooksLayerDictDataDictWordsSensesConjugations.fromJson(conjugationsItem)).toList();
     }
     if (json.containsKey("definitions")) {
-      definitions = [];
-      json["definitions"].forEach((item) {
-        definitions.add(new BooksLayerDictDataDictWordsSensesDefinitions.fromJson(item));
-      });
+      definitions = json["definitions"].map((definitionsItem) => new BooksLayerDictDataDictWordsSensesDefinitions.fromJson(definitionsItem)).toList();
     }
     if (json.containsKey("partOfSpeech")) {
       partOfSpeech = json["partOfSpeech"];
@@ -823,10 +1125,7 @@ class BooksLayerDictDataDictWordsSenses {
       syllabification = json["syllabification"];
     }
     if (json.containsKey("synonyms")) {
-      synonyms = [];
-      json["synonyms"].forEach((item) {
-        synonyms.add(new BooksLayerDictDataDictWordsSensesSynonyms.fromJson(item));
-      });
+      synonyms = json["synonyms"].map((synonymsItem) => new BooksLayerDictDataDictWordsSensesSynonyms.fromJson(synonymsItem)).toList();
     }
   }
 
@@ -835,16 +1134,10 @@ class BooksLayerDictDataDictWordsSenses {
     var output = new core.Map();
 
     if (conjugations != null) {
-      output["conjugations"] = new core.List();
-      conjugations.forEach((item) {
-        output["conjugations"].add(item.toJson());
-      });
+      output["conjugations"] = conjugations.map((conjugationsItem) => conjugationsItem.toJson()).toList();
     }
     if (definitions != null) {
-      output["definitions"] = new core.List();
-      definitions.forEach((item) {
-        output["definitions"].add(item.toJson());
-      });
+      output["definitions"] = definitions.map((definitionsItem) => definitionsItem.toJson()).toList();
     }
     if (partOfSpeech != null) {
       output["partOfSpeech"] = partOfSpeech;
@@ -862,10 +1155,7 @@ class BooksLayerDictDataDictWordsSenses {
       output["syllabification"] = syllabification;
     }
     if (synonyms != null) {
-      output["synonyms"] = new core.List();
-      synonyms.forEach((item) {
-        output["synonyms"].add(item.toJson());
-      });
+      output["synonyms"] = synonyms.map((synonymsItem) => synonymsItem.toJson()).toList();
     }
 
     return output;
@@ -876,8 +1166,45 @@ class BooksLayerDictDataDictWordsSenses {
 
 }
 
+class BooksLayerDictDataDictWordsSensesConjugations {
+
+  core.String type;
+
+  core.String value;
+
+  /** Create new BooksLayerDictDataDictWordsSensesConjugations from JSON data */
+  BooksLayerDictDataDictWordsSensesConjugations.fromJson(core.Map json) {
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+    if (json.containsKey("value")) {
+      value = json["value"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerDictDataDictWordsSensesConjugations */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (type != null) {
+      output["type"] = type;
+    }
+    if (value != null) {
+      output["value"] = value;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerDictDataDictWordsSensesConjugations */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 class BooksLayerDictDataDictWordsSensesDefinitions {
+
   core.String definition;
+
   core.List<BooksLayerDictDataDictWordsSensesDefinitionsExamples> examples;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitions from JSON data */
@@ -886,10 +1213,7 @@ class BooksLayerDictDataDictWordsSensesDefinitions {
       definition = json["definition"];
     }
     if (json.containsKey("examples")) {
-      examples = [];
-      json["examples"].forEach((item) {
-        examples.add(new BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(item));
-      });
+      examples = json["examples"].map((examplesItem) => new BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(examplesItem)).toList();
     }
   }
 
@@ -901,10 +1225,7 @@ class BooksLayerDictDataDictWordsSensesDefinitions {
       output["definition"] = definition;
     }
     if (examples != null) {
-      output["examples"] = new core.List();
-      examples.forEach((item) {
-        output["examples"].add(item.toJson());
-      });
+      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
     }
 
     return output;
@@ -916,7 +1237,9 @@ class BooksLayerDictDataDictWordsSensesDefinitions {
 }
 
 class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
+
   BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource source;
+
   core.String text;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamples from JSON data */
@@ -949,7 +1272,9 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
 }
 
 class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
+
   core.String attribution;
+
   core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource from JSON data */
@@ -982,7 +1307,9 @@ class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
 }
 
 class BooksLayerDictDataDictWordsSensesSource {
+
   core.String attribution;
+
   core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesSource from JSON data */
@@ -1014,41 +1341,10 @@ class BooksLayerDictDataDictWordsSensesSource {
 
 }
 
-class BooksLayerDictDataDictWordsSensesConjugations {
-  core.String type;
-  core.String value;
-
-  /** Create new BooksLayerDictDataDictWordsSensesConjugations from JSON data */
-  BooksLayerDictDataDictWordsSensesConjugations.fromJson(core.Map json) {
-    if (json.containsKey("type")) {
-      type = json["type"];
-    }
-    if (json.containsKey("value")) {
-      value = json["value"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesConjugations */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (type != null) {
-      output["type"] = type;
-    }
-    if (value != null) {
-      output["value"] = value;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesConjugations */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
 class BooksLayerDictDataDictWordsSensesSynonyms {
+
   BooksLayerDictDataDictWordsSensesSynonymsSource source;
+
   core.String text;
 
   /** Create new BooksLayerDictDataDictWordsSensesSynonyms from JSON data */
@@ -1081,7 +1377,9 @@ class BooksLayerDictDataDictWordsSensesSynonyms {
 }
 
 class BooksLayerDictDataDictWordsSensesSynonymsSource {
+
   core.String attribution;
+
   core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSensesSynonymsSource from JSON data */
@@ -1115,7 +1413,9 @@ class BooksLayerDictDataDictWordsSensesSynonymsSource {
 
 /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
 class BooksLayerDictDataDictWordsSource {
+
   core.String attribution;
+
   core.String url;
 
   /** Create new BooksLayerDictDataDictWordsSource from JSON data */
@@ -1147,174 +1447,10 @@ class BooksLayerDictDataDictWordsSource {
 
 }
 
-class BooksLayerDictDataDictWordsExamples {
-  BooksLayerDictDataDictWordsExamplesSource source;
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsExamples from JSON data */
-  BooksLayerDictDataDictWordsExamples.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsExamplesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsExamples */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsExamples */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsExamplesSource {
-  core.String attribution;
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsExamplesSource from JSON data */
-  BooksLayerDictDataDictWordsExamplesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsExamplesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsExamplesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsDerivatives {
-  BooksLayerDictDataDictWordsDerivativesSource source;
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsDerivatives from JSON data */
-  BooksLayerDictDataDictWordsDerivatives.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsDerivativesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsDerivatives */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsDerivatives */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsDerivativesSource {
-  core.String attribution;
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsDerivativesSource from JSON data */
-  BooksLayerDictDataDictWordsDerivativesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsDerivativesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsDerivativesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The source, url and attribution for this dictionary data. */
-class BooksLayerDictDataDictSource {
-  core.String attribution;
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictSource from JSON data */
-  BooksLayerDictDataDictSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
 class BooksLayerGeoData {
+
   BooksLayerGeoDataCommon common;
+
   BooksLayerGeoDataGeo geo;
 
   /** Create new BooksLayerGeoData from JSON data */
@@ -1342,188 +1478,6 @@ class BooksLayerGeoData {
   }
 
   /** Return String representation of BooksLayerGeoData */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeo {
-
-  /** The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER */
-  core.String cachePolicy;
-
-  /** The country code of the location. */
-  core.String countryCode;
-
-  /** The latitude of the location. */
-  core.num latitude;
-
-  /** The longitude of the location. */
-  core.num longitude;
-
-  /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
-  core.String mapType;
-
-  /** The viewport for showing this location. This is a latitude, longitude rectangle. */
-  BooksLayerGeoDataGeoViewport viewport;
-
-  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
-  core.int zoom;
-
-  /** Create new BooksLayerGeoDataGeo from JSON data */
-  BooksLayerGeoDataGeo.fromJson(core.Map json) {
-    if (json.containsKey("cachePolicy")) {
-      cachePolicy = json["cachePolicy"];
-    }
-    if (json.containsKey("countryCode")) {
-      countryCode = json["countryCode"];
-    }
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-    if (json.containsKey("mapType")) {
-      mapType = json["mapType"];
-    }
-    if (json.containsKey("viewport")) {
-      viewport = new BooksLayerGeoDataGeoViewport.fromJson(json["viewport"]);
-    }
-    if (json.containsKey("zoom")) {
-      zoom = json["zoom"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (cachePolicy != null) {
-      output["cachePolicy"] = cachePolicy;
-    }
-    if (countryCode != null) {
-      output["countryCode"] = countryCode;
-    }
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-    if (mapType != null) {
-      output["mapType"] = mapType;
-    }
-    if (viewport != null) {
-      output["viewport"] = viewport.toJson();
-    }
-    if (zoom != null) {
-      output["zoom"] = zoom;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The viewport for showing this location. This is a latitude, longitude rectangle. */
-class BooksLayerGeoDataGeoViewport {
-  BooksLayerGeoDataGeoViewportHi hi;
-  BooksLayerGeoDataGeoViewportLo lo;
-
-  /** Create new BooksLayerGeoDataGeoViewport from JSON data */
-  BooksLayerGeoDataGeoViewport.fromJson(core.Map json) {
-    if (json.containsKey("hi")) {
-      hi = new BooksLayerGeoDataGeoViewportHi.fromJson(json["hi"]);
-    }
-    if (json.containsKey("lo")) {
-      lo = new BooksLayerGeoDataGeoViewportLo.fromJson(json["lo"]);
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewport */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (hi != null) {
-      output["hi"] = hi.toJson();
-    }
-    if (lo != null) {
-      output["lo"] = lo.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewport */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeoViewportLo {
-  core.num latitude;
-  core.num longitude;
-
-  /** Create new BooksLayerGeoDataGeoViewportLo from JSON data */
-  BooksLayerGeoDataGeoViewportLo.fromJson(core.Map json) {
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewportLo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewportLo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeoViewportHi {
-  core.num latitude;
-  core.num longitude;
-
-  /** Create new BooksLayerGeoDataGeoViewportHi from JSON data */
-  BooksLayerGeoDataGeoViewportHi.fromJson(core.Map json) {
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewportHi */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewportHi */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -1588,6 +1542,238 @@ class BooksLayerGeoDataCommon {
   }
 
   /** Return String representation of BooksLayerGeoDataCommon */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerGeoDataGeo {
+
+  /** The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates. */
+  core.List<core.List<BooksLayerGeoDataGeoBoundary>> boundary;
+
+  /** The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER */
+  core.String cachePolicy;
+
+  /** The country code of the location. */
+  core.String countryCode;
+
+  /** The latitude of the location. */
+  core.num latitude;
+
+  /** The longitude of the location. */
+  core.num longitude;
+
+  /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
+  core.String mapType;
+
+  /** The viewport for showing this location. This is a latitude, longitude rectangle. */
+  BooksLayerGeoDataGeoViewport viewport;
+
+  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
+  core.int zoom;
+
+  /** Create new BooksLayerGeoDataGeo from JSON data */
+  BooksLayerGeoDataGeo.fromJson(core.Map json) {
+    if (json.containsKey("boundary")) {
+      boundary = json["boundary"].map((boundaryItem) => boundaryItem.map((boundaryItem2) => new BooksLayerGeoDataGeoBoundary.fromJson(boundaryItem2)).toList()).toList();
+    }
+    if (json.containsKey("cachePolicy")) {
+      cachePolicy = json["cachePolicy"];
+    }
+    if (json.containsKey("countryCode")) {
+      countryCode = json["countryCode"];
+    }
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+    if (json.containsKey("mapType")) {
+      mapType = json["mapType"];
+    }
+    if (json.containsKey("viewport")) {
+      viewport = new BooksLayerGeoDataGeoViewport.fromJson(json["viewport"]);
+    }
+    if (json.containsKey("zoom")) {
+      zoom = json["zoom"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerGeoDataGeo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (boundary != null) {
+      output["boundary"] = boundary.map((boundaryItem) => boundaryItem.map((boundaryItem2) => boundaryItem2.toJson()).toList()).toList();
+    }
+    if (cachePolicy != null) {
+      output["cachePolicy"] = cachePolicy;
+    }
+    if (countryCode != null) {
+      output["countryCode"] = countryCode;
+    }
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+    if (mapType != null) {
+      output["mapType"] = mapType;
+    }
+    if (viewport != null) {
+      output["viewport"] = viewport.toJson();
+    }
+    if (zoom != null) {
+      output["zoom"] = zoom;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerGeoDataGeo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerGeoDataGeoBoundary {
+
+  core.int latitude;
+
+  core.int longitude;
+
+  /** Create new BooksLayerGeoDataGeoBoundary from JSON data */
+  BooksLayerGeoDataGeoBoundary.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerGeoDataGeoBoundary */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerGeoDataGeoBoundary */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** The viewport for showing this location. This is a latitude, longitude rectangle. */
+class BooksLayerGeoDataGeoViewport {
+
+  BooksLayerGeoDataGeoViewportHi hi;
+
+  BooksLayerGeoDataGeoViewportLo lo;
+
+  /** Create new BooksLayerGeoDataGeoViewport from JSON data */
+  BooksLayerGeoDataGeoViewport.fromJson(core.Map json) {
+    if (json.containsKey("hi")) {
+      hi = new BooksLayerGeoDataGeoViewportHi.fromJson(json["hi"]);
+    }
+    if (json.containsKey("lo")) {
+      lo = new BooksLayerGeoDataGeoViewportLo.fromJson(json["lo"]);
+    }
+  }
+
+  /** Create JSON Object for BooksLayerGeoDataGeoViewport */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (hi != null) {
+      output["hi"] = hi.toJson();
+    }
+    if (lo != null) {
+      output["lo"] = lo.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerGeoDataGeoViewport */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerGeoDataGeoViewportHi {
+
+  core.num latitude;
+
+  core.num longitude;
+
+  /** Create new BooksLayerGeoDataGeoViewportHi from JSON data */
+  BooksLayerGeoDataGeoViewportHi.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerGeoDataGeoViewportHi */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerGeoDataGeoViewportHi */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class BooksLayerGeoDataGeoViewportLo {
+
+  core.num latitude;
+
+  core.num longitude;
+
+  /** Create new BooksLayerGeoDataGeoViewportLo from JSON data */
+  BooksLayerGeoDataGeoViewportLo.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for BooksLayerGeoDataGeoViewportLo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of BooksLayerGeoDataGeoViewportLo */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -1712,10 +1898,7 @@ class Bookshelves {
   /** Create new Bookshelves from JSON data */
   Bookshelves.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Bookshelf.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Bookshelf.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -1727,10 +1910,7 @@ class Bookshelves {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -2000,10 +2180,7 @@ class DownloadAccesses {
   /** Create new DownloadAccesses from JSON data */
   DownloadAccesses.fromJson(core.Map json) {
     if (json.containsKey("downloadAccessList")) {
-      downloadAccessList = [];
-      json["downloadAccessList"].forEach((item) {
-        downloadAccessList.add(new DownloadAccessRestriction.fromJson(item));
-      });
+      downloadAccessList = json["downloadAccessList"].map((downloadAccessListItem) => new DownloadAccessRestriction.fromJson(downloadAccessListItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -2015,10 +2192,7 @@ class DownloadAccesses {
     var output = new core.Map();
 
     if (downloadAccessList != null) {
-      output["downloadAccessList"] = new core.List();
-      downloadAccessList.forEach((item) {
-        output["downloadAccessList"].add(item.toJson());
-      });
+      output["downloadAccessList"] = downloadAccessList.map((downloadAccessListItem) => downloadAccessListItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -2046,10 +2220,7 @@ class Layersummaries {
   /** Create new Layersummaries from JSON data */
   Layersummaries.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Layersummary.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Layersummary.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -2064,10 +2235,7 @@ class Layersummaries {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -2131,10 +2299,7 @@ class Layersummary {
       annotationCount = json["annotationCount"];
     }
     if (json.containsKey("annotationTypes")) {
-      annotationTypes = [];
-      json["annotationTypes"].forEach((item) {
-        annotationTypes.add(item);
-      });
+      annotationTypes = json["annotationTypes"].toList();
     }
     if (json.containsKey("annotationsDataLink")) {
       annotationsDataLink = json["annotationsDataLink"];
@@ -2179,10 +2344,7 @@ class Layersummary {
       output["annotationCount"] = annotationCount;
     }
     if (annotationTypes != null) {
-      output["annotationTypes"] = new core.List();
-      annotationTypes.forEach((item) {
-        output["annotationTypes"].add(item);
-      });
+      output["annotationTypes"] = annotationTypes.toList();
     }
     if (annotationsDataLink != null) {
       output["annotationsDataLink"] = annotationsDataLink;
@@ -2463,6 +2625,35 @@ class Review {
 
 }
 
+/** Author of this review. */
+class ReviewAuthor {
+
+  /** Name of this person. */
+  core.String displayName;
+
+  /** Create new ReviewAuthor from JSON data */
+  ReviewAuthor.fromJson(core.Map json) {
+    if (json.containsKey("displayName")) {
+      displayName = json["displayName"];
+    }
+  }
+
+  /** Create JSON Object for ReviewAuthor */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (displayName != null) {
+      output["displayName"] = displayName;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ReviewAuthor */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 /** Information regarding the source of this review, when the review is not from a Google Books user. */
 class ReviewSource {
 
@@ -2506,35 +2697,6 @@ class ReviewSource {
   }
 
   /** Return String representation of ReviewSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Author of this review. */
-class ReviewAuthor {
-
-  /** Name of this person. */
-  core.String displayName;
-
-  /** Create new ReviewAuthor from JSON data */
-  ReviewAuthor.fromJson(core.Map json) {
-    if (json.containsKey("displayName")) {
-      displayName = json["displayName"];
-    }
-  }
-
-  /** Create JSON Object for ReviewAuthor */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (displayName != null) {
-      output["displayName"] = displayName;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of ReviewAuthor */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -2776,53 +2938,6 @@ class VolumeAccessInfo {
 
 }
 
-/** Information about pdf content. (In LITE projection.) */
-class VolumeAccessInfoPdf {
-
-  /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
-  core.String acsTokenLink;
-
-  /** URL to download pdf. (In LITE projection.) */
-  core.String downloadLink;
-
-  /** Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.) */
-  core.bool isAvailable;
-
-  /** Create new VolumeAccessInfoPdf from JSON data */
-  VolumeAccessInfoPdf.fromJson(core.Map json) {
-    if (json.containsKey("acsTokenLink")) {
-      acsTokenLink = json["acsTokenLink"];
-    }
-    if (json.containsKey("downloadLink")) {
-      downloadLink = json["downloadLink"];
-    }
-    if (json.containsKey("isAvailable")) {
-      isAvailable = json["isAvailable"];
-    }
-  }
-
-  /** Create JSON Object for VolumeAccessInfoPdf */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (acsTokenLink != null) {
-      output["acsTokenLink"] = acsTokenLink;
-    }
-    if (downloadLink != null) {
-      output["downloadLink"] = downloadLink;
-    }
-    if (isAvailable != null) {
-      output["isAvailable"] = isAvailable;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeAccessInfoPdf */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
 /** Information about epub content. (In LITE projection.) */
 class VolumeAccessInfoEpub {
 
@@ -2870,6 +2985,53 @@ class VolumeAccessInfoEpub {
 
 }
 
+/** Information about pdf content. (In LITE projection.) */
+class VolumeAccessInfoPdf {
+
+  /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
+  core.String acsTokenLink;
+
+  /** URL to download pdf. (In LITE projection.) */
+  core.String downloadLink;
+
+  /** Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.) */
+  core.bool isAvailable;
+
+  /** Create new VolumeAccessInfoPdf from JSON data */
+  VolumeAccessInfoPdf.fromJson(core.Map json) {
+    if (json.containsKey("acsTokenLink")) {
+      acsTokenLink = json["acsTokenLink"];
+    }
+    if (json.containsKey("downloadLink")) {
+      downloadLink = json["downloadLink"];
+    }
+    if (json.containsKey("isAvailable")) {
+      isAvailable = json["isAvailable"];
+    }
+  }
+
+  /** Create JSON Object for VolumeAccessInfoPdf */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (acsTokenLink != null) {
+      output["acsTokenLink"] = acsTokenLink;
+    }
+    if (downloadLink != null) {
+      output["downloadLink"] = downloadLink;
+    }
+    if (isAvailable != null) {
+      output["isAvailable"] = isAvailable;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeAccessInfoPdf */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
 /** What layers exist in this volume and high level information about them. */
 class VolumeLayerInfo {
 
@@ -2879,10 +3041,7 @@ class VolumeLayerInfo {
   /** Create new VolumeLayerInfo from JSON data */
   VolumeLayerInfo.fromJson(core.Map json) {
     if (json.containsKey("layers")) {
-      layers = [];
-      json["layers"].forEach((item) {
-        layers.add(new VolumeLayerInfoLayers.fromJson(item));
-      });
+      layers = json["layers"].map((layersItem) => new VolumeLayerInfoLayers.fromJson(layersItem)).toList();
     }
   }
 
@@ -2891,10 +3050,7 @@ class VolumeLayerInfo {
     var output = new core.Map();
 
     if (layers != null) {
-      output["layers"] = new core.List();
-      layers.forEach((item) {
-        output["layers"].add(item.toJson());
-      });
+      output["layers"] = layers.map((layersItem) => layersItem.toJson()).toList();
     }
 
     return output;
@@ -2942,122 +3098,6 @@ class VolumeLayerInfoLayers {
 
 }
 
-/** User specific information related to this volume. (e.g. page this user last read or whether they purchased this book) */
-class VolumeUserInfo {
-
-  /** Whether or not this volume is currently in "my books." */
-  core.bool isInMyBooks;
-
-  /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
-  core.bool isPreordered;
-
-  /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
-  core.bool isPurchased;
-
-  /** Whether or not this volume was user uploaded. */
-  core.bool isUploaded;
-
-  /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
-  ReadingPosition readingPosition;
-
-  /** This user's review of this volume, if one exists. */
-  Review review;
-
-  /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
-  core.String updated;
-  VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
-
-  /** Create new VolumeUserInfo from JSON data */
-  VolumeUserInfo.fromJson(core.Map json) {
-    if (json.containsKey("isInMyBooks")) {
-      isInMyBooks = json["isInMyBooks"];
-    }
-    if (json.containsKey("isPreordered")) {
-      isPreordered = json["isPreordered"];
-    }
-    if (json.containsKey("isPurchased")) {
-      isPurchased = json["isPurchased"];
-    }
-    if (json.containsKey("isUploaded")) {
-      isUploaded = json["isUploaded"];
-    }
-    if (json.containsKey("readingPosition")) {
-      readingPosition = new ReadingPosition.fromJson(json["readingPosition"]);
-    }
-    if (json.containsKey("review")) {
-      review = new Review.fromJson(json["review"]);
-    }
-    if (json.containsKey("updated")) {
-      updated = json["updated"];
-    }
-    if (json.containsKey("userUploadedVolumeInfo")) {
-      userUploadedVolumeInfo = new VolumeUserInfoUserUploadedVolumeInfo.fromJson(json["userUploadedVolumeInfo"]);
-    }
-  }
-
-  /** Create JSON Object for VolumeUserInfo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (isInMyBooks != null) {
-      output["isInMyBooks"] = isInMyBooks;
-    }
-    if (isPreordered != null) {
-      output["isPreordered"] = isPreordered;
-    }
-    if (isPurchased != null) {
-      output["isPurchased"] = isPurchased;
-    }
-    if (isUploaded != null) {
-      output["isUploaded"] = isUploaded;
-    }
-    if (readingPosition != null) {
-      output["readingPosition"] = readingPosition.toJson();
-    }
-    if (review != null) {
-      output["review"] = review.toJson();
-    }
-    if (updated != null) {
-      output["updated"] = updated;
-    }
-    if (userUploadedVolumeInfo != null) {
-      output["userUploadedVolumeInfo"] = userUploadedVolumeInfo.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeUserInfo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class VolumeUserInfoUserUploadedVolumeInfo {
-  core.String processingState;
-
-  /** Create new VolumeUserInfoUserUploadedVolumeInfo from JSON data */
-  VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map json) {
-    if (json.containsKey("processingState")) {
-      processingState = json["processingState"];
-    }
-  }
-
-  /** Create JSON Object for VolumeUserInfoUserUploadedVolumeInfo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (processingState != null) {
-      output["processingState"] = processingState;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeUserInfoUserUploadedVolumeInfo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
 /** Recommendation related information for this volume. */
 class VolumeRecommendedInfo {
 
@@ -3083,6 +3123,599 @@ class VolumeRecommendedInfo {
   }
 
   /** Return String representation of VolumeRecommendedInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries). */
+class VolumeSaleInfo {
+
+  /** URL to purchase this volume on the Google Books site. (In LITE projection) */
+  core.String buyLink;
+
+  /** The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.) */
+  core.String country;
+
+  /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
+  core.bool isEbook;
+
+  /** Suggested retail price. (In LITE projection.) */
+  VolumeSaleInfoListPrice listPrice;
+
+  /** Offers available for this volume (sales and rentals). */
+  core.List<VolumeSaleInfoOffers> offers;
+
+  /** The date on which this book is available for sale. */
+  core.String onSaleDate;
+
+  /** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
+  VolumeSaleInfoRetailPrice retailPrice;
+
+  /** Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER. */
+  core.String saleability;
+
+  /** Create new VolumeSaleInfo from JSON data */
+  VolumeSaleInfo.fromJson(core.Map json) {
+    if (json.containsKey("buyLink")) {
+      buyLink = json["buyLink"];
+    }
+    if (json.containsKey("country")) {
+      country = json["country"];
+    }
+    if (json.containsKey("isEbook")) {
+      isEbook = json["isEbook"];
+    }
+    if (json.containsKey("listPrice")) {
+      listPrice = new VolumeSaleInfoListPrice.fromJson(json["listPrice"]);
+    }
+    if (json.containsKey("offers")) {
+      offers = json["offers"].map((offersItem) => new VolumeSaleInfoOffers.fromJson(offersItem)).toList();
+    }
+    if (json.containsKey("onSaleDate")) {
+      onSaleDate = json["onSaleDate"];
+    }
+    if (json.containsKey("retailPrice")) {
+      retailPrice = new VolumeSaleInfoRetailPrice.fromJson(json["retailPrice"]);
+    }
+    if (json.containsKey("saleability")) {
+      saleability = json["saleability"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (buyLink != null) {
+      output["buyLink"] = buyLink;
+    }
+    if (country != null) {
+      output["country"] = country;
+    }
+    if (isEbook != null) {
+      output["isEbook"] = isEbook;
+    }
+    if (listPrice != null) {
+      output["listPrice"] = listPrice.toJson();
+    }
+    if (offers != null) {
+      output["offers"] = offers.map((offersItem) => offersItem.toJson()).toList();
+    }
+    if (onSaleDate != null) {
+      output["onSaleDate"] = onSaleDate;
+    }
+    if (retailPrice != null) {
+      output["retailPrice"] = retailPrice.toJson();
+    }
+    if (saleability != null) {
+      output["saleability"] = saleability;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Suggested retail price. (In LITE projection.) */
+class VolumeSaleInfoListPrice {
+
+  /** Amount in the currency listed below. (In LITE projection.) */
+  core.num amount;
+
+  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+  core.String currencyCode;
+
+  /** Create new VolumeSaleInfoListPrice from JSON data */
+  VolumeSaleInfoListPrice.fromJson(core.Map json) {
+    if (json.containsKey("amount")) {
+      amount = json["amount"];
+    }
+    if (json.containsKey("currencyCode")) {
+      currencyCode = json["currencyCode"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoListPrice */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (amount != null) {
+      output["amount"] = amount;
+    }
+    if (currencyCode != null) {
+      output["currencyCode"] = currencyCode;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoListPrice */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class VolumeSaleInfoOffers {
+
+  /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
+  core.int finskyOfferType;
+
+  /** Offer list (=undiscounted) price in Micros. */
+  VolumeSaleInfoOffersListPrice listPrice;
+
+  /** The rental duration (for rental offers only). */
+  VolumeSaleInfoOffersRentalDuration rentalDuration;
+
+  /** Offer retail (=discounted) price in Micros */
+  VolumeSaleInfoOffersRetailPrice retailPrice;
+
+  /** Create new VolumeSaleInfoOffers from JSON data */
+  VolumeSaleInfoOffers.fromJson(core.Map json) {
+    if (json.containsKey("finskyOfferType")) {
+      finskyOfferType = json["finskyOfferType"];
+    }
+    if (json.containsKey("listPrice")) {
+      listPrice = new VolumeSaleInfoOffersListPrice.fromJson(json["listPrice"]);
+    }
+    if (json.containsKey("rentalDuration")) {
+      rentalDuration = new VolumeSaleInfoOffersRentalDuration.fromJson(json["rentalDuration"]);
+    }
+    if (json.containsKey("retailPrice")) {
+      retailPrice = new VolumeSaleInfoOffersRetailPrice.fromJson(json["retailPrice"]);
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoOffers */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (finskyOfferType != null) {
+      output["finskyOfferType"] = finskyOfferType;
+    }
+    if (listPrice != null) {
+      output["listPrice"] = listPrice.toJson();
+    }
+    if (rentalDuration != null) {
+      output["rentalDuration"] = rentalDuration.toJson();
+    }
+    if (retailPrice != null) {
+      output["retailPrice"] = retailPrice.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoOffers */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Offer list (=undiscounted) price in Micros. */
+class VolumeSaleInfoOffersListPrice {
+
+  core.num amountInMicros;
+
+  core.String currencyCode;
+
+  /** Create new VolumeSaleInfoOffersListPrice from JSON data */
+  VolumeSaleInfoOffersListPrice.fromJson(core.Map json) {
+    if (json.containsKey("amountInMicros")) {
+      amountInMicros = json["amountInMicros"];
+    }
+    if (json.containsKey("currencyCode")) {
+      currencyCode = json["currencyCode"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoOffersListPrice */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (amountInMicros != null) {
+      output["amountInMicros"] = amountInMicros;
+    }
+    if (currencyCode != null) {
+      output["currencyCode"] = currencyCode;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoOffersListPrice */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** The rental duration (for rental offers only). */
+class VolumeSaleInfoOffersRentalDuration {
+
+  core.num count;
+
+  core.String unit;
+
+  /** Create new VolumeSaleInfoOffersRentalDuration from JSON data */
+  VolumeSaleInfoOffersRentalDuration.fromJson(core.Map json) {
+    if (json.containsKey("count")) {
+      count = json["count"];
+    }
+    if (json.containsKey("unit")) {
+      unit = json["unit"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoOffersRentalDuration */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (count != null) {
+      output["count"] = count;
+    }
+    if (unit != null) {
+      output["unit"] = unit;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoOffersRentalDuration */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Offer retail (=discounted) price in Micros */
+class VolumeSaleInfoOffersRetailPrice {
+
+  core.num amountInMicros;
+
+  core.String currencyCode;
+
+  /** Create new VolumeSaleInfoOffersRetailPrice from JSON data */
+  VolumeSaleInfoOffersRetailPrice.fromJson(core.Map json) {
+    if (json.containsKey("amountInMicros")) {
+      amountInMicros = json["amountInMicros"];
+    }
+    if (json.containsKey("currencyCode")) {
+      currencyCode = json["currencyCode"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoOffersRetailPrice */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (amountInMicros != null) {
+      output["amountInMicros"] = amountInMicros;
+    }
+    if (currencyCode != null) {
+      output["currencyCode"] = currencyCode;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoOffersRetailPrice */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
+class VolumeSaleInfoRetailPrice {
+
+  /** Amount in the currency listed below. (In LITE projection.) */
+  core.num amount;
+
+  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+  core.String currencyCode;
+
+  /** Create new VolumeSaleInfoRetailPrice from JSON data */
+  VolumeSaleInfoRetailPrice.fromJson(core.Map json) {
+    if (json.containsKey("amount")) {
+      amount = json["amount"];
+    }
+    if (json.containsKey("currencyCode")) {
+      currencyCode = json["currencyCode"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSaleInfoRetailPrice */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (amount != null) {
+      output["amount"] = amount;
+    }
+    if (currencyCode != null) {
+      output["currencyCode"] = currencyCode;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSaleInfoRetailPrice */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Search result information related to this volume. */
+class VolumeSearchInfo {
+
+  /** A text snippet containing the search query. */
+  core.String textSnippet;
+
+  /** Create new VolumeSearchInfo from JSON data */
+  VolumeSearchInfo.fromJson(core.Map json) {
+    if (json.containsKey("textSnippet")) {
+      textSnippet = json["textSnippet"];
+    }
+  }
+
+  /** Create JSON Object for VolumeSearchInfo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (textSnippet != null) {
+      output["textSnippet"] = textSnippet;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeSearchInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** User specific information related to this volume. (e.g. page this user last read or whether they purchased this book) */
+class VolumeUserInfo {
+
+  /** Copy/Paste accounting information. */
+  VolumeUserInfoCopy copy;
+
+  /** Whether or not this volume is currently in "my books." */
+  core.bool isInMyBooks;
+
+  /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
+  core.bool isPreordered;
+
+  /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
+  core.bool isPurchased;
+
+  /** Whether or not this volume was user uploaded. */
+  core.bool isUploaded;
+
+  /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
+  ReadingPosition readingPosition;
+
+  /** Period during this book is/was a valid rental. */
+  VolumeUserInfoRentalPeriod rentalPeriod;
+
+  /** Whether this book is an active or an expired rental. */
+  core.String rentalState;
+
+  /** This user's review of this volume, if one exists. */
+  Review review;
+
+  /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
+  core.String updated;
+
+  VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
+
+  /** Create new VolumeUserInfo from JSON data */
+  VolumeUserInfo.fromJson(core.Map json) {
+    if (json.containsKey("copy")) {
+      copy = new VolumeUserInfoCopy.fromJson(json["copy"]);
+    }
+    if (json.containsKey("isInMyBooks")) {
+      isInMyBooks = json["isInMyBooks"];
+    }
+    if (json.containsKey("isPreordered")) {
+      isPreordered = json["isPreordered"];
+    }
+    if (json.containsKey("isPurchased")) {
+      isPurchased = json["isPurchased"];
+    }
+    if (json.containsKey("isUploaded")) {
+      isUploaded = json["isUploaded"];
+    }
+    if (json.containsKey("readingPosition")) {
+      readingPosition = new ReadingPosition.fromJson(json["readingPosition"]);
+    }
+    if (json.containsKey("rentalPeriod")) {
+      rentalPeriod = new VolumeUserInfoRentalPeriod.fromJson(json["rentalPeriod"]);
+    }
+    if (json.containsKey("rentalState")) {
+      rentalState = json["rentalState"];
+    }
+    if (json.containsKey("review")) {
+      review = new Review.fromJson(json["review"]);
+    }
+    if (json.containsKey("updated")) {
+      updated = json["updated"];
+    }
+    if (json.containsKey("userUploadedVolumeInfo")) {
+      userUploadedVolumeInfo = new VolumeUserInfoUserUploadedVolumeInfo.fromJson(json["userUploadedVolumeInfo"]);
+    }
+  }
+
+  /** Create JSON Object for VolumeUserInfo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (copy != null) {
+      output["copy"] = copy.toJson();
+    }
+    if (isInMyBooks != null) {
+      output["isInMyBooks"] = isInMyBooks;
+    }
+    if (isPreordered != null) {
+      output["isPreordered"] = isPreordered;
+    }
+    if (isPurchased != null) {
+      output["isPurchased"] = isPurchased;
+    }
+    if (isUploaded != null) {
+      output["isUploaded"] = isUploaded;
+    }
+    if (readingPosition != null) {
+      output["readingPosition"] = readingPosition.toJson();
+    }
+    if (rentalPeriod != null) {
+      output["rentalPeriod"] = rentalPeriod.toJson();
+    }
+    if (rentalState != null) {
+      output["rentalState"] = rentalState;
+    }
+    if (review != null) {
+      output["review"] = review.toJson();
+    }
+    if (updated != null) {
+      output["updated"] = updated;
+    }
+    if (userUploadedVolumeInfo != null) {
+      output["userUploadedVolumeInfo"] = userUploadedVolumeInfo.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeUserInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Copy/Paste accounting information. */
+class VolumeUserInfoCopy {
+
+  core.int allowedCharacterCount;
+
+  core.String limitType;
+
+  core.int remainingCharacterCount;
+
+  core.String updated;
+
+  /** Create new VolumeUserInfoCopy from JSON data */
+  VolumeUserInfoCopy.fromJson(core.Map json) {
+    if (json.containsKey("allowedCharacterCount")) {
+      allowedCharacterCount = json["allowedCharacterCount"];
+    }
+    if (json.containsKey("limitType")) {
+      limitType = json["limitType"];
+    }
+    if (json.containsKey("remainingCharacterCount")) {
+      remainingCharacterCount = json["remainingCharacterCount"];
+    }
+    if (json.containsKey("updated")) {
+      updated = json["updated"];
+    }
+  }
+
+  /** Create JSON Object for VolumeUserInfoCopy */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (allowedCharacterCount != null) {
+      output["allowedCharacterCount"] = allowedCharacterCount;
+    }
+    if (limitType != null) {
+      output["limitType"] = limitType;
+    }
+    if (remainingCharacterCount != null) {
+      output["remainingCharacterCount"] = remainingCharacterCount;
+    }
+    if (updated != null) {
+      output["updated"] = updated;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeUserInfoCopy */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Period during this book is/was a valid rental. */
+class VolumeUserInfoRentalPeriod {
+
+  core.int endUtcSec;
+
+  core.int startUtcSec;
+
+  /** Create new VolumeUserInfoRentalPeriod from JSON data */
+  VolumeUserInfoRentalPeriod.fromJson(core.Map json) {
+    if (json.containsKey("endUtcSec")) {
+      endUtcSec = (json["endUtcSec"] is core.String) ? core.int.parse(json["endUtcSec"]) : json["endUtcSec"];
+    }
+    if (json.containsKey("startUtcSec")) {
+      startUtcSec = (json["startUtcSec"] is core.String) ? core.int.parse(json["startUtcSec"]) : json["startUtcSec"];
+    }
+  }
+
+  /** Create JSON Object for VolumeUserInfoRentalPeriod */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (endUtcSec != null) {
+      output["endUtcSec"] = endUtcSec;
+    }
+    if (startUtcSec != null) {
+      output["startUtcSec"] = startUtcSec;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeUserInfoRentalPeriod */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+class VolumeUserInfoUserUploadedVolumeInfo {
+
+  core.String processingState;
+
+  /** Create new VolumeUserInfoUserUploadedVolumeInfo from JSON data */
+  VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map json) {
+    if (json.containsKey("processingState")) {
+      processingState = json["processingState"];
+    }
+  }
+
+  /** Create JSON Object for VolumeUserInfoUserUploadedVolumeInfo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (processingState != null) {
+      output["processingState"] = processingState;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeUserInfoUserUploadedVolumeInfo */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -3153,10 +3786,7 @@ class VolumeVolumeInfo {
   /** Create new VolumeVolumeInfo from JSON data */
   VolumeVolumeInfo.fromJson(core.Map json) {
     if (json.containsKey("authors")) {
-      authors = [];
-      json["authors"].forEach((item) {
-        authors.add(item);
-      });
+      authors = json["authors"].toList();
     }
     if (json.containsKey("averageRating")) {
       averageRating = json["averageRating"];
@@ -3165,10 +3795,7 @@ class VolumeVolumeInfo {
       canonicalVolumeLink = json["canonicalVolumeLink"];
     }
     if (json.containsKey("categories")) {
-      categories = [];
-      json["categories"].forEach((item) {
-        categories.add(item);
-      });
+      categories = json["categories"].toList();
     }
     if (json.containsKey("contentVersion")) {
       contentVersion = json["contentVersion"];
@@ -3183,10 +3810,7 @@ class VolumeVolumeInfo {
       imageLinks = new VolumeVolumeInfoImageLinks.fromJson(json["imageLinks"]);
     }
     if (json.containsKey("industryIdentifiers")) {
-      industryIdentifiers = [];
-      json["industryIdentifiers"].forEach((item) {
-        industryIdentifiers.add(new VolumeVolumeInfoIndustryIdentifiers.fromJson(item));
-      });
+      industryIdentifiers = json["industryIdentifiers"].map((industryIdentifiersItem) => new VolumeVolumeInfoIndustryIdentifiers.fromJson(industryIdentifiersItem)).toList();
     }
     if (json.containsKey("infoLink")) {
       infoLink = json["infoLink"];
@@ -3228,10 +3852,7 @@ class VolumeVolumeInfo {
     var output = new core.Map();
 
     if (authors != null) {
-      output["authors"] = new core.List();
-      authors.forEach((item) {
-        output["authors"].add(item);
-      });
+      output["authors"] = authors.toList();
     }
     if (averageRating != null) {
       output["averageRating"] = averageRating;
@@ -3240,10 +3861,7 @@ class VolumeVolumeInfo {
       output["canonicalVolumeLink"] = canonicalVolumeLink;
     }
     if (categories != null) {
-      output["categories"] = new core.List();
-      categories.forEach((item) {
-        output["categories"].add(item);
-      });
+      output["categories"] = categories.toList();
     }
     if (contentVersion != null) {
       output["contentVersion"] = contentVersion;
@@ -3258,10 +3876,7 @@ class VolumeVolumeInfo {
       output["imageLinks"] = imageLinks.toJson();
     }
     if (industryIdentifiers != null) {
-      output["industryIdentifiers"] = new core.List();
-      industryIdentifiers.forEach((item) {
-        output["industryIdentifiers"].add(item.toJson());
-      });
+      output["industryIdentifiers"] = industryIdentifiers.map((industryIdentifiersItem) => industryIdentifiersItem.toJson()).toList();
     }
     if (infoLink != null) {
       output["infoLink"] = infoLink;
@@ -3301,6 +3916,53 @@ class VolumeVolumeInfo {
   }
 
   /** Return String representation of VolumeVolumeInfo */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Physical dimensions of this volume. */
+class VolumeVolumeInfoDimensions {
+
+  /** Height or length of this volume (in cm). */
+  core.String height;
+
+  /** Thickness of this volume (in cm). */
+  core.String thickness;
+
+  /** Width of this volume (in cm). */
+  core.String width;
+
+  /** Create new VolumeVolumeInfoDimensions from JSON data */
+  VolumeVolumeInfoDimensions.fromJson(core.Map json) {
+    if (json.containsKey("height")) {
+      height = json["height"];
+    }
+    if (json.containsKey("thickness")) {
+      thickness = json["thickness"];
+    }
+    if (json.containsKey("width")) {
+      width = json["width"];
+    }
+  }
+
+  /** Create JSON Object for VolumeVolumeInfoDimensions */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (height != null) {
+      output["height"] = height;
+    }
+    if (thickness != null) {
+      output["thickness"] = thickness;
+    }
+    if (width != null) {
+      output["width"] = width;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VolumeVolumeInfoDimensions */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -3379,53 +4041,6 @@ class VolumeVolumeInfoImageLinks {
 
 }
 
-/** Physical dimensions of this volume. */
-class VolumeVolumeInfoDimensions {
-
-  /** Height or length of this volume (in cm). */
-  core.String height;
-
-  /** Thickness of this volume (in cm). */
-  core.String thickness;
-
-  /** Width of this volume (in cm). */
-  core.String width;
-
-  /** Create new VolumeVolumeInfoDimensions from JSON data */
-  VolumeVolumeInfoDimensions.fromJson(core.Map json) {
-    if (json.containsKey("height")) {
-      height = json["height"];
-    }
-    if (json.containsKey("thickness")) {
-      thickness = json["thickness"];
-    }
-    if (json.containsKey("width")) {
-      width = json["width"];
-    }
-  }
-
-  /** Create JSON Object for VolumeVolumeInfoDimensions */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (height != null) {
-      output["height"] = height;
-    }
-    if (thickness != null) {
-      output["thickness"] = thickness;
-    }
-    if (width != null) {
-      output["width"] = width;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeVolumeInfoDimensions */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
 class VolumeVolumeInfoIndustryIdentifiers {
 
   /** Industry specific volume identifier. */
@@ -3459,194 +4074,6 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 
   /** Return String representation of VolumeVolumeInfoIndustryIdentifiers */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries). */
-class VolumeSaleInfo {
-
-  /** URL to purchase this volume on the Google Books site. (In LITE projection) */
-  core.String buyLink;
-
-  /** The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.) */
-  core.String country;
-
-  /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
-  core.bool isEbook;
-
-  /** Suggested retail price. (In LITE projection.) */
-  VolumeSaleInfoListPrice listPrice;
-
-  /** The date on which this book is available for sale. */
-  core.String onSaleDate;
-
-  /** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
-  VolumeSaleInfoRetailPrice retailPrice;
-
-  /** Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FREE, NOT_FOR_SALE, or FOR_PREORDER. */
-  core.String saleability;
-
-  /** Create new VolumeSaleInfo from JSON data */
-  VolumeSaleInfo.fromJson(core.Map json) {
-    if (json.containsKey("buyLink")) {
-      buyLink = json["buyLink"];
-    }
-    if (json.containsKey("country")) {
-      country = json["country"];
-    }
-    if (json.containsKey("isEbook")) {
-      isEbook = json["isEbook"];
-    }
-    if (json.containsKey("listPrice")) {
-      listPrice = new VolumeSaleInfoListPrice.fromJson(json["listPrice"]);
-    }
-    if (json.containsKey("onSaleDate")) {
-      onSaleDate = json["onSaleDate"];
-    }
-    if (json.containsKey("retailPrice")) {
-      retailPrice = new VolumeSaleInfoRetailPrice.fromJson(json["retailPrice"]);
-    }
-    if (json.containsKey("saleability")) {
-      saleability = json["saleability"];
-    }
-  }
-
-  /** Create JSON Object for VolumeSaleInfo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (buyLink != null) {
-      output["buyLink"] = buyLink;
-    }
-    if (country != null) {
-      output["country"] = country;
-    }
-    if (isEbook != null) {
-      output["isEbook"] = isEbook;
-    }
-    if (listPrice != null) {
-      output["listPrice"] = listPrice.toJson();
-    }
-    if (onSaleDate != null) {
-      output["onSaleDate"] = onSaleDate;
-    }
-    if (retailPrice != null) {
-      output["retailPrice"] = retailPrice.toJson();
-    }
-    if (saleability != null) {
-      output["saleability"] = saleability;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeSaleInfo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Suggested retail price. (In LITE projection.) */
-class VolumeSaleInfoListPrice {
-
-  /** Amount in the currency listed below. (In LITE projection.) */
-  core.num amount;
-
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  core.String currencyCode;
-
-  /** Create new VolumeSaleInfoListPrice from JSON data */
-  VolumeSaleInfoListPrice.fromJson(core.Map json) {
-    if (json.containsKey("amount")) {
-      amount = json["amount"];
-    }
-    if (json.containsKey("currencyCode")) {
-      currencyCode = json["currencyCode"];
-    }
-  }
-
-  /** Create JSON Object for VolumeSaleInfoListPrice */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (amount != null) {
-      output["amount"] = amount;
-    }
-    if (currencyCode != null) {
-      output["currencyCode"] = currencyCode;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeSaleInfoListPrice */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
-class VolumeSaleInfoRetailPrice {
-
-  /** Amount in the currency listed below. (In LITE projection.) */
-  core.num amount;
-
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  core.String currencyCode;
-
-  /** Create new VolumeSaleInfoRetailPrice from JSON data */
-  VolumeSaleInfoRetailPrice.fromJson(core.Map json) {
-    if (json.containsKey("amount")) {
-      amount = json["amount"];
-    }
-    if (json.containsKey("currencyCode")) {
-      currencyCode = json["currencyCode"];
-    }
-  }
-
-  /** Create JSON Object for VolumeSaleInfoRetailPrice */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (amount != null) {
-      output["amount"] = amount;
-    }
-    if (currencyCode != null) {
-      output["currencyCode"] = currencyCode;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeSaleInfoRetailPrice */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Search result information related to this volume. */
-class VolumeSearchInfo {
-
-  /** A text snippet containing the search query. */
-  core.String textSnippet;
-
-  /** Create new VolumeSearchInfo from JSON data */
-  VolumeSearchInfo.fromJson(core.Map json) {
-    if (json.containsKey("textSnippet")) {
-      textSnippet = json["textSnippet"];
-    }
-  }
-
-  /** Create JSON Object for VolumeSearchInfo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (textSnippet != null) {
-      output["textSnippet"] = textSnippet;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of VolumeSearchInfo */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -3725,10 +4152,7 @@ class Volumeannotation {
       layerId = json["layerId"];
     }
     if (json.containsKey("pageIds")) {
-      pageIds = [];
-      json["pageIds"].forEach((item) {
-        pageIds.add(item);
-      });
+      pageIds = json["pageIds"].toList();
     }
     if (json.containsKey("selectedText")) {
       selectedText = json["selectedText"];
@@ -3776,10 +4200,7 @@ class Volumeannotation {
       output["layerId"] = layerId;
     }
     if (pageIds != null) {
-      output["pageIds"] = new core.List();
-      pageIds.forEach((item) {
-        output["pageIds"].add(item);
-      });
+      output["pageIds"] = pageIds.toList();
     }
     if (selectedText != null) {
       output["selectedText"] = selectedText;
@@ -3878,10 +4299,7 @@ class Volumeannotations {
   /** Create new Volumeannotations from JSON data */
   Volumeannotations.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Volumeannotation.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Volumeannotation.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -3902,10 +4320,7 @@ class Volumeannotations {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -3942,10 +4357,7 @@ class Volumes {
   /** Create new Volumes from JSON data */
   Volumes.fromJson(core.Map json) {
     if (json.containsKey("items")) {
-      items = [];
-      json["items"].forEach((item) {
-        items.add(new Volume.fromJson(item));
-      });
+      items = json["items"].map((itemsItem) => new Volume.fromJson(itemsItem)).toList();
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
@@ -3960,10 +4372,7 @@ class Volumes {
     var output = new core.Map();
 
     if (items != null) {
-      output["items"] = new core.List();
-      items.forEach((item) {
-        output["items"].add(item.toJson());
-      });
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
     }
     if (kind != null) {
       output["kind"] = kind;
@@ -3980,3 +4389,16 @@ class Volumes {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}

@@ -1,14 +1,17 @@
-library books_v1_api_browser;
+library books_v1_api.browser;
 
-import "books_v1_api_client.dart";
-export "books_v1_api_client.dart";
-
-import "dart:core" as core;
-import "dart:html" as html;
-import "dart:async" as async;
-import "dart:json" as JSON;
-import "package:js/js.dart" as js;
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
-part "src/browser/browser_client.dart";
-part "src/browser/books.dart";
+import 'package:google_books_v1_api/src/cloud_api_browser.dart';
+import "package:google_books_v1_api/books_v1_api_client.dart";
+
+/** Lets you search for books and manage your Google Books library. */
+class Books extends Client with BrowserClient {
+
+  /** OAuth Scope2: Manage your books */
+  static const String BOOKS_SCOPE = "https://www.googleapis.com/auth/books";
+
+  final oauth.OAuth2 auth;
+
+  Books([oauth.OAuth2 this.auth]);
+}

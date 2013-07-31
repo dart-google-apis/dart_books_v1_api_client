@@ -1,13 +1,14 @@
-part of books_v1_api_client;
+part of books_v1_api;
 
-class BookshelvesResource_ extends Resource {
+class BookshelvesResource_ {
 
-  BookshelvesVolumesResource_ _volumes;
-  BookshelvesVolumesResource_ get volumes => _volumes;
+  final Client _client;
 
-  BookshelvesResource_(Client client) : super(client) {
-  _volumes = new BookshelvesVolumesResource_(client);
-  }
+  final BookshelvesVolumesResource_ volumes;
+
+  BookshelvesResource_(Client client) :
+      _client = client,
+      volumes = new BookshelvesVolumesResource_(client);
 
   /**
    * Retrieves metadata for a specific bookshelf for the specified user.
@@ -86,10 +87,12 @@ class BookshelvesResource_ extends Resource {
   }
 }
 
-class BookshelvesVolumesResource_ extends Resource {
+class BookshelvesVolumesResource_ {
 
-  BookshelvesVolumesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  BookshelvesVolumesResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves volumes in a specific bookshelf for the specified user.
@@ -143,10 +146,12 @@ class BookshelvesVolumesResource_ extends Resource {
   }
 }
 
-class CloudloadingResource_ extends Resource {
+class CloudloadingResource_ {
 
-  CloudloadingResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  CloudloadingResource_(Client client) :
+      _client = client;
 
   /**
    * 
@@ -253,17 +258,17 @@ class CloudloadingResource_ extends Resource {
   }
 }
 
-class LayersResource_ extends Resource {
+class LayersResource_ {
 
-  LayersAnnotationDataResource_ _annotationData;
-  LayersAnnotationDataResource_ get annotationData => _annotationData;
-  LayersVolumeAnnotationsResource_ _volumeAnnotations;
-  LayersVolumeAnnotationsResource_ get volumeAnnotations => _volumeAnnotations;
+  final Client _client;
 
-  LayersResource_(Client client) : super(client) {
-  _annotationData = new LayersAnnotationDataResource_(client);
-  _volumeAnnotations = new LayersVolumeAnnotationsResource_(client);
-  }
+  final LayersAnnotationDataResource_ annotationData;
+  final LayersVolumeAnnotationsResource_ volumeAnnotations;
+
+  LayersResource_(Client client) :
+      _client = client,
+      annotationData = new LayersAnnotationDataResource_(client),
+      volumeAnnotations = new LayersVolumeAnnotationsResource_(client);
 
   /**
    * Gets the layer summary for a volume.
@@ -356,10 +361,12 @@ class LayersResource_ extends Resource {
   }
 }
 
-class LayersAnnotationDataResource_ extends Resource {
+class LayersAnnotationDataResource_ {
 
-  LayersAnnotationDataResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  LayersAnnotationDataResource_(Client client) :
+      _client = client;
 
   /**
    * Gets the annotation data.
@@ -432,6 +439,7 @@ class LayersAnnotationDataResource_ extends Resource {
    * [contentVersion] - The content version for the requested volume.
    *
    * [annotationDataId] - The list of Annotation Data Ids to retrieve. Pagination is ignored if this is set.
+   *   Repeated values: allowed
    *
    * [h] - The requested pixel height for any images. If height is provided width must also be provided.
    *
@@ -456,7 +464,7 @@ class LayersAnnotationDataResource_ extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w, core.Map optParams}) {
+  async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.List<core.String> annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w, core.Map optParams}) {
     var url = "volumes/{volumeId}/layers/{layerId}/data";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -497,10 +505,12 @@ class LayersAnnotationDataResource_ extends Resource {
   }
 }
 
-class LayersVolumeAnnotationsResource_ extends Resource {
+class LayersVolumeAnnotationsResource_ {
 
-  LayersVolumeAnnotationsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  LayersVolumeAnnotationsResource_(Client client) :
+      _client = client;
 
   /**
    * Gets the volume annotation.
@@ -629,15 +639,18 @@ class LayersVolumeAnnotationsResource_ extends Resource {
   }
 }
 
-class MyconfigResource_ extends Resource {
+class MyconfigResource_ {
 
-  MyconfigResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MyconfigResource_(Client client) :
+      _client = client;
 
   /**
    * Release downloaded content access restriction.
    *
    * [volumeIds] - The volume(s) to release restrictions for.
+   *   Repeated values: allowed
    *
    * [cpksver] - The device/version ID from which to release the restriction.
    *
@@ -647,7 +660,7 @@ class MyconfigResource_ extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<DownloadAccesses> releaseDownloadAccess(core.String volumeIds, core.String cpksver, {core.String locale, core.String source, core.Map optParams}) {
+  async.Future<DownloadAccesses> releaseDownloadAccess(core.List<core.String> volumeIds, core.String cpksver, {core.String locale, core.String source, core.Map optParams}) {
     var url = "myconfig/releaseDownloadAccess";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -734,15 +747,21 @@ class MyconfigResource_ extends Resource {
    *
    * [cpksver] - The device/version ID from which to release the restriction.
    *
+   * [features] - List of features supported by the client, i.e., 'RENTALS'
+   *   Repeated values: allowed
+   *   Allowed values:
+   *     RENTALS - Client supports rentals.
+   *
    * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
    *
    * [showPreorders] - Set to true to show pre-ordered books. Defaults to false.
    *
    * [volumeIds] - The volume(s) to request download restrictions for.
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.String locale, core.bool showPreorders, core.String volumeIds, core.Map optParams}) {
+  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.List<core.String> features, core.String locale, core.bool showPreorders, core.List<core.String> volumeIds, core.Map optParams}) {
     var url = "myconfig/syncVolumeLicenses";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -750,6 +769,10 @@ class MyconfigResource_ extends Resource {
     var paramErrors = new core.List();
     if (cpksver == null) paramErrors.add("cpksver is required");
     if (cpksver != null) queryParams["cpksver"] = cpksver;
+    if (features != null && !["RENTALS"].contains(features)) {
+      paramErrors.add("Allowed values for features: RENTALS");
+    }
+    if (features != null) queryParams["features"] = features;
     if (locale != null) queryParams["locale"] = locale;
     if (nonce == null) paramErrors.add("nonce is required");
     if (nonce != null) queryParams["nonce"] = nonce;
@@ -776,26 +799,27 @@ class MyconfigResource_ extends Resource {
   }
 }
 
-class MylibraryResource_ extends Resource {
+class MylibraryResource_ {
 
-  MylibraryAnnotationsResource_ _annotations;
-  MylibraryAnnotationsResource_ get annotations => _annotations;
-  MylibraryBookshelvesResource_ _bookshelves;
-  MylibraryBookshelvesResource_ get bookshelves => _bookshelves;
-  MylibraryReadingpositionsResource_ _readingpositions;
-  MylibraryReadingpositionsResource_ get readingpositions => _readingpositions;
+  final Client _client;
 
-  MylibraryResource_(Client client) : super(client) {
-  _annotations = new MylibraryAnnotationsResource_(client);
-  _bookshelves = new MylibraryBookshelvesResource_(client);
-  _readingpositions = new MylibraryReadingpositionsResource_(client);
-  }
+  final MylibraryAnnotationsResource_ annotations;
+  final MylibraryBookshelvesResource_ bookshelves;
+  final MylibraryReadingpositionsResource_ readingpositions;
+
+  MylibraryResource_(Client client) :
+      _client = client,
+      annotations = new MylibraryAnnotationsResource_(client),
+      bookshelves = new MylibraryBookshelvesResource_(client),
+      readingpositions = new MylibraryReadingpositionsResource_(client);
 }
 
-class MylibraryAnnotationsResource_ extends Resource {
+class MylibraryAnnotationsResource_ {
 
-  MylibraryAnnotationsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MylibraryAnnotationsResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes an annotation.
@@ -873,16 +897,19 @@ class MylibraryAnnotationsResource_ extends Resource {
    *
    * [request] - Annotation to send in this request
    *
+   * [showOnlySummaryInResponse] - Requests that only the summary of the specified layer be provided in the response.
+   *
    * [source] - String to identify the originator of this request.
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Annotation> insert(Annotation request, {core.String source, core.Map optParams}) {
+  async.Future<Annotation> insert(Annotation request, {core.bool showOnlySummaryInResponse, core.String source, core.Map optParams}) {
     var url = "mylibrary/annotations";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
+    if (showOnlySummaryInResponse != null) queryParams["showOnlySummaryInResponse"] = showOnlySummaryInResponse;
     if (source != null) queryParams["source"] = source;
     if (optParams != null) {
       optParams.forEach((key, value) {
@@ -914,6 +941,7 @@ class MylibraryAnnotationsResource_ extends Resource {
    *   Maximum: 40
    *
    * [pageIds] - The page ID(s) for the volume that is being queried.
+   *   Repeated values: allowed
    *
    * [pageToken] - The value of the nextToken from the previous page.
    *
@@ -929,7 +957,7 @@ class MylibraryAnnotationsResource_ extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.int maxResults, core.String pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
+  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.int maxResults, core.List<core.String> pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
     var url = "mylibrary/annotations";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -961,6 +989,44 @@ class MylibraryAnnotationsResource_ extends Resource {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new Annotations.fromJson(data));
+  }
+
+  /**
+   * Gets the summary of specified layers.
+   *
+   * [layerIds] - Array of layer IDs to get the summary for.
+   *   Repeated values: allowed
+   *
+   * [volumeId] - Volume id to get the summary for.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<AnnotationsSummary> summary(core.List<core.String> layerIds, core.String volumeId, {core.Map optParams}) {
+    var url = "mylibrary/annotations/summary";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (layerIds == null) paramErrors.add("layerIds is required");
+    if (layerIds != null) queryParams["layerIds"] = layerIds;
+    if (volumeId == null) paramErrors.add("volumeId is required");
+    if (volumeId != null) queryParams["volumeId"] = volumeId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new AnnotationsSummary.fromJson(data));
   }
 
   /**
@@ -1002,14 +1068,15 @@ class MylibraryAnnotationsResource_ extends Resource {
   }
 }
 
-class MylibraryBookshelvesResource_ extends Resource {
+class MylibraryBookshelvesResource_ {
 
-  MylibraryBookshelvesVolumesResource_ _volumes;
-  MylibraryBookshelvesVolumesResource_ get volumes => _volumes;
+  final Client _client;
 
-  MylibraryBookshelvesResource_(Client client) : super(client) {
-  _volumes = new MylibraryBookshelvesVolumesResource_(client);
-  }
+  final MylibraryBookshelvesVolumesResource_ volumes;
+
+  MylibraryBookshelvesResource_(Client client) :
+      _client = client,
+      volumes = new MylibraryBookshelvesVolumesResource_(client);
 
   /**
    * Adds a volume to a bookshelf.
@@ -1236,10 +1303,12 @@ class MylibraryBookshelvesResource_ extends Resource {
   }
 }
 
-class MylibraryBookshelvesVolumesResource_ extends Resource {
+class MylibraryBookshelvesVolumesResource_ {
 
-  MylibraryBookshelvesVolumesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MylibraryBookshelvesVolumesResource_(Client client) :
+      _client = client;
 
   /**
    * Gets volume information for volumes on a bookshelf.
@@ -1304,10 +1373,12 @@ class MylibraryBookshelvesVolumesResource_ extends Resource {
   }
 }
 
-class MylibraryReadingpositionsResource_ extends Resource {
+class MylibraryReadingpositionsResource_ {
 
-  MylibraryReadingpositionsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MylibraryReadingpositionsResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves my reading position information for a volume.
@@ -1411,23 +1482,21 @@ class MylibraryReadingpositionsResource_ extends Resource {
   }
 }
 
-class VolumesResource_ extends Resource {
+class VolumesResource_ {
 
-  VolumesAssociatedResource_ _associated;
-  VolumesAssociatedResource_ get associated => _associated;
-  VolumesMybooksResource_ _mybooks;
-  VolumesMybooksResource_ get mybooks => _mybooks;
-  VolumesRecommendedResource_ _recommended;
-  VolumesRecommendedResource_ get recommended => _recommended;
-  VolumesUseruploadedResource_ _useruploaded;
-  VolumesUseruploadedResource_ get useruploaded => _useruploaded;
+  final Client _client;
 
-  VolumesResource_(Client client) : super(client) {
-  _associated = new VolumesAssociatedResource_(client);
-  _mybooks = new VolumesMybooksResource_(client);
-  _recommended = new VolumesRecommendedResource_(client);
-  _useruploaded = new VolumesUseruploadedResource_(client);
-  }
+  final VolumesAssociatedResource_ associated;
+  final VolumesMybooksResource_ mybooks;
+  final VolumesRecommendedResource_ recommended;
+  final VolumesUseruploadedResource_ useruploaded;
+
+  VolumesResource_(Client client) :
+      _client = client,
+      associated = new VolumesAssociatedResource_(client),
+      mybooks = new VolumesMybooksResource_(client),
+      recommended = new VolumesRecommendedResource_(client),
+      useruploaded = new VolumesUseruploadedResource_(client);
 
   /**
    * Gets volume information for a single volume.
@@ -1592,10 +1661,12 @@ class VolumesResource_ extends Resource {
   }
 }
 
-class VolumesAssociatedResource_ extends Resource {
+class VolumesAssociatedResource_ {
 
-  VolumesAssociatedResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  VolumesAssociatedResource_(Client client) :
+      _client = client;
 
   /**
    * Return a list of associated books.
@@ -1646,19 +1717,24 @@ class VolumesAssociatedResource_ extends Resource {
   }
 }
 
-class VolumesMybooksResource_ extends Resource {
+class VolumesMybooksResource_ {
 
-  VolumesMybooksResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  VolumesMybooksResource_(Client client) :
+      _client = client;
 
   /**
    * Return a list of books in My Library.
    *
    * [acquireMethod] - How the book was aquired
+   *   Repeated values: allowed
    *   Allowed values:
    *     PREORDERED - Preordered books (not yet available)
+   *     PREVIOUSLY_RENTED - User-rented books past their expiration time
    *     PUBLIC_DOMAIN - Public domain books
    *     PURCHASED - Purchased books
+   *     RENTED - User-rented books
    *     SAMPLE - Sample books
    *     UPLOADED - User uploaded books
    *
@@ -1669,6 +1745,7 @@ class VolumesMybooksResource_ extends Resource {
    *   Maximum: 100
    *
    * [processingState] - The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod.
+   *   Repeated values: allowed
    *   Allowed values:
    *     COMPLETED_FAILED - The volume processing hase failed.
    *     COMPLETED_SUCCESS - The volume processing was completed.
@@ -1681,14 +1758,14 @@ class VolumesMybooksResource_ extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Volumes> list({core.String acquireMethod, core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.Map optParams}) {
+  async.Future<Volumes> list({core.List<core.String> acquireMethod, core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex, core.Map optParams}) {
     var url = "volumes/mybooks";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
-    if (acquireMethod != null && !["PREORDERED", "PUBLIC_DOMAIN", "PURCHASED", "SAMPLE", "UPLOADED"].contains(acquireMethod)) {
-      paramErrors.add("Allowed values for acquireMethod: PREORDERED, PUBLIC_DOMAIN, PURCHASED, SAMPLE, UPLOADED");
+    if (acquireMethod != null && !["PREORDERED", "PREVIOUSLY_RENTED", "PUBLIC_DOMAIN", "PURCHASED", "RENTED", "SAMPLE", "UPLOADED"].contains(acquireMethod)) {
+      paramErrors.add("Allowed values for acquireMethod: PREORDERED, PREVIOUSLY_RENTED, PUBLIC_DOMAIN, PURCHASED, RENTED, SAMPLE, UPLOADED");
     }
     if (acquireMethod != null) queryParams["acquireMethod"] = acquireMethod;
     if (locale != null) queryParams["locale"] = locale;
@@ -1718,10 +1795,12 @@ class VolumesMybooksResource_ extends Resource {
   }
 }
 
-class VolumesRecommendedResource_ extends Resource {
+class VolumesRecommendedResource_ {
 
-  VolumesRecommendedResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  VolumesRecommendedResource_(Client client) :
+      _client = client;
 
   /**
    * Return a list of recommended books for the current user.
@@ -1759,10 +1838,12 @@ class VolumesRecommendedResource_ extends Resource {
   }
 }
 
-class VolumesUseruploadedResource_ extends Resource {
+class VolumesUseruploadedResource_ {
 
-  VolumesUseruploadedResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  VolumesUseruploadedResource_(Client client) :
+      _client = client;
 
   /**
    * Return a list of books uploaded by the current user.
@@ -1774,6 +1855,7 @@ class VolumesUseruploadedResource_ extends Resource {
    *   Maximum: 40
    *
    * [processingState] - The processing state of the user uploaded volumes to be returned.
+   *   Repeated values: allowed
    *   Allowed values:
    *     COMPLETED_FAILED - The volume processing hase failed.
    *     COMPLETED_SUCCESS - The volume processing was completed.
@@ -1785,10 +1867,11 @@ class VolumesUseruploadedResource_ extends Resource {
    *   Minimum: 0
    *
    * [volumeId] - The ids of the volumes to be returned. If not specified all that match the processingState are returned.
+   *   Repeated values: allowed
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Volumes> list({core.String locale, core.int maxResults, core.String processingState, core.String source, core.int startIndex, core.String volumeId, core.Map optParams}) {
+  async.Future<Volumes> list({core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex, core.List<core.String> volumeId, core.Map optParams}) {
     var url = "volumes/useruploaded";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
