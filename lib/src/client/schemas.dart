@@ -167,7 +167,7 @@ class Annotation {
   }
 
   /** Return String representation of Annotation */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -232,7 +232,7 @@ class AnnotationClientVersionRanges {
   }
 
   /** Return String representation of AnnotationClientVersionRanges */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -297,7 +297,7 @@ class AnnotationCurrentVersionRanges {
   }
 
   /** Return String representation of AnnotationCurrentVersionRanges */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -343,7 +343,7 @@ class AnnotationLayerSummary {
   }
 
   /** Return String representation of AnnotationLayerSummary */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -442,7 +442,7 @@ class Annotationdata {
   }
 
   /** Return String representation of Annotationdata */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -497,7 +497,7 @@ class Annotations {
   }
 
   /** Return String representation of Annotations */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -532,7 +532,7 @@ class AnnotationsSummary {
   }
 
   /** Return String representation of AnnotationsSummary */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -591,7 +591,7 @@ class AnnotationsSummaryLayers {
   }
 
   /** Return String representation of AnnotationsSummaryLayers */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -646,7 +646,7 @@ class Annotationsdata {
   }
 
   /** Return String representation of Annotationsdata */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -701,7 +701,7 @@ class BooksAnnotationsRange {
   }
 
   /** Return String representation of BooksAnnotationsRange */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -752,1029 +752,34 @@ class BooksCloudloadingResource {
   }
 
   /** Return String representation of BooksCloudloadingResource */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
-class BooksLayerDictData {
+class BooksVolumesRecommendedRateResponse {
 
-  BooksLayerDictDataCommon common;
+  core.String consistency_token;
 
-  BooksLayerDictDataDict dict;
-
-  /** Create new BooksLayerDictData from JSON data */
-  BooksLayerDictData.fromJson(core.Map json) {
-    if (json.containsKey("common")) {
-      common = new BooksLayerDictDataCommon.fromJson(json["common"]);
-    }
-    if (json.containsKey("dict")) {
-      dict = new BooksLayerDictDataDict.fromJson(json["dict"]);
+  /** Create new BooksVolumesRecommendedRateResponse from JSON data */
+  BooksVolumesRecommendedRateResponse.fromJson(core.Map json) {
+    if (json.containsKey("consistency_token")) {
+      consistency_token = json["consistency_token"];
     }
   }
 
-  /** Create JSON Object for BooksLayerDictData */
+  /** Create JSON Object for BooksVolumesRecommendedRateResponse */
   core.Map toJson() {
     var output = new core.Map();
 
-    if (common != null) {
-      output["common"] = common.toJson();
-    }
-    if (dict != null) {
-      output["dict"] = dict.toJson();
+    if (consistency_token != null) {
+      output["consistency_token"] = consistency_token;
     }
 
     return output;
   }
 
-  /** Return String representation of BooksLayerDictData */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataCommon {
-
-  /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  core.String title;
-
-  /** Create new BooksLayerDictDataCommon from JSON data */
-  BooksLayerDictDataCommon.fromJson(core.Map json) {
-    if (json.containsKey("title")) {
-      title = json["title"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataCommon */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (title != null) {
-      output["title"] = title;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataCommon */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDict {
-
-  /** The source, url and attribution for this dictionary data. */
-  BooksLayerDictDataDictSource source;
-
-  core.List<BooksLayerDictDataDictWords> words;
-
-  /** Create new BooksLayerDictDataDict from JSON data */
-  BooksLayerDictDataDict.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("words")) {
-      words = json["words"].map((wordsItem) => new BooksLayerDictDataDictWords.fromJson(wordsItem)).toList();
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDict */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (words != null) {
-      output["words"] = words.map((wordsItem) => wordsItem.toJson()).toList();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDict */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The source, url and attribution for this dictionary data. */
-class BooksLayerDictDataDictSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictSource from JSON data */
-  BooksLayerDictDataDictSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWords {
-
-  core.List<BooksLayerDictDataDictWordsDerivatives> derivatives;
-
-  core.List<BooksLayerDictDataDictWordsExamples> examples;
-
-  core.List<BooksLayerDictDataDictWordsSenses> senses;
-
-  /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
-  BooksLayerDictDataDictWordsSource source;
-
-  /** Create new BooksLayerDictDataDictWords from JSON data */
-  BooksLayerDictDataDictWords.fromJson(core.Map json) {
-    if (json.containsKey("derivatives")) {
-      derivatives = json["derivatives"].map((derivativesItem) => new BooksLayerDictDataDictWordsDerivatives.fromJson(derivativesItem)).toList();
-    }
-    if (json.containsKey("examples")) {
-      examples = json["examples"].map((examplesItem) => new BooksLayerDictDataDictWordsExamples.fromJson(examplesItem)).toList();
-    }
-    if (json.containsKey("senses")) {
-      senses = json["senses"].map((sensesItem) => new BooksLayerDictDataDictWordsSenses.fromJson(sensesItem)).toList();
-    }
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsSource.fromJson(json["source"]);
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWords */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (derivatives != null) {
-      output["derivatives"] = derivatives.map((derivativesItem) => derivativesItem.toJson()).toList();
-    }
-    if (examples != null) {
-      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
-    }
-    if (senses != null) {
-      output["senses"] = senses.map((sensesItem) => sensesItem.toJson()).toList();
-    }
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWords */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsDerivatives {
-
-  BooksLayerDictDataDictWordsDerivativesSource source;
-
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsDerivatives from JSON data */
-  BooksLayerDictDataDictWordsDerivatives.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsDerivativesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsDerivatives */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsDerivatives */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsDerivativesSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsDerivativesSource from JSON data */
-  BooksLayerDictDataDictWordsDerivativesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsDerivativesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsDerivativesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsExamples {
-
-  BooksLayerDictDataDictWordsExamplesSource source;
-
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsExamples from JSON data */
-  BooksLayerDictDataDictWordsExamples.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsExamplesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsExamples */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsExamples */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsExamplesSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsExamplesSource from JSON data */
-  BooksLayerDictDataDictWordsExamplesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsExamplesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsExamplesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSenses {
-
-  core.List<BooksLayerDictDataDictWordsSensesConjugations> conjugations;
-
-  core.List<BooksLayerDictDataDictWordsSensesDefinitions> definitions;
-
-  core.String partOfSpeech;
-
-  core.String pronunciation;
-
-  core.String pronunciationUrl;
-
-  BooksLayerDictDataDictWordsSensesSource source;
-
-  core.String syllabification;
-
-  core.List<BooksLayerDictDataDictWordsSensesSynonyms> synonyms;
-
-  /** Create new BooksLayerDictDataDictWordsSenses from JSON data */
-  BooksLayerDictDataDictWordsSenses.fromJson(core.Map json) {
-    if (json.containsKey("conjugations")) {
-      conjugations = json["conjugations"].map((conjugationsItem) => new BooksLayerDictDataDictWordsSensesConjugations.fromJson(conjugationsItem)).toList();
-    }
-    if (json.containsKey("definitions")) {
-      definitions = json["definitions"].map((definitionsItem) => new BooksLayerDictDataDictWordsSensesDefinitions.fromJson(definitionsItem)).toList();
-    }
-    if (json.containsKey("partOfSpeech")) {
-      partOfSpeech = json["partOfSpeech"];
-    }
-    if (json.containsKey("pronunciation")) {
-      pronunciation = json["pronunciation"];
-    }
-    if (json.containsKey("pronunciationUrl")) {
-      pronunciationUrl = json["pronunciationUrl"];
-    }
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsSensesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("syllabification")) {
-      syllabification = json["syllabification"];
-    }
-    if (json.containsKey("synonyms")) {
-      synonyms = json["synonyms"].map((synonymsItem) => new BooksLayerDictDataDictWordsSensesSynonyms.fromJson(synonymsItem)).toList();
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSenses */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (conjugations != null) {
-      output["conjugations"] = conjugations.map((conjugationsItem) => conjugationsItem.toJson()).toList();
-    }
-    if (definitions != null) {
-      output["definitions"] = definitions.map((definitionsItem) => definitionsItem.toJson()).toList();
-    }
-    if (partOfSpeech != null) {
-      output["partOfSpeech"] = partOfSpeech;
-    }
-    if (pronunciation != null) {
-      output["pronunciation"] = pronunciation;
-    }
-    if (pronunciationUrl != null) {
-      output["pronunciationUrl"] = pronunciationUrl;
-    }
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (syllabification != null) {
-      output["syllabification"] = syllabification;
-    }
-    if (synonyms != null) {
-      output["synonyms"] = synonyms.map((synonymsItem) => synonymsItem.toJson()).toList();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSenses */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesConjugations {
-
-  core.String type;
-
-  core.String value;
-
-  /** Create new BooksLayerDictDataDictWordsSensesConjugations from JSON data */
-  BooksLayerDictDataDictWordsSensesConjugations.fromJson(core.Map json) {
-    if (json.containsKey("type")) {
-      type = json["type"];
-    }
-    if (json.containsKey("value")) {
-      value = json["value"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesConjugations */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (type != null) {
-      output["type"] = type;
-    }
-    if (value != null) {
-      output["value"] = value;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesConjugations */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesDefinitions {
-
-  core.String definition;
-
-  core.List<BooksLayerDictDataDictWordsSensesDefinitionsExamples> examples;
-
-  /** Create new BooksLayerDictDataDictWordsSensesDefinitions from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitions.fromJson(core.Map json) {
-    if (json.containsKey("definition")) {
-      definition = json["definition"];
-    }
-    if (json.containsKey("examples")) {
-      examples = json["examples"].map((examplesItem) => new BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(examplesItem)).toList();
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitions */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (definition != null) {
-      output["definition"] = definition;
-    }
-    if (examples != null) {
-      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitions */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesDefinitionsExamples {
-
-  BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource source;
-
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamples from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitionsExamples.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitionsExamples */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitionsExamples */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource from JSON data */
-  BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesDefinitionsExamplesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsSensesSource from JSON data */
-  BooksLayerDictDataDictWordsSensesSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesSynonyms {
-
-  BooksLayerDictDataDictWordsSensesSynonymsSource source;
-
-  core.String text;
-
-  /** Create new BooksLayerDictDataDictWordsSensesSynonyms from JSON data */
-  BooksLayerDictDataDictWordsSensesSynonyms.fromJson(core.Map json) {
-    if (json.containsKey("source")) {
-      source = new BooksLayerDictDataDictWordsSensesSynonymsSource.fromJson(json["source"]);
-    }
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesSynonyms */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (source != null) {
-      output["source"] = source.toJson();
-    }
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesSynonyms */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerDictDataDictWordsSensesSynonymsSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsSensesSynonymsSource from JSON data */
-  BooksLayerDictDataDictWordsSensesSynonymsSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSensesSynonymsSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSensesSynonymsSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
-class BooksLayerDictDataDictWordsSource {
-
-  core.String attribution;
-
-  core.String url;
-
-  /** Create new BooksLayerDictDataDictWordsSource from JSON data */
-  BooksLayerDictDataDictWordsSource.fromJson(core.Map json) {
-    if (json.containsKey("attribution")) {
-      attribution = json["attribution"];
-    }
-    if (json.containsKey("url")) {
-      url = json["url"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerDictDataDictWordsSource */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (attribution != null) {
-      output["attribution"] = attribution;
-    }
-    if (url != null) {
-      output["url"] = url;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerDictDataDictWordsSource */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoData {
-
-  BooksLayerGeoDataCommon common;
-
-  BooksLayerGeoDataGeo geo;
-
-  /** Create new BooksLayerGeoData from JSON data */
-  BooksLayerGeoData.fromJson(core.Map json) {
-    if (json.containsKey("common")) {
-      common = new BooksLayerGeoDataCommon.fromJson(json["common"]);
-    }
-    if (json.containsKey("geo")) {
-      geo = new BooksLayerGeoDataGeo.fromJson(json["geo"]);
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoData */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (common != null) {
-      output["common"] = common.toJson();
-    }
-    if (geo != null) {
-      output["geo"] = geo.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoData */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataCommon {
-
-  /** The language of the information url and description. */
-  core.String lang;
-
-  /** The URL for the preview image information. */
-  core.String previewImageUrl;
-
-  /** The description for this location. */
-  core.String snippet;
-
-  /** The URL for information for this location. Ex: wikipedia link. */
-  core.String snippetUrl;
-
-  /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  core.String title;
-
-  /** Create new BooksLayerGeoDataCommon from JSON data */
-  BooksLayerGeoDataCommon.fromJson(core.Map json) {
-    if (json.containsKey("lang")) {
-      lang = json["lang"];
-    }
-    if (json.containsKey("previewImageUrl")) {
-      previewImageUrl = json["previewImageUrl"];
-    }
-    if (json.containsKey("snippet")) {
-      snippet = json["snippet"];
-    }
-    if (json.containsKey("snippetUrl")) {
-      snippetUrl = json["snippetUrl"];
-    }
-    if (json.containsKey("title")) {
-      title = json["title"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataCommon */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (lang != null) {
-      output["lang"] = lang;
-    }
-    if (previewImageUrl != null) {
-      output["previewImageUrl"] = previewImageUrl;
-    }
-    if (snippet != null) {
-      output["snippet"] = snippet;
-    }
-    if (snippetUrl != null) {
-      output["snippetUrl"] = snippetUrl;
-    }
-    if (title != null) {
-      output["title"] = title;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataCommon */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeo {
-
-  /** The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates. */
-  core.List<core.List<BooksLayerGeoDataGeoBoundary>> boundary;
-
-  /** The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER */
-  core.String cachePolicy;
-
-  /** The country code of the location. */
-  core.String countryCode;
-
-  /** The latitude of the location. */
-  core.num latitude;
-
-  /** The longitude of the location. */
-  core.num longitude;
-
-  /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
-  core.String mapType;
-
-  /** The viewport for showing this location. This is a latitude, longitude rectangle. */
-  BooksLayerGeoDataGeoViewport viewport;
-
-  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
-  core.int zoom;
-
-  /** Create new BooksLayerGeoDataGeo from JSON data */
-  BooksLayerGeoDataGeo.fromJson(core.Map json) {
-    if (json.containsKey("boundary")) {
-      boundary = json["boundary"].map((boundaryItem) => boundaryItem.map((boundaryItem2) => new BooksLayerGeoDataGeoBoundary.fromJson(boundaryItem2)).toList()).toList();
-    }
-    if (json.containsKey("cachePolicy")) {
-      cachePolicy = json["cachePolicy"];
-    }
-    if (json.containsKey("countryCode")) {
-      countryCode = json["countryCode"];
-    }
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-    if (json.containsKey("mapType")) {
-      mapType = json["mapType"];
-    }
-    if (json.containsKey("viewport")) {
-      viewport = new BooksLayerGeoDataGeoViewport.fromJson(json["viewport"]);
-    }
-    if (json.containsKey("zoom")) {
-      zoom = json["zoom"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (boundary != null) {
-      output["boundary"] = boundary.map((boundaryItem) => boundaryItem.map((boundaryItem2) => boundaryItem2.toJson()).toList()).toList();
-    }
-    if (cachePolicy != null) {
-      output["cachePolicy"] = cachePolicy;
-    }
-    if (countryCode != null) {
-      output["countryCode"] = countryCode;
-    }
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-    if (mapType != null) {
-      output["mapType"] = mapType;
-    }
-    if (viewport != null) {
-      output["viewport"] = viewport.toJson();
-    }
-    if (zoom != null) {
-      output["zoom"] = zoom;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeo */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeoBoundary {
-
-  core.int latitude;
-
-  core.int longitude;
-
-  /** Create new BooksLayerGeoDataGeoBoundary from JSON data */
-  BooksLayerGeoDataGeoBoundary.fromJson(core.Map json) {
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoBoundary */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoBoundary */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** The viewport for showing this location. This is a latitude, longitude rectangle. */
-class BooksLayerGeoDataGeoViewport {
-
-  BooksLayerGeoDataGeoViewportHi hi;
-
-  BooksLayerGeoDataGeoViewportLo lo;
-
-  /** Create new BooksLayerGeoDataGeoViewport from JSON data */
-  BooksLayerGeoDataGeoViewport.fromJson(core.Map json) {
-    if (json.containsKey("hi")) {
-      hi = new BooksLayerGeoDataGeoViewportHi.fromJson(json["hi"]);
-    }
-    if (json.containsKey("lo")) {
-      lo = new BooksLayerGeoDataGeoViewportLo.fromJson(json["lo"]);
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewport */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (hi != null) {
-      output["hi"] = hi.toJson();
-    }
-    if (lo != null) {
-      output["lo"] = lo.toJson();
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewport */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeoViewportHi {
-
-  core.num latitude;
-
-  core.num longitude;
-
-  /** Create new BooksLayerGeoDataGeoViewportHi from JSON data */
-  BooksLayerGeoDataGeoViewportHi.fromJson(core.Map json) {
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewportHi */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewportHi */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-class BooksLayerGeoDataGeoViewportLo {
-
-  core.num latitude;
-
-  core.num longitude;
-
-  /** Create new BooksLayerGeoDataGeoViewportLo from JSON data */
-  BooksLayerGeoDataGeoViewportLo.fromJson(core.Map json) {
-    if (json.containsKey("latitude")) {
-      latitude = json["latitude"];
-    }
-    if (json.containsKey("longitude")) {
-      longitude = json["longitude"];
-    }
-  }
-
-  /** Create JSON Object for BooksLayerGeoDataGeoViewportLo */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (latitude != null) {
-      output["latitude"] = latitude;
-    }
-    if (longitude != null) {
-      output["longitude"] = longitude;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of BooksLayerGeoDataGeoViewportLo */
-  core.String toString() => JSON.stringify(this.toJson());
+  /** Return String representation of BooksVolumesRecommendedRateResponse */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1883,7 +888,7 @@ class Bookshelf {
   }
 
   /** Return String representation of Bookshelf */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1920,7 +925,7 @@ class Bookshelves {
   }
 
   /** Return String representation of Bookshelves */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2038,7 +1043,706 @@ class ConcurrentAccessRestriction {
   }
 
   /** Return String representation of ConcurrentAccessRestriction */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class Dictlayerdata {
+
+  DictlayerdataCommon common;
+
+  DictlayerdataDict dict;
+
+  core.String kind;
+
+  /** Create new Dictlayerdata from JSON data */
+  Dictlayerdata.fromJson(core.Map json) {
+    if (json.containsKey("common")) {
+      common = new DictlayerdataCommon.fromJson(json["common"]);
+    }
+    if (json.containsKey("dict")) {
+      dict = new DictlayerdataDict.fromJson(json["dict"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for Dictlayerdata */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (common != null) {
+      output["common"] = common.toJson();
+    }
+    if (dict != null) {
+      output["dict"] = dict.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Dictlayerdata */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataCommon {
+
+  /** The display title and localized canonical name to use when searching for this entity on Google search. */
+  core.String title;
+
+  /** Create new DictlayerdataCommon from JSON data */
+  DictlayerdataCommon.fromJson(core.Map json) {
+    if (json.containsKey("title")) {
+      title = json["title"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataCommon */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (title != null) {
+      output["title"] = title;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataCommon */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDict {
+
+  /** The source, url and attribution for this dictionary data. */
+  DictlayerdataDictSource source;
+
+  core.List<DictlayerdataDictWords> words;
+
+  /** Create new DictlayerdataDict from JSON data */
+  DictlayerdataDict.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("words")) {
+      words = json["words"].map((wordsItem) => new DictlayerdataDictWords.fromJson(wordsItem)).toList();
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDict */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (words != null) {
+      output["words"] = words.map((wordsItem) => wordsItem.toJson()).toList();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDict */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** The source, url and attribution for this dictionary data. */
+class DictlayerdataDictSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictSource from JSON data */
+  DictlayerdataDictSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWords {
+
+  core.List<DictlayerdataDictWordsDerivatives> derivatives;
+
+  core.List<DictlayerdataDictWordsExamples> examples;
+
+  core.List<DictlayerdataDictWordsSenses> senses;
+
+  /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
+  DictlayerdataDictWordsSource source;
+
+  /** Create new DictlayerdataDictWords from JSON data */
+  DictlayerdataDictWords.fromJson(core.Map json) {
+    if (json.containsKey("derivatives")) {
+      derivatives = json["derivatives"].map((derivativesItem) => new DictlayerdataDictWordsDerivatives.fromJson(derivativesItem)).toList();
+    }
+    if (json.containsKey("examples")) {
+      examples = json["examples"].map((examplesItem) => new DictlayerdataDictWordsExamples.fromJson(examplesItem)).toList();
+    }
+    if (json.containsKey("senses")) {
+      senses = json["senses"].map((sensesItem) => new DictlayerdataDictWordsSenses.fromJson(sensesItem)).toList();
+    }
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsSource.fromJson(json["source"]);
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWords */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (derivatives != null) {
+      output["derivatives"] = derivatives.map((derivativesItem) => derivativesItem.toJson()).toList();
+    }
+    if (examples != null) {
+      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
+    }
+    if (senses != null) {
+      output["senses"] = senses.map((sensesItem) => sensesItem.toJson()).toList();
+    }
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWords */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsDerivatives {
+
+  DictlayerdataDictWordsDerivativesSource source;
+
+  core.String text;
+
+  /** Create new DictlayerdataDictWordsDerivatives from JSON data */
+  DictlayerdataDictWordsDerivatives.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsDerivativesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsDerivatives */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsDerivatives */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsDerivativesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsDerivativesSource from JSON data */
+  DictlayerdataDictWordsDerivativesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsDerivativesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsDerivativesSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsExamples {
+
+  DictlayerdataDictWordsExamplesSource source;
+
+  core.String text;
+
+  /** Create new DictlayerdataDictWordsExamples from JSON data */
+  DictlayerdataDictWordsExamples.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsExamplesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsExamples */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsExamples */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsExamplesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsExamplesSource from JSON data */
+  DictlayerdataDictWordsExamplesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsExamplesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsExamplesSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSenses {
+
+  core.List<DictlayerdataDictWordsSensesConjugations> conjugations;
+
+  core.List<DictlayerdataDictWordsSensesDefinitions> definitions;
+
+  core.String partOfSpeech;
+
+  core.String pronunciation;
+
+  core.String pronunciationUrl;
+
+  DictlayerdataDictWordsSensesSource source;
+
+  core.String syllabification;
+
+  core.List<DictlayerdataDictWordsSensesSynonyms> synonyms;
+
+  /** Create new DictlayerdataDictWordsSenses from JSON data */
+  DictlayerdataDictWordsSenses.fromJson(core.Map json) {
+    if (json.containsKey("conjugations")) {
+      conjugations = json["conjugations"].map((conjugationsItem) => new DictlayerdataDictWordsSensesConjugations.fromJson(conjugationsItem)).toList();
+    }
+    if (json.containsKey("definitions")) {
+      definitions = json["definitions"].map((definitionsItem) => new DictlayerdataDictWordsSensesDefinitions.fromJson(definitionsItem)).toList();
+    }
+    if (json.containsKey("partOfSpeech")) {
+      partOfSpeech = json["partOfSpeech"];
+    }
+    if (json.containsKey("pronunciation")) {
+      pronunciation = json["pronunciation"];
+    }
+    if (json.containsKey("pronunciationUrl")) {
+      pronunciationUrl = json["pronunciationUrl"];
+    }
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsSensesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("syllabification")) {
+      syllabification = json["syllabification"];
+    }
+    if (json.containsKey("synonyms")) {
+      synonyms = json["synonyms"].map((synonymsItem) => new DictlayerdataDictWordsSensesSynonyms.fromJson(synonymsItem)).toList();
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSenses */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (conjugations != null) {
+      output["conjugations"] = conjugations.map((conjugationsItem) => conjugationsItem.toJson()).toList();
+    }
+    if (definitions != null) {
+      output["definitions"] = definitions.map((definitionsItem) => definitionsItem.toJson()).toList();
+    }
+    if (partOfSpeech != null) {
+      output["partOfSpeech"] = partOfSpeech;
+    }
+    if (pronunciation != null) {
+      output["pronunciation"] = pronunciation;
+    }
+    if (pronunciationUrl != null) {
+      output["pronunciationUrl"] = pronunciationUrl;
+    }
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (syllabification != null) {
+      output["syllabification"] = syllabification;
+    }
+    if (synonyms != null) {
+      output["synonyms"] = synonyms.map((synonymsItem) => synonymsItem.toJson()).toList();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSenses */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesConjugations {
+
+  core.String type;
+
+  core.String value;
+
+  /** Create new DictlayerdataDictWordsSensesConjugations from JSON data */
+  DictlayerdataDictWordsSensesConjugations.fromJson(core.Map json) {
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+    if (json.containsKey("value")) {
+      value = json["value"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesConjugations */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (type != null) {
+      output["type"] = type;
+    }
+    if (value != null) {
+      output["value"] = value;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesConjugations */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesDefinitions {
+
+  core.String definition;
+
+  core.List<DictlayerdataDictWordsSensesDefinitionsExamples> examples;
+
+  /** Create new DictlayerdataDictWordsSensesDefinitions from JSON data */
+  DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map json) {
+    if (json.containsKey("definition")) {
+      definition = json["definition"];
+    }
+    if (json.containsKey("examples")) {
+      examples = json["examples"].map((examplesItem) => new DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(examplesItem)).toList();
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesDefinitions */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (definition != null) {
+      output["definition"] = definition;
+    }
+    if (examples != null) {
+      output["examples"] = examples.map((examplesItem) => examplesItem.toJson()).toList();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesDefinitions */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesDefinitionsExamples {
+
+  DictlayerdataDictWordsSensesDefinitionsExamplesSource source;
+
+  core.String text;
+
+  /** Create new DictlayerdataDictWordsSensesDefinitionsExamples from JSON data */
+  DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesDefinitionsExamples */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesDefinitionsExamples */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsSensesDefinitionsExamplesSource from JSON data */
+  DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesDefinitionsExamplesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesDefinitionsExamplesSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsSensesSource from JSON data */
+  DictlayerdataDictWordsSensesSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesSynonyms {
+
+  DictlayerdataDictWordsSensesSynonymsSource source;
+
+  core.String text;
+
+  /** Create new DictlayerdataDictWordsSensesSynonyms from JSON data */
+  DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map json) {
+    if (json.containsKey("source")) {
+      source = new DictlayerdataDictWordsSensesSynonymsSource.fromJson(json["source"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesSynonyms */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (source != null) {
+      output["source"] = source.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesSynonyms */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class DictlayerdataDictWordsSensesSynonymsSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsSensesSynonymsSource from JSON data */
+  DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSensesSynonymsSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSensesSynonymsSource */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
+class DictlayerdataDictWordsSource {
+
+  core.String attribution;
+
+  core.String url;
+
+  /** Create new DictlayerdataDictWordsSource from JSON data */
+  DictlayerdataDictWordsSource.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = json["attribution"];
+    }
+    if (json.containsKey("url")) {
+      url = json["url"];
+    }
+  }
+
+  /** Create JSON Object for DictlayerdataDictWordsSource */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution;
+    }
+    if (url != null) {
+      output["url"] = url;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of DictlayerdataDictWordsSource */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2165,7 +1869,7 @@ class DownloadAccessRestriction {
   }
 
   /** Return String representation of DownloadAccessRestriction */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2202,7 +1906,346 @@ class DownloadAccesses {
   }
 
   /** Return String representation of DownloadAccesses */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class Geolayerdata {
+
+  GeolayerdataCommon common;
+
+  GeolayerdataGeo geo;
+
+  core.String kind;
+
+  /** Create new Geolayerdata from JSON data */
+  Geolayerdata.fromJson(core.Map json) {
+    if (json.containsKey("common")) {
+      common = new GeolayerdataCommon.fromJson(json["common"]);
+    }
+    if (json.containsKey("geo")) {
+      geo = new GeolayerdataGeo.fromJson(json["geo"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for Geolayerdata */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (common != null) {
+      output["common"] = common.toJson();
+    }
+    if (geo != null) {
+      output["geo"] = geo.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Geolayerdata */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class GeolayerdataCommon {
+
+  /** The language of the information url and description. */
+  core.String lang;
+
+  /** The URL for the preview image information. */
+  core.String previewImageUrl;
+
+  /** The description for this location. */
+  core.String snippet;
+
+  /** The URL for information for this location. Ex: wikipedia link. */
+  core.String snippetUrl;
+
+  /** The display title and localized canonical name to use when searching for this entity on Google search. */
+  core.String title;
+
+  /** Create new GeolayerdataCommon from JSON data */
+  GeolayerdataCommon.fromJson(core.Map json) {
+    if (json.containsKey("lang")) {
+      lang = json["lang"];
+    }
+    if (json.containsKey("previewImageUrl")) {
+      previewImageUrl = json["previewImageUrl"];
+    }
+    if (json.containsKey("snippet")) {
+      snippet = json["snippet"];
+    }
+    if (json.containsKey("snippetUrl")) {
+      snippetUrl = json["snippetUrl"];
+    }
+    if (json.containsKey("title")) {
+      title = json["title"];
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataCommon */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (lang != null) {
+      output["lang"] = lang;
+    }
+    if (previewImageUrl != null) {
+      output["previewImageUrl"] = previewImageUrl;
+    }
+    if (snippet != null) {
+      output["snippet"] = snippet;
+    }
+    if (snippetUrl != null) {
+      output["snippetUrl"] = snippetUrl;
+    }
+    if (title != null) {
+      output["title"] = title;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataCommon */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class GeolayerdataGeo {
+
+  /** The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates. */
+  core.List<core.List<GeolayerdataGeoBoundary>> boundary;
+
+  /** The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER */
+  core.String cachePolicy;
+
+  /** The country code of the location. */
+  core.String countryCode;
+
+  /** The latitude of the location. */
+  core.num latitude;
+
+  /** The longitude of the location. */
+  core.num longitude;
+
+  /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
+  core.String mapType;
+
+  /** The viewport for showing this location. This is a latitude, longitude rectangle. */
+  GeolayerdataGeoViewport viewport;
+
+  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
+  core.int zoom;
+
+  /** Create new GeolayerdataGeo from JSON data */
+  GeolayerdataGeo.fromJson(core.Map json) {
+    if (json.containsKey("boundary")) {
+      boundary = json["boundary"].map((boundaryItem) => boundaryItem.map((boundaryItem2) => new GeolayerdataGeoBoundary.fromJson(boundaryItem2)).toList()).toList();
+    }
+    if (json.containsKey("cachePolicy")) {
+      cachePolicy = json["cachePolicy"];
+    }
+    if (json.containsKey("countryCode")) {
+      countryCode = json["countryCode"];
+    }
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+    if (json.containsKey("mapType")) {
+      mapType = json["mapType"];
+    }
+    if (json.containsKey("viewport")) {
+      viewport = new GeolayerdataGeoViewport.fromJson(json["viewport"]);
+    }
+    if (json.containsKey("zoom")) {
+      zoom = json["zoom"];
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataGeo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (boundary != null) {
+      output["boundary"] = boundary.map((boundaryItem) => boundaryItem.map((boundaryItem2) => boundaryItem2.toJson()).toList()).toList();
+    }
+    if (cachePolicy != null) {
+      output["cachePolicy"] = cachePolicy;
+    }
+    if (countryCode != null) {
+      output["countryCode"] = countryCode;
+    }
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+    if (mapType != null) {
+      output["mapType"] = mapType;
+    }
+    if (viewport != null) {
+      output["viewport"] = viewport.toJson();
+    }
+    if (zoom != null) {
+      output["zoom"] = zoom;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataGeo */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class GeolayerdataGeoBoundary {
+
+  core.int latitude;
+
+  core.int longitude;
+
+  /** Create new GeolayerdataGeoBoundary from JSON data */
+  GeolayerdataGeoBoundary.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataGeoBoundary */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataGeoBoundary */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** The viewport for showing this location. This is a latitude, longitude rectangle. */
+class GeolayerdataGeoViewport {
+
+  GeolayerdataGeoViewportHi hi;
+
+  GeolayerdataGeoViewportLo lo;
+
+  /** Create new GeolayerdataGeoViewport from JSON data */
+  GeolayerdataGeoViewport.fromJson(core.Map json) {
+    if (json.containsKey("hi")) {
+      hi = new GeolayerdataGeoViewportHi.fromJson(json["hi"]);
+    }
+    if (json.containsKey("lo")) {
+      lo = new GeolayerdataGeoViewportLo.fromJson(json["lo"]);
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataGeoViewport */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (hi != null) {
+      output["hi"] = hi.toJson();
+    }
+    if (lo != null) {
+      output["lo"] = lo.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataGeoViewport */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class GeolayerdataGeoViewportHi {
+
+  core.num latitude;
+
+  core.num longitude;
+
+  /** Create new GeolayerdataGeoViewportHi from JSON data */
+  GeolayerdataGeoViewportHi.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataGeoViewportHi */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataGeoViewportHi */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class GeolayerdataGeoViewportLo {
+
+  core.num latitude;
+
+  core.num longitude;
+
+  /** Create new GeolayerdataGeoViewportLo from JSON data */
+  GeolayerdataGeoViewportLo.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON Object for GeolayerdataGeoViewportLo */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeolayerdataGeoViewportLo */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2248,7 +2291,7 @@ class Layersummaries {
   }
 
   /** Return String representation of Layersummaries */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2384,7 +2427,7 @@ class Layersummary {
   }
 
   /** Return String representation of Layersummary */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2466,7 +2509,7 @@ class ReadingPosition {
   }
 
   /** Return String representation of ReadingPosition */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2512,7 +2555,7 @@ class RequestAccess {
   }
 
   /** Return String representation of RequestAccess */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2621,7 +2664,7 @@ class Review {
   }
 
   /** Return String representation of Review */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2650,7 +2693,7 @@ class ReviewAuthor {
   }
 
   /** Return String representation of ReviewAuthor */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2697,7 +2740,7 @@ class ReviewSource {
   }
 
   /** Return String representation of ReviewSource */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2815,7 +2858,7 @@ class Volume {
   }
 
   /** Return String representation of Volume */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2836,6 +2879,9 @@ class VolumeAccessInfo {
 
   /** Information about epub content. (In LITE projection.) */
   VolumeAccessInfoEpub epub;
+
+  /** Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it. */
+  core.bool explicitOfflineLicenseManagement;
 
   /** Information about pdf content. (In LITE projection.) */
   VolumeAccessInfoPdf pdf;
@@ -2871,6 +2917,9 @@ class VolumeAccessInfo {
     }
     if (json.containsKey("epub")) {
       epub = new VolumeAccessInfoEpub.fromJson(json["epub"]);
+    }
+    if (json.containsKey("explicitOfflineLicenseManagement")) {
+      explicitOfflineLicenseManagement = json["explicitOfflineLicenseManagement"];
     }
     if (json.containsKey("pdf")) {
       pdf = new VolumeAccessInfoPdf.fromJson(json["pdf"]);
@@ -2911,6 +2960,9 @@ class VolumeAccessInfo {
     if (epub != null) {
       output["epub"] = epub.toJson();
     }
+    if (explicitOfflineLicenseManagement != null) {
+      output["explicitOfflineLicenseManagement"] = explicitOfflineLicenseManagement;
+    }
     if (pdf != null) {
       output["pdf"] = pdf.toJson();
     }
@@ -2934,7 +2986,7 @@ class VolumeAccessInfo {
   }
 
   /** Return String representation of VolumeAccessInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2981,7 +3033,7 @@ class VolumeAccessInfoEpub {
   }
 
   /** Return String representation of VolumeAccessInfoEpub */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3028,7 +3080,7 @@ class VolumeAccessInfoPdf {
   }
 
   /** Return String representation of VolumeAccessInfoPdf */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3057,7 +3109,7 @@ class VolumeLayerInfo {
   }
 
   /** Return String representation of VolumeLayerInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3094,7 +3146,7 @@ class VolumeLayerInfoLayers {
   }
 
   /** Return String representation of VolumeLayerInfoLayers */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3123,7 +3175,7 @@ class VolumeRecommendedInfo {
   }
 
   /** Return String representation of VolumeRecommendedInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3215,7 +3267,7 @@ class VolumeSaleInfo {
   }
 
   /** Return String representation of VolumeSaleInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3253,7 +3305,7 @@ class VolumeSaleInfoListPrice {
   }
 
   /** Return String representation of VolumeSaleInfoListPrice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3308,7 +3360,7 @@ class VolumeSaleInfoOffers {
   }
 
   /** Return String representation of VolumeSaleInfoOffers */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3344,7 +3396,7 @@ class VolumeSaleInfoOffersListPrice {
   }
 
   /** Return String representation of VolumeSaleInfoOffersListPrice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3380,7 +3432,7 @@ class VolumeSaleInfoOffersRentalDuration {
   }
 
   /** Return String representation of VolumeSaleInfoOffersRentalDuration */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3416,7 +3468,7 @@ class VolumeSaleInfoOffersRetailPrice {
   }
 
   /** Return String representation of VolumeSaleInfoOffersRetailPrice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3454,7 +3506,7 @@ class VolumeSaleInfoRetailPrice {
   }
 
   /** Return String representation of VolumeSaleInfoRetailPrice */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3483,7 +3535,7 @@ class VolumeSearchInfo {
   }
 
   /** Return String representation of VolumeSearchInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3601,7 +3653,7 @@ class VolumeUserInfo {
   }
 
   /** Return String representation of VolumeUserInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3653,7 +3705,7 @@ class VolumeUserInfoCopy {
   }
 
   /** Return String representation of VolumeUserInfoCopy */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3689,7 +3741,7 @@ class VolumeUserInfoRentalPeriod {
   }
 
   /** Return String representation of VolumeUserInfoRentalPeriod */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3716,7 +3768,7 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   }
 
   /** Return String representation of VolumeUserInfoUserUploadedVolumeInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3916,7 +3968,7 @@ class VolumeVolumeInfo {
   }
 
   /** Return String representation of VolumeVolumeInfo */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3963,7 +4015,7 @@ class VolumeVolumeInfoDimensions {
   }
 
   /** Return String representation of VolumeVolumeInfoDimensions */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4037,7 +4089,7 @@ class VolumeVolumeInfoImageLinks {
   }
 
   /** Return String representation of VolumeVolumeInfoImageLinks */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4074,7 +4126,7 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 
   /** Return String representation of VolumeVolumeInfoIndustryIdentifiers */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4219,7 +4271,7 @@ class Volumeannotation {
   }
 
   /** Return String representation of Volumeannotation */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4275,7 +4327,7 @@ class VolumeannotationContentRanges {
   }
 
   /** Return String representation of VolumeannotationContentRanges */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4339,7 +4391,7 @@ class Volumeannotations {
   }
 
   /** Return String representation of Volumeannotations */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4385,7 +4437,7 @@ class Volumes {
   }
 
   /** Return String representation of Volumes */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 

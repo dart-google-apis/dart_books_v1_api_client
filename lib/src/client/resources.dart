@@ -701,11 +701,17 @@ class MyconfigResource_ {
    *
    * [cpksver] - The device/version ID from which to request the restrictions.
    *
+   * [licenseTypes] - The type of access license to request. If not specified, the default is BOTH.
+   *   Allowed values:
+   *     BOTH - Both concurrent and download licenses.
+   *     CONCURRENT - Concurrent access license.
+   *     DOWNLOAD - Offline download access license.
+   *
    * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String locale, core.Map optParams}) {
+  async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String licenseTypes, core.String locale, core.Map optParams}) {
     var url = "myconfig/requestAccess";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -713,6 +719,10 @@ class MyconfigResource_ {
     var paramErrors = new core.List();
     if (cpksver == null) paramErrors.add("cpksver is required");
     if (cpksver != null) queryParams["cpksver"] = cpksver;
+    if (licenseTypes != null && !["BOTH", "CONCURRENT", "DOWNLOAD"].contains(licenseTypes)) {
+      paramErrors.add("Allowed values for licenseTypes: BOTH, CONCURRENT, DOWNLOAD");
+    }
+    if (licenseTypes != null) queryParams["licenseTypes"] = licenseTypes;
     if (locale != null) queryParams["locale"] = locale;
     if (nonce == null) paramErrors.add("nonce is required");
     if (nonce != null) queryParams["nonce"] = nonce;
@@ -1835,6 +1845,55 @@ class VolumesRecommendedResource_ {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new Volumes.fromJson(data));
+  }
+
+  /**
+   * Rate a recommended book for the current user.
+   *
+   * [rating] - Rating to be given to the volume.
+   *   Allowed values:
+   *     HAVE_IT - Rating indicating a dismissal due to ownership.
+   *     NOT_INTERESTED - Rating indicating a negative dismissal of a volume.
+   *
+   * [volumeId] - ID of the source volume.
+   *
+   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations.
+   *
+   * [source] - String to identify the originator of this request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<BooksVolumesRecommendedRateResponse> rate(core.String rating, core.String volumeId, {core.String locale, core.String source, core.Map optParams}) {
+    var url = "volumes/recommended/rate";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (locale != null) queryParams["locale"] = locale;
+    if (rating == null) paramErrors.add("rating is required");
+    if (rating != null && !["HAVE_IT", "NOT_INTERESTED"].contains(rating)) {
+      paramErrors.add("Allowed values for rating: HAVE_IT, NOT_INTERESTED");
+    }
+    if (rating != null) queryParams["rating"] = rating;
+    if (source != null) queryParams["source"] = source;
+    if (volumeId == null) paramErrors.add("volumeId is required");
+    if (volumeId != null) queryParams["volumeId"] = volumeId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new BooksVolumesRecommendedRateResponse.fromJson(data));
   }
 }
 
