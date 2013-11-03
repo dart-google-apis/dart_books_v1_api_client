@@ -3811,7 +3811,7 @@ class VolumeVolumeInfo {
   /** The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight. */
   core.String mainCategory;
 
-  /** Total number of pages. */
+  /** Total number of pages as per publisher metadata. */
   core.int pageCount;
 
   /** URL to preview this volume on the Google Books site. */
@@ -3819,6 +3819,9 @@ class VolumeVolumeInfo {
 
   /** Type of publication of this volume. Possible values are BOOK or MAGAZINE. */
   core.String printType;
+
+  /** Total number of printed pages in generated pdf representation. */
+  core.int printedPageCount;
 
   /** Date of publication. (In LITE projection.) */
   core.String publishedDate;
@@ -3881,6 +3884,9 @@ class VolumeVolumeInfo {
     }
     if (json.containsKey("printType")) {
       printType = json["printType"];
+    }
+    if (json.containsKey("printedPageCount")) {
+      printedPageCount = json["printedPageCount"];
     }
     if (json.containsKey("publishedDate")) {
       publishedDate = json["publishedDate"];
@@ -3947,6 +3953,9 @@ class VolumeVolumeInfo {
     }
     if (printType != null) {
       output["printType"] = printType;
+    }
+    if (printedPageCount != null) {
+      output["printedPageCount"] = printedPageCount;
     }
     if (publishedDate != null) {
       output["publishedDate"] = publishedDate;

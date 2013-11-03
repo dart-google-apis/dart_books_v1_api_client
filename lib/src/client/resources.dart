@@ -379,6 +379,8 @@ class LayersAnnotationDataResource_ {
    *
    * [contentVersion] - The content version for the volume you are trying to retrieve.
    *
+   * [allowWebDefinitions] - For the dictionary layer. Whether or not to allow web definitions.
+   *
    * [h] - The requested pixel height for any images. If height is provided width must also be provided.
    *
    * [locale] - The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
@@ -392,12 +394,13 @@ class LayersAnnotationDataResource_ {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.int h, core.String locale, core.int scale, core.String source, core.int w, core.Map optParams}) {
+  async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.bool allowWebDefinitions, core.int h, core.String locale, core.int scale, core.String source, core.int w, core.Map optParams}) {
     var url = "volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
+    if (allowWebDefinitions != null) queryParams["allowWebDefinitions"] = allowWebDefinitions;
     if (annotationDataId == null) paramErrors.add("annotationDataId is required");
     if (annotationDataId != null) urlParams["annotationDataId"] = annotationDataId;
     if (contentVersion == null) paramErrors.add("contentVersion is required");
@@ -946,6 +949,9 @@ class MylibraryAnnotationsResource_ {
    *
    * [layerId] - The layer ID to limit annotation by.
    *
+   * [layerIds] - The layer ID(s) to limit annotation by.
+   *   Repeated values: allowed
+   *
    * [maxResults] - Maximum number of results to return
    *   Minimum: 0
    *   Maximum: 40
@@ -967,7 +973,7 @@ class MylibraryAnnotationsResource_ {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.int maxResults, core.List<core.String> pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
+  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.List<core.String> layerIds, core.int maxResults, core.List<core.String> pageIds, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId, core.Map optParams}) {
     var url = "mylibrary/annotations";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -975,6 +981,7 @@ class MylibraryAnnotationsResource_ {
     var paramErrors = new core.List();
     if (contentVersion != null) queryParams["contentVersion"] = contentVersion;
     if (layerId != null) queryParams["layerId"] = layerId;
+    if (layerIds != null) queryParams["layerIds"] = layerIds;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (pageIds != null) queryParams["pageIds"] = pageIds;
     if (pageToken != null) queryParams["pageToken"] = pageToken;
