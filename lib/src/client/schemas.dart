@@ -2874,6 +2874,9 @@ class VolumeAccessInfo {
   /** Information about a volume's download license access restrictions. */
   DownloadAccessRestriction downloadAccess;
 
+  /** URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive. */
+  core.String driveImportedContentLink;
+
   /** Whether this volume can be embedded in a viewport using the Embedded Viewer API. */
   core.bool embeddable;
 
@@ -2888,6 +2891,9 @@ class VolumeAccessInfo {
 
   /** Whether or not this book is public domain in the country listed above. */
   core.bool publicDomain;
+
+  /** Whether quote sharing is allowed for this volume. */
+  core.bool quoteSharingAllowed;
 
   /** Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED. */
   core.String textToSpeechPermission;
@@ -2912,6 +2918,9 @@ class VolumeAccessInfo {
     if (json.containsKey("downloadAccess")) {
       downloadAccess = new DownloadAccessRestriction.fromJson(json["downloadAccess"]);
     }
+    if (json.containsKey("driveImportedContentLink")) {
+      driveImportedContentLink = json["driveImportedContentLink"];
+    }
     if (json.containsKey("embeddable")) {
       embeddable = json["embeddable"];
     }
@@ -2926,6 +2935,9 @@ class VolumeAccessInfo {
     }
     if (json.containsKey("publicDomain")) {
       publicDomain = json["publicDomain"];
+    }
+    if (json.containsKey("quoteSharingAllowed")) {
+      quoteSharingAllowed = json["quoteSharingAllowed"];
     }
     if (json.containsKey("textToSpeechPermission")) {
       textToSpeechPermission = json["textToSpeechPermission"];
@@ -2954,6 +2966,9 @@ class VolumeAccessInfo {
     if (downloadAccess != null) {
       output["downloadAccess"] = downloadAccess.toJson();
     }
+    if (driveImportedContentLink != null) {
+      output["driveImportedContentLink"] = driveImportedContentLink;
+    }
     if (embeddable != null) {
       output["embeddable"] = embeddable;
     }
@@ -2968,6 +2983,9 @@ class VolumeAccessInfo {
     }
     if (publicDomain != null) {
       output["publicDomain"] = publicDomain;
+    }
+    if (quoteSharingAllowed != null) {
+      output["quoteSharingAllowed"] = quoteSharingAllowed;
     }
     if (textToSpeechPermission != null) {
       output["textToSpeechPermission"] = textToSpeechPermission;
