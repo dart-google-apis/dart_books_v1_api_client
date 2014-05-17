@@ -2431,6 +2431,153 @@ class Layersummary {
 
 }
 
+class Offers {
+
+  /** A list of offers. */
+  core.List<OffersItems> items;
+
+  /** Resource type. */
+  core.String kind;
+
+  /** Create new Offers from JSON data */
+  Offers.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new OffersItems.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for Offers */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Offers */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class OffersItems {
+
+  core.String artUrl;
+
+  core.String id;
+
+  core.List<OffersItemsItems> items;
+
+  /** Create new OffersItems from JSON data */
+  OffersItems.fromJson(core.Map json) {
+    if (json.containsKey("artUrl")) {
+      artUrl = json["artUrl"];
+    }
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new OffersItemsItems.fromJson(itemsItem)).toList();
+    }
+  }
+
+  /** Create JSON Object for OffersItems */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (artUrl != null) {
+      output["artUrl"] = artUrl;
+    }
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of OffersItems */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class OffersItemsItems {
+
+  core.String author;
+
+  core.String canonicalVolumeLink;
+
+  core.String coverUrl;
+
+  core.String description;
+
+  core.String title;
+
+  core.String volumeId;
+
+  /** Create new OffersItemsItems from JSON data */
+  OffersItemsItems.fromJson(core.Map json) {
+    if (json.containsKey("author")) {
+      author = json["author"];
+    }
+    if (json.containsKey("canonicalVolumeLink")) {
+      canonicalVolumeLink = json["canonicalVolumeLink"];
+    }
+    if (json.containsKey("coverUrl")) {
+      coverUrl = json["coverUrl"];
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("title")) {
+      title = json["title"];
+    }
+    if (json.containsKey("volumeId")) {
+      volumeId = json["volumeId"];
+    }
+  }
+
+  /** Create JSON Object for OffersItemsItems */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (author != null) {
+      output["author"] = author;
+    }
+    if (canonicalVolumeLink != null) {
+      output["canonicalVolumeLink"] = canonicalVolumeLink;
+    }
+    if (coverUrl != null) {
+      output["coverUrl"] = coverUrl;
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (title != null) {
+      output["title"] = title;
+    }
+    if (volumeId != null) {
+      output["volumeId"] = volumeId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of OffersItemsItems */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
 class ReadingPosition {
 
   /** Position in an EPUB as a CFI. */
@@ -3850,6 +3997,9 @@ class VolumeVolumeInfo {
   /** The number of review ratings for this volume. */
   core.int ratingsCount;
 
+  /** The reading modes available for this volume. */
+  core.Object readingModes;
+
   /** Volume subtitle. (In LITE projection.) */
   core.String subtitle;
 
@@ -3914,6 +4064,9 @@ class VolumeVolumeInfo {
     }
     if (json.containsKey("ratingsCount")) {
       ratingsCount = json["ratingsCount"];
+    }
+    if (json.containsKey("readingModes")) {
+      readingModes = json["readingModes"];
     }
     if (json.containsKey("subtitle")) {
       subtitle = json["subtitle"];
@@ -3983,6 +4136,9 @@ class VolumeVolumeInfo {
     }
     if (ratingsCount != null) {
       output["ratingsCount"] = ratingsCount;
+    }
+    if (readingModes != null) {
+      output["readingModes"] = readingModes;
     }
     if (subtitle != null) {
       output["subtitle"] = subtitle;

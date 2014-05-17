@@ -13,6 +13,7 @@ abstract class Client extends ClientBase {
   LayersResource_ get layers => new LayersResource_(this);
   MyconfigResource_ get myconfig => new MyconfigResource_(this);
   MylibraryResource_ get mylibrary => new MylibraryResource_(this);
+  PromoofferResource_ get promooffer => new PromoofferResource_(this);
   VolumesResource_ get volumes => new VolumesResource_(this);
 
   //

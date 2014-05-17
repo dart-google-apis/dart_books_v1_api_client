@@ -1499,6 +1499,162 @@ class MylibraryReadingpositionsResource_ {
   }
 }
 
+class PromoofferResource_ {
+
+  final Client _client;
+
+  PromoofferResource_(Client client) :
+      _client = client;
+
+  /**
+   * 
+   *
+   * [androidId] - device android_id
+   *
+   * [device] - device device
+   *
+   * [manufacturer] - device manufacturer
+   *
+   * [model] - device model
+   *
+   * [offerId]
+   *
+   * [product] - device product
+   *
+   * [serial] - device serial
+   *
+   * [volumeId] - Volume id to exercise the offer
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> accept({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial, core.String volumeId, core.Map optParams}) {
+    var url = "promooffer/accept";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (androidId != null) queryParams["androidId"] = androidId;
+    if (device != null) queryParams["device"] = device;
+    if (manufacturer != null) queryParams["manufacturer"] = manufacturer;
+    if (model != null) queryParams["model"] = model;
+    if (offerId != null) queryParams["offerId"] = offerId;
+    if (product != null) queryParams["product"] = product;
+    if (serial != null) queryParams["serial"] = serial;
+    if (volumeId != null) queryParams["volumeId"] = volumeId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * 
+   *
+   * [androidId] - device android_id
+   *
+   * [device] - device device
+   *
+   * [manufacturer] - device manufacturer
+   *
+   * [model] - device model
+   *
+   * [offerId] - Offer to dimiss
+   *
+   * [product] - device product
+   *
+   * [serial] - device serial
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> dismiss({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial, core.Map optParams}) {
+    var url = "promooffer/dismiss";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (androidId != null) queryParams["androidId"] = androidId;
+    if (device != null) queryParams["device"] = device;
+    if (manufacturer != null) queryParams["manufacturer"] = manufacturer;
+    if (model != null) queryParams["model"] = model;
+    if (offerId != null) queryParams["offerId"] = offerId;
+    if (product != null) queryParams["product"] = product;
+    if (serial != null) queryParams["serial"] = serial;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Returns a list of promo offers available to the user
+   *
+   * [androidId] - device android_id
+   *
+   * [device] - device device
+   *
+   * [manufacturer] - device manufacturer
+   *
+   * [model] - device model
+   *
+   * [product] - device product
+   *
+   * [serial] - device serial
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Offers> get({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String product, core.String serial, core.Map optParams}) {
+    var url = "promooffer/get";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (androidId != null) queryParams["androidId"] = androidId;
+    if (device != null) queryParams["device"] = device;
+    if (manufacturer != null) queryParams["manufacturer"] = manufacturer;
+    if (model != null) queryParams["model"] = model;
+    if (product != null) queryParams["product"] = product;
+    if (serial != null) queryParams["serial"] = serial;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Offers.fromJson(data));
+  }
+}
+
 class VolumesResource_ {
 
   final Client _client;
